@@ -299,6 +299,14 @@
                                                                                         </div>
                                                                                     </div>
                                                                                 @endif
+{{--                                                                                @if(@$item->type == 'category')--}}
+{{--                                                                                    <div class="custom-control custom-checkbox">--}}
+{{--                                                                                        <input type="checkbox" name="show_posts" value="show" id="main-posts-{{@$item->id}}"  @if(@$item->show_posts == 'show') checked @endif class="custom-control-input">--}}
+{{--                                                                                        <label class="custom-control-label" for="main-posts-{{@$item->id}}">--}}
+{{--                                                                                            <span class="h6">Show Category posts</span>--}}
+{{--                                                                                        </label>--}}
+{{--                                                                                    </div>--}}
+{{--                                                                                @endif--}}
                                                                                 <div class="custom-control custom-checkbox">
                                                                                     <input type="checkbox" name="target" value="_blank" id="main-{{@$item->id}}"  @if(@$item->target == '_blank') checked @endif class="custom-control-input">
                                                                                     <label class="custom-control-label" for="main-{{@$item->id}}">

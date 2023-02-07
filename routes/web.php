@@ -204,10 +204,6 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth','AdminMiddleware']], f
 
 });
 
-
-Route::get('/{page}', 'App\Http\Controllers\FrontController@page')
-        ->name('page');
-
 Route::get('/google/redirect','App\Http\Controllers\SocialLoginController@handleGoogleRedirect')->name('google.redirect');
 Route::get('/google/callback', 'App\Http\Controllers\SocialLoginController@handleGoogleCallback')->name('google.callback');
 

@@ -135,396 +135,167 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-left">
 
-                            <li><a class="home" href="/">होम पेज </a></li>
+                            <li class="single"><a class="home" href="/">होम पेज </a></li>
 
-                            <li><a class="world" href="news-category4.html">World</a>
-                                <div class="megadropdown">
-                                    <div class="container">
-                                        <div class="inner-megadropdown world-dropdown">
-                                            <div class="filter-block">
-                                                <ul class="filter-posts">
-                                                    <li><a href="#">All</a></li>
-                                                    <li><a href="#">Politics</a></li>
-                                                    <li><a href="#">Business</a></li>
-                                                    <li><a class="active" href="#">Lifestyle</a></li>
-                                                    <li><a href="#">Economy</a></li>
-                                                    <li><a href="#">Music</a></li>
+                            @if(!empty($top_nav_data))
+                                @foreach($top_nav_data as $nav)
+                                    @if(!empty($nav->children[0]))
+                                        @if(@$nav->title == 'अन्य' || @$nav->name == 'अन्य')
+                                            <li class="drop">
+                                                <a>
+                                                    @if(@$nav->name == NULL) {{ucwords(@$nav->title)}} @else {{ucwords(@$nav->name)}} @endif
+                                                </a>
+                                                <ul class="dropdown features-dropdown">
+                                                    @foreach($nav->children[0] as $childNav)
+                                                        @if($childNav->type == 'custom')
+                                                            <li>
+                                                                <a href="/{{@$childNav->slug}}"
+                                                                    @if(@$childNav->target !== NULL) target="_blank" @endif>
+                                                                    @if($childNav->name == NULL) {{@$childNav->title}} @else {{@$childNav->name}} @endif
+                                                                </a>
+                                                            </li>
+
+                                                        @elseif($childNav->type == 'category')
+                                                            <li>
+                                                                <a  href="{{url('category')}}/{{$childNav->slug}}"
+                                                                   @if(@$childNav->target !== NULL) target="_blank" @endif>
+                                                                    @if($childNav->name == NULL) {{@$childNav->title}} @else {{@$childNav->name}} @endif
+                                                                </a>
+                                                            </li>
+                                                        @else
+                                                            <li><a class="{{request()->is(@$childNav->slug) ? 'active' : ''}}"
+                                                                   @if(@$childNav->target !== NULL) target="_blank" @endif
+                                                                   href="{{url('/')}}/{{@$childNav->slug}}">
+                                                                    @if(@$childNav->name == NULL) {{@$childNav->title}} @else {{@$childNav->name}} @endif
+                                                                </a>
+                                                            </li>
+                                                        @endif
+
+                                                    @endforeach
                                                 </ul>
-                                            </div>
-                                            <div class="posts-filtered-block">
-                                                <div class="owl-wrapper">
-                                                    <h1>Lifestyle</h1>
-                                                    <div class="owl-carousel" data-num="4">
-
-                                                        <div class="item news-post standard-post">
-                                                            <div class="post-gallery">
-                                                                <img src="{{asset('assets/frontend/upload/news-posts/art1.jpg')}}" alt="">
-                                                            </div>
-                                                            <div class="post-content">
-                                                                <h2><a href="single-post.html">Donec odio. Quisque volutpat mattis eros. </a></h2>
-                                                                <ul class="post-tags">
-                                                                    <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                                    <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
+                                            </li>
+                                        @else
+                                            <li><a class="" href="{{url('category')}}/{{$nav->slug}}">
+                                                    @if(@$nav->name == NULL) {{ucwords(@$nav->title)}} @else {{ucwords(@$nav->name)}} @endif
+                                                </a>
+                                                <div class="megadropdown">
+                                                    <div class="container">
+                                                        <div class="inner-megadropdown world-dropdown">
+                                                            <div class="filter-block">
+                                                                <ul class="filter-posts">
+                                                                    @foreach($nav->children[0] as $childNav)
+                                                                        @if($childNav->type == 'custom')
+                                                                            <li><a class="{{request()->is(@$childNav->slug) ? 'active' : ''}}"
+                                                                                   @if(@$childNav->target !== NULL) target="_blank" @endif
+                                                                                   href="/{{@$childNav->slug}}">
+                                                                                    @if($childNav->name == NULL) {{@$childNav->title}} @else {{@$childNav->name}} @endif
+                                                                                </a>
+                                                                            </li>
+                                                                        @elseif($childNav->type == 'category')
+                                                                            <li><a class="{{request()->is('category/'.@$childNav->slug) ? 'active' : ''}}"
+                                                                                   @if(@$childNav->target !== NULL) target="_blank" @endif
+                                                                                   href="{{url('category')}}/{{$childNav->slug}}">
+                                                                                    @if(@$childNav->name == NULL) {{@$childNav->title}} @else {{@$childNav->name}} @endif
+                                                                                </a>
+                                                                            </li>
+                                                                        @else
+                                                                            <li><a class="{{request()->is(@$childNav->slug) ? 'active' : ''}}"
+                                                                                   @if(@$childNav->target !== NULL) target="_blank" @endif
+                                                                                   href="{{url('/')}}/{{@$childNav->slug}}">
+                                                                                    @if(@$childNav->name == NULL) {{@$childNav->title}} @else {{@$childNav->name}} @endif
+                                                                                </a>
+                                                                            </li>
+                                                                        @endif
+                                                                    @endforeach
                                                                 </ul>
                                                             </div>
-                                                        </div>
+                                                            <div class="posts-filtered-block">
+                                                                <div class="owl-wrapper">
+                                                                    <h1>  @if(@$nav->name == NULL) {{ucwords(@$nav->title)}} @else {{ucwords(@$nav->name)}} @endif</h1>
+                                                                    <div class="owl-carousel" data-num="4">
+                                                                        @darpanloop(getCategoryRelatedPost($nav->slug,0,5) as $news)
+                                                                        <div class="item news-post standard-post">
+                                                                            <div class="post-gallery">
+                                                                                <img src="{{ asset('/images/blog/'.@$news->image)}}" alt="">
+                                                                            </div>
+                                                                            <div class="post-content">
+                                                                                <h2>
+                                                                                    <a href="{{ url(@$news->url()) }}">{{@$news->title}}</a>
+                                                                                </h2>
+                                                                                <ul class="post-tags">
+                                                                                    <li><i class="fa fa-clock-o"></i>{{@$news->publishedDateNepali()}}</li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                        @enddarpanloop
 
-                                                        <div class="item news-post standard-post">
-                                                            <div class="post-gallery">
-                                                                <img src="{{asset('assets/frontend/upload/news-posts/art2.jpg')}}" alt="">
-                                                            </div>
-                                                            <div class="post-content">
-                                                                <h2><a href="single-post.html">Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. </a></h2>
-                                                                <ul class="post-tags">
-                                                                    <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                                    <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
 
-                                                        <div class="item news-post standard-post">
-                                                            <div class="post-gallery">
-                                                                <img src="{{asset('assets/frontend/upload/news-posts/art3.jpg')}}" alt="">
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                            <div class="post-content">
-                                                                <h2><a href="single-post.html">Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</a></h2>
-                                                                <ul class="post-tags">
-                                                                    <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                                    <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
 
-                                                        <div class="item news-post standard-post">
-                                                            <div class="post-gallery">
-                                                                <img src="{{asset('assets/frontend/upload/news-posts/art6.jpg')}}" alt="">
-                                                            </div>
-                                                            <div class="post-content">
-                                                                <h2><a href="single-post.html">Donec nec justo eget felis facilisis fermentum. </a></h2>
-                                                                <ul class="post-tags">
-                                                                    <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                                    <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-                                                                </ul>
-                                                            </div>
                                                         </div>
-
-                                                        <div class="item news-post standard-post">
-                                                            <div class="post-gallery">
-                                                                <img src="{{asset('assets/frontend/upload/news-posts/art9.jpg')}}" alt="">
-                                                            </div>
-                                                            <div class="post-content">
-                                                                <h2><a href="single-post.html">Donec nec justo eget felis facilisis fermentum. </a></h2>
-                                                                <ul class="post-tags">
-                                                                    <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                                    <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </li>
+                                        @endif
+                                    @else
+                                        @if($nav->type == 'custom')
+                                            <li class="single">
+                                                <a class="" href="/{{$nav->slug}}" @if($nav->target == NULL)  @else target="{{$nav->target}}" @endif>
+                                                    @if($nav->name == NULL) {{$nav->title}} @else {{$nav->name}} @endif
+                                                </a>
+                                            </li>
+                                        @elseif($nav->type == 'category')
 
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
 
-                            <li><a class="travel" href="news-category3.html">Travel</a>
-                                <div class="megadropdown">
-                                    <div class="container">
-                                        <div class="inner-megadropdown travel-dropdown">
+                                            <li><a class="" href="{{url('category')}}/{{$nav->slug}}">
+                                                    @if(@$nav->name == NULL) {{ucwords(@$nav->title)}} @else {{ucwords(@$nav->name)}} @endif
+                                                </a>
+                                                <div class="megadropdown">
+                                                    <div class="container">
+                                                        <div class="inner-megadropdown tech-dropdown">
 
-                                            <div class="owl-wrapper">
-                                                <h1>Latest Posts</h1>
-                                                <div class="owl-carousel" data-num="4">
-
-                                                    <div class="item news-post standard-post">
-                                                        <div class="post-gallery">
-                                                            <img src="{{asset('assets/frontend/upload/news-posts/art1.jpg')}}" alt="">
-                                                        </div>
-                                                        <div class="post-content">
-                                                            <h2><a href="single-post.html">Donec odio. Quisque volutpat mattis eros. </a></h2>
-                                                            <ul class="post-tags">
-                                                                <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                                <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-                                                            </ul>
+                                                            <div class="owl-wrapper">
+                                                                <ul class="horizontal-filter-posts">
+                                                                    <li><a class="active" href="#">All</a></li>
+                                                                    <li><a href="#">Software</a></li>
+                                                                    <li><a href="#">Internet</a></li>
+                                                                    <li><a href="#">Mobile</a></li>
+                                                                </ul>
+                                                                <h1>@if(@$nav->name == NULL) {{ucwords(@$nav->title)}} @else {{ucwords(@$nav->name)}} @endif</h1>
+                                                                <div class="owl-carousel" data-num="4">
+                                                                    @darpanloop(getCategoryRelatedPost($nav->slug,0,5) as $news)
+                                                                    <div class="item news-post standard-post">
+                                                                        <div class="post-gallery">
+                                                                            <img src="{{ asset('/images/blog/'.@$news->image)}}" alt="">
+                                                                        </div>
+                                                                        <div class="post-content">
+                                                                            <h2>
+                                                                                <a href="{{ url(@$news->url()) }}">{{@$news->title}}</a>
+                                                                            </h2>
+                                                                            <ul class="post-tags">
+                                                                                <li><i class="fa fa-clock-o"></i>{{@$news->publishedDateNepali()}}</li>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+                                                                    @enddarpanloop
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
-
-                                                    <div class="item news-post standard-post">
-                                                        <div class="post-gallery">
-                                                            <img src="{{asset('assets/frontend/upload/news-posts/art2.jpg')}}" alt="">
-                                                        </div>
-                                                        <div class="post-content">
-                                                            <h2><a href="single-post.html">Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. </a></h2>
-                                                            <ul class="post-tags">
-                                                                <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                                <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="item news-post standard-post">
-                                                        <div class="post-gallery">
-                                                            <img src="{{asset('assets/frontend/upload/news-posts/art3.jpg')}}" alt="">
-                                                        </div>
-                                                        <div class="post-content">
-                                                            <h2><a href="single-post.html">Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</a></h2>
-                                                            <ul class="post-tags">
-                                                                <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                                <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="item news-post standard-post">
-                                                        <div class="post-gallery">
-                                                            <img src="{{asset('assets/frontend/upload/news-posts/art6.jpg')}}" alt="">
-                                                        </div>
-                                                        <div class="post-content">
-                                                            <h2><a href="single-post.html">Donec nec justo eget felis facilisis fermentum. </a></h2>
-                                                            <ul class="post-tags">
-                                                                <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                                <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="item news-post standard-post">
-                                                        <div class="post-gallery">
-                                                            <img src="{{asset('assets/frontend/upload/news-posts/art9.jpg')}}" alt="">
-                                                        </div>
-                                                        <div class="post-content">
-                                                            <h2><a href="single-post.html">Donec nec justo eget felis facilisis fermentum. </a></h2>
-                                                            <ul class="post-tags">
-                                                                <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                                <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-
                                                 </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li><a class="tech" href="news-category2.html">Tech</a>
-                                <div class="megadropdown">
-                                    <div class="container">
-                                        <div class="inner-megadropdown tech-dropdown">
-
-                                            <div class="owl-wrapper">
-                                                <ul class="horizontal-filter-posts">
-                                                    <li><a class="active" href="#">All</a></li>
-                                                    <li><a href="#">Software</a></li>
-                                                    <li><a href="#">Internet</a></li>
-                                                    <li><a href="#">Mobile</a></li>
-                                                </ul>
-                                                <div class="owl-carousel" data-num="4">
-
-                                                    <div class="item news-post standard-post">
-                                                        <div class="post-gallery">
-                                                            <img src="{{asset('assets/frontend/upload/news-posts/art1.jpg')}}" alt="">
-                                                        </div>
-                                                        <div class="post-content">
-                                                            <h2><a href="single-post.html">Donec odio. Quisque volutpat mattis eros. </a></h2>
-                                                            <ul class="post-tags">
-                                                                <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                                <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="item news-post standard-post">
-                                                        <div class="post-gallery">
-                                                            <img src="{{asset('assets/frontend/upload/news-posts/art2.jpg')}}" alt="">
-                                                        </div>
-                                                        <div class="post-content">
-                                                            <h2><a href="single-post.html">Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. </a></h2>
-                                                            <ul class="post-tags">
-                                                                <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                                <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="item news-post standard-post">
-                                                        <div class="post-gallery">
-                                                            <img src="{{asset('assets/frontend/upload/news-posts/art3.jpg')}}" alt="">
-                                                        </div>
-                                                        <div class="post-content">
-                                                            <h2><a href="single-post.html">Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</a></h2>
-                                                            <ul class="post-tags">
-                                                                <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                                <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="item news-post standard-post">
-                                                        <div class="post-gallery">
-                                                            <img src="{{asset('assets/frontend/upload/news-posts/art6.jpg')}}" alt="">
-                                                        </div>
-                                                        <div class="post-content">
-                                                            <h2><a href="single-post.html">Donec nec justo eget felis facilisis fermentum. </a></h2>
-                                                            <ul class="post-tags">
-                                                                <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                                <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="item news-post standard-post">
-                                                        <div class="post-gallery">
-                                                            <img src="{{asset('assets/frontend/upload/news-posts/art9.jpg')}}" alt="">
-                                                        </div>
-                                                        <div class="post-content">
-                                                            <h2><a href="single-post.html">Donec nec justo eget felis facilisis fermentum. </a></h2>
-                                                            <ul class="post-tags">
-                                                                <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                                <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li><a class="fashion" href="news-category6.html">Fashion</a></li>
-
-                            <li><a class="video" href="video.html">Video</a>
-                                <div class="megadropdown">
-                                    <div class="container">
-                                        <div class="inner-megadropdown video-dropdown">
-
-                                            <div class="owl-wrapper">
-                                                <h1>Latest Posts</h1>
-                                                <div class="owl-carousel" data-num="4">
-
-                                                    <div class="item news-post video-post">
-                                                        <img alt="" src="{{asset('assets/frontend/upload/news-posts/video1.jpg')}}">
-                                                        <a href="https://www.youtube.com/watch?v=LL59es7iy8Q" class="video-link"><i class="fa fa-play-circle-o"></i></a>
-                                                        <div class="hover-box">
-                                                            <h2><a href="single-post.html">Lorem ipsum dolor sit consectetuer adipiscing elit. Donec odio. </a></h2>
-                                                            <ul class="post-tags">
-                                                                <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="item news-post video-post">
-                                                        <img alt="" src="{{asset('assets/frontend/upload/news-posts/video2.jpg')}}">
-                                                        <a href="https://www.youtube.com/watch?v=LL59es7iy8Q" class="video-link"><i class="fa fa-play-circle-o"></i></a>
-                                                        <div class="hover-box">
-                                                            <h2><a href="single-post.html">Quisque volutpat mattis eros. </a></h2>
-                                                            <ul class="post-tags">
-                                                                <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="item news-post video-post">
-                                                        <img alt="" src="{{asset('assets/frontend/upload/news-posts/video3.jpg')}}">
-                                                        <a href="https://www.youtube.com/watch?v=LL59es7iy8Q" class="video-link"><i class="fa fa-play-circle-o"></i></a>
-                                                        <div class="hover-box">
-                                                            <h2><a href="single-post.html">Nullam malesuada erat ut turpis. </a></h2>
-                                                            <ul class="post-tags">
-                                                                <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="item news-post video-post">
-                                                        <img alt="" src="{{asset('assets/frontend/upload/news-posts/video4.jpg')}}">
-                                                        <a href="https://www.youtube.com/watch?v=LL59es7iy8Q" class="video-link"><i class="fa fa-play-circle-o"></i></a>
-                                                        <div class="hover-box">
-                                                            <h2><a href="single-post.html">Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</a></h2>
-                                                            <ul class="post-tags">
-                                                                <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="item news-post video-post">
-                                                        <img alt="" src="{{asset('assets/frontend/upload/news-posts/video1.jpg')}}">
-                                                        <a href="https://www.youtube.com/watch?v=LL59es7iy8Q" class="video-link"><i class="fa fa-play-circle-o"></i></a>
-                                                        <div class="hover-box">
-                                                            <h2><a href="single-post.html">Lorem ipsum dolor sit consectetuer adipiscing elit. Donec odio. </a></h2>
-                                                            <ul class="post-tags">
-                                                                <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li><a class="sport" href="news-category5.html">Sport</a></li>
-                            <li><a class="food" href="news-category1.html">Food &amp; Health</a></li>
-
-                            <li class="drop"><a class="features" href="#">Features</a>
-                                <ul class="dropdown features-dropdown">
-                                    <li class="drop"><a href="#">Category Layouts</a>
-                                        <ul class="dropdown level2">
-                                            <li><a href="news-category1.html">Large Image Sidebar</a></li>
-                                            <li><a href="news-category2.html">Left Sidebar Thumbnail</a></li>
-                                            <li><a href="news-category3.html">Both Sidebar</a></li>
-                                            <li><a href="news-category4.html">2 Grid sidebar</a></li>
-                                            <li><a href="news-category5.html">3 Grid no sidebar</a></li>
-                                            <li><a href="news-category6.html">Fullwidth &amp; slider</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="drop"><a href="#">Header Layouts</a>
-                                        <ul class="dropdown level2">
-                                            <li><a href="index.html">Default header</a></li>
-                                            <li><a href="header2.html">header 2</a></li>
-                                            <li><a href="header3.html">header 3</a></li>
-                                            <li><a href="header4.html">header 4</a></li>
-                                            <li><a href="header5.html">header 5</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="drop"><a href="#">Post Formats</a>
-                                        <ul class="dropdown level2">
-                                            <li><a href="single-post.html">Single Post 1</a></li>
-                                            <li><a href="single-post2.html">Single Post 2</a></li>
-                                            <li><a href="single-post3.html">Single Post 3</a></li>
-                                            <li><a href="single-post4.html">Single Post 4</a></li>
-                                            <li><a href="single-post5.html">Single Post 5</a></li>
-                                            <li><a href="single-post6.html">Single Post 6</a></li>
-                                            <li><a href="single-post7.html">Single Post 7</a></li>
-                                            <li><a href="single-post8.html">Single Post 8</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="drop"><a href="#">Forum Pages</a>
-                                        <ul class="dropdown level2">
-                                            <li><a href="forums.html">Forums</a></li>
-                                            <li><a href="forum-category.html">Topics</a></li>
-                                            <li><a href="forum-topic.html">Single Topic</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="allfooter.html">All footer widgets</a></li>
-                                    <li><a href="autor-list.html">Autor List</a></li>
-                                    <li><a href="autor-details.html">Autor Details</a></li>
-                                    <li><a href="404-error.html">404 Error</a></li>
-                                    <li><a href="underconstruction.html">Underconstruction</a></li>
-                                    <li><a href="comming-soon.html">Comming soon Page</a></li>
-                                </ul>
-                            </li>
-
+                                            </li>
+                                        @else
+                                            <li class="{{request()->is(@$nav->slug.'*') ? 'active' : ''}} single ">
+                                                <a class="" href="{{url('/')}}/{{$nav->slug}}">
+                                                    @if($nav->name == NULL) {{$nav->title}} @else {{$nav->name}} @endif
+                                                </a>
+                                            </li>
+                                        @endif
+                                    @endif
+                                @endforeach
+                            @endif
                         </ul>
                         <form class="navbar-form navbar-right" role="search">
                             <input type="text" id="search" name="search" placeholder="Search here">

@@ -108,7 +108,7 @@ class BlogController extends Controller
         else{
             Session::flash('error','Your post Creation Failed');
         }
-        return redirect()->intended('blog.index');
+        return redirect()->intended('/auth/blogs');
 
 //        return redirect()->route('blog.index');
     }
@@ -200,7 +200,7 @@ class BlogController extends Controller
             Session::flash('error','Something Went Wrong. Your post could not be Updated');
         }
 //        return redirect()->route('blog.index');
-        return redirect()->intended('blog.index');
+        return redirect()->intended('/auth/blogs');
 
     }
 

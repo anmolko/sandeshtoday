@@ -35,25 +35,25 @@ class MenuController extends Controller
                 if(@$menuitems[0] != null){
                     $menuitems = $menuitems[0];
                     foreach($menuitems as $menu){
-                        $menu->title    = MenuItem::where('id',$menu->id)->value('title');
-                        $menu->name     = MenuItem::where('id',$menu->id)->value('name');
-                        $menu->slug     = MenuItem::where('id',$menu->id)->value('slug');
-                        $menu->target   = MenuItem::where('id',$menu->id)->value('target');
-                        $menu->type     = MenuItem::where('id',$menu->id)->value('type');
+                        $menu->title        = MenuItem::where('id',$menu->id)->value('title');
+                        $menu->name         = MenuItem::where('id',$menu->id)->value('name');
+                        $menu->slug         = MenuItem::where('id',$menu->id)->value('slug');
+                        $menu->target       = MenuItem::where('id',$menu->id)->value('target');
+                        $menu->type         = MenuItem::where('id',$menu->id)->value('type');
                         if(!empty($menu->children[0])){
                             foreach ($menu->children[0] as $child) {
-                                $child->title   = MenuItem::where('id',$child->id)->value('title');
-                                $child->name    = MenuItem::where('id',$child->id)->value('name');
-                                $child->slug    = MenuItem::where('id',$child->id)->value('slug');
-                                $child->target  = MenuItem::where('id',$child->id)->value('target');
-                                $child->type    = MenuItem::where('id',$child->id)->value('type');
+                                $child->title       = MenuItem::where('id',$child->id)->value('title');
+                                $child->name        = MenuItem::where('id',$child->id)->value('name');
+                                $child->slug        = MenuItem::where('id',$child->id)->value('slug');
+                                $child->target      = MenuItem::where('id',$child->id)->value('target');
+                                $child->type        = MenuItem::where('id',$child->id)->value('type');
                                 if(!empty($child->children[0])){
                                     foreach ($child->children[0] as $minichild) {
-                                        $minichild->title   = MenuItem::where('id',$minichild->id)->value('title');
-                                        $minichild->name    = MenuItem::where('id',$minichild->id)->value('name');
-                                        $minichild->slug    = MenuItem::where('id',$minichild->id)->value('slug');
-                                        $minichild->target  = MenuItem::where('id',$minichild->id)->value('target');
-                                        $minichild->type    = MenuItem::where('id',$minichild->id)->value('type');
+                                        $minichild->title       = MenuItem::where('id',$minichild->id)->value('title');
+                                        $minichild->name        = MenuItem::where('id',$minichild->id)->value('name');
+                                        $minichild->slug        = MenuItem::where('id',$minichild->id)->value('slug');
+                                        $minichild->target      = MenuItem::where('id',$minichild->id)->value('target');
+                                        $minichild->type        = MenuItem::where('id',$minichild->id)->value('type');
                                     }
                                 }
                             }
@@ -80,25 +80,25 @@ class MenuController extends Controller
                     if(@$menuitems[0] != null){
                         $menuitems = $menuitems[0];
                         foreach($menuitems as $menu){
-                            $menu->title    = MenuItem::where('id',$menu->id)->value('title');
-                            $menu->name     = MenuItem::where('id',$menu->id)->value('name');
-                            $menu->slug     = MenuItem::where('id',$menu->id)->value('slug');
-                            $menu->target   = MenuItem::where('id',$menu->id)->value('target');
-                            $menu->type     = MenuItem::where('id',$menu->id)->value('type');
+                            $menu->title        = MenuItem::where('id',$menu->id)->value('title');
+                            $menu->name         = MenuItem::where('id',$menu->id)->value('name');
+                            $menu->slug         = MenuItem::where('id',$menu->id)->value('slug');
+                            $menu->target       = MenuItem::where('id',$menu->id)->value('target');
+                            $menu->type         = MenuItem::where('id',$menu->id)->value('type');
                             if(!empty($menu->children[0])){
                                 foreach ($menu->children[0] as $child) {
-                                    $child->title   = MenuItem::where('id',$child->id)->value('title');
-                                    $child->name    = MenuItem::where('id',$child->id)->value('name');
-                                    $child->slug    = MenuItem::where('id',$child->id)->value('slug');
-                                    $child->target  = MenuItem::where('id',$child->id)->value('target');
-                                    $child->type    = MenuItem::where('id',$child->id)->value('type');
+                                    $child->title       = MenuItem::where('id',$child->id)->value('title');
+                                    $child->name        = MenuItem::where('id',$child->id)->value('name');
+                                    $child->slug        = MenuItem::where('id',$child->id)->value('slug');
+                                    $child->target      = MenuItem::where('id',$child->id)->value('target');
+                                    $child->type        = MenuItem::where('id',$child->id)->value('type');
                                     if(!empty($child->children[0])){
                                         foreach ($child->children[0] as $minichild) {
-                                            $minichild->title   = MenuItem::where('id',$minichild->id)->value('title');
-                                            $minichild->name    = MenuItem::where('id',$minichild->id)->value('name');
-                                            $minichild->slug    = MenuItem::where('id',$minichild->id)->value('slug');
-                                            $minichild->target  = MenuItem::where('id',$minichild->id)->value('target');
-                                            $minichild->type    = MenuItem::where('id',$minichild->id)->value('type');
+                                            $minichild->title       = MenuItem::where('id',$minichild->id)->value('title');
+                                            $minichild->name        = MenuItem::where('id',$minichild->id)->value('name');
+                                            $minichild->slug        = MenuItem::where('id',$minichild->id)->value('slug');
+                                            $minichild->target      = MenuItem::where('id',$minichild->id)->value('target');
+                                            $minichild->type        = MenuItem::where('id',$minichild->id)->value('type');
                                         }
                                     }
                                 }

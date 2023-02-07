@@ -307,7 +307,7 @@ header.active .nav-list-container {
 }
 .navbar-nav > li > a {
   color: #333333 !important;
-  font-size: 13px;
+  font-size: 18px;
   font-family: "Mukta","Glegoo", sans-serif;
   font-weight: 700;
   text-transform: uppercase;
@@ -332,6 +332,9 @@ header.active .nav-list-container {
   left: 0;
   z-index: -1;
   background: #f44336;
+}
+.navbar-nav > li.single > a:after{
+    content: '';
 }
 .navbar-nav > li > a:after {
   content: '\f107';
@@ -418,7 +421,7 @@ header.active .nav-list-container {
   -o-transition: all 0.2s ease-in-out;
   display: block;
   color: #999999;
-  font-size: 11px;
+  font-size: 16px;
     font-family: "Mukta","Glegoo", sans-serif;
   font-weight: 400;
   text-transform: uppercase;
@@ -548,7 +551,7 @@ header.active .nav-list-container {
   -webkit-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
   color: #999999;
-  font-size: 10px;
+  font-size: 14px;
   font-family: "Mukta","Glegoo", sans-serif;
   font-weight: 700;
   text-transform: uppercase;
@@ -587,14 +590,13 @@ header.active .nav-list-container {
 }
 .navbar-nav .megadropdown .inner-megadropdown .owl-wrapper h1 {
   color: #222222;
-  font-size: 15px;
+  font-size: 16px;
     font-family: "Mukta","Glegoo", sans-serif;
 
   font-weight: 700;
   margin: 0 0 30px;
   text-transform: uppercase;
   margin-bottom: 17px;
-  font-size: 13px;
 }
 .navbar-nav .megadropdown .inner-megadropdown .owl-wrapper .news-post.item {
   margin: 0 10px;
