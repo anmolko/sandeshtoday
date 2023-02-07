@@ -1,8 +1,5 @@
 @extends('frontend.layouts.master')
 @section('title') Home @endsection
-@section('css')
-
-@endsection
 @section('content')
     <!-- heading-news-section
         ================================================== -->
@@ -1333,7 +1330,4 @@
         </div>
     </section>
     <!-- End block-wrapper-section -->
-@endsection
-@section('js')
-
 @endsection

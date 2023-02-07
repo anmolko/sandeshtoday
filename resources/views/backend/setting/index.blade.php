@@ -27,14 +27,14 @@
                                             <div class="col-md-auto">
                                                 <div class="avatar-md">
                                                     <div class="avatar-title bg-white rounded-circle">
-                                                        <img src="{{asset('/images/settings/'.@$settings->favicon)}}" alt="" class="avatar-xs">
+                                                        <img src="{{(@$settings->favicon!==null) ? asset('/images/settings/'.@$settings->favicon) : asset('assets/backend/images/canosoft-favicon.png')}}" alt="" class="avatar-xs">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md">
                                                 <div>
                                                     <h4 class="fw-bold">
-                                                        {{(@$setting_data !== null && @$setting_data->website_name !== "") ? $setting_data->website_name :"दर्पण दैनिक | Darpan Dainik " }}
+                                                        {{(@$setting_data !== null && @$setting_data->website_name !== "") ? $setting_data->website_name :"Sandesh Today " }}
                                                         - Dashboard Settings</h4>
                                                     <div class="hstack gap-3 flex-wrap">
                                                         <div><i class="ri-smartphone-line align-bottom me-1"></i>
