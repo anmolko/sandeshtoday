@@ -23,7 +23,8 @@
     <link rel="shortcut icon" type="image/x-icon" href="@if(@$setting_data->favicon!==null) {{asset('/images/settings/'.@$setting_data->favicon)}} @endif">
 
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900,400italic' rel='stylesheet' type='text/css /'>
-    <link href="{{asset('assets/frontend/font-awesome/4.2.0/css/font-awesome.min.css')}}" rel="stylesheet" />
+{{--    <link href="{{asset('assets/frontend/font-awesome/4.2.0/css/font-awesome.min.css')}}" rel="stylesheet" />--}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" type="text/css" href="{{asset('assets/frontend/css/bootstrap.min.css')}}" media="screen">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/frontend/css/jquery.bxslider.css')}}" media="screen">
@@ -69,12 +70,21 @@
                         </div>
                         <div class="col-md-3">
                             <ul class="social-icons">
-                                <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a class="rss" href="#"><i class="fa fa-rss"></i></a></li>
-                                <li><a class="google" href="#"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a class="pinterest" href="#"><i class="fa fa-pinterest"></i></a></li>
+                                @if(!empty(@$setting_data->facebook))
+                                    <li><a class="facebook" href="{{ (!empty(@$setting_data->facebook)) ? @$setting_data->facebook : "#"  }}"><i class="fa fa-facebook"></i></a></li>
+                                @endif
+                                @if(!empty(@$setting_data->linkedin))
+                                   <li><a class="twitter" href="{{ (!empty(@$setting_data->linkedin)) ? @$setting_data->linkedin : "#"  }}"><i class="fa fa-twitter"></i></a></li>
+                                @endif
+                                @if(!empty(@$setting_data->youtube))
+                                    <li><a class="google" href="{{ (!empty(@$setting_data->youtube)) ? @$setting_data->youtube : "#"  }}"><i class="fa fa-youtube-play"></i></a></li>
+                                @endif
+                                @if(!empty(@$setting_data->instagram))
+                                    <li><a class="linkedin" href="{{ (!empty(@$setting_data->instagram)) ? @$setting_data->instagram : "#"  }}"><i class="fa fa-instagram"></i></a></li>
+                                @endif
+                                @if(!empty(@$setting_data->ticktock))
+                                    <li><a class="pinterest" href="{{ (!empty(@$setting_data->ticktock)) ? @$setting_data->ticktock : "#"  }}"><i class="fa-brands fa-tiktok"></i></a></li>
+                                @endif
                             </ul>
                         </div>
                     </div>
@@ -94,17 +104,24 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="/"><img src="{{asset('assets/frontend/images/logo-black.png')}}" alt=""></a>
+                        <a class="navbar-brand" href="/">
+                            <img src="<?php if(@$setting_data->logo){?>{{asset('/images/settings/'.@$setting_data->logo)}}<?php }?>"  alt="Sandesh today logo" title="Sandesh today logo">
+
+                        </a>
                     </div>
 
                     <div class="advertisement">
                         <div class="desktop-advert">
-                            <span>Advertisement</span>
-                            <img src="{{asset('assets/frontend/upload/addsense/728x90-white.jpg')}}" alt="">
+                            @if($logo_banner !== null)
+                                <span>Advertisement</span>
+                                <img src="{{asset('/images/banners/'.@$logo_banner->image)}}" alt="{{$logo_banner->name}}"  />
+                            @endif
                         </div>
                         <div class="tablet-advert">
-                            <span>Advertisement</span>
-                            <img src="{{asset('assets/frontend/upload/addsense/468x60-white.jpg')}}" alt="">
+                            @if($logo_banner !== null)
+                                <span>Advertisement</span>
+                                <img src="{{asset('/images/banners/'.@$logo_banner->image)}}" alt="{{$logo_banner->name}}"  />
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -118,17 +135,7 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-left">
 
-                            <li class="drop"><a class="home" href="index.html">Home</a>
-
-                                <ul class="dropdown">
-                                    <li><a href="index.html">Homepage Version 1</a></li>
-                                    <li><a href="home2.html">Homepage Version 2</a></li>
-                                    <li><a href="home3.html">Homepage Version 3</a></li>
-                                    <li><a href="home4.html">Homepage Version 4</a></li>
-                                    <li><a href="home5.html">Homepage Version 5</a></li>
-                                    <li><a href="home6.html">Homepage Version 6</a></li>
-                                </ul>
-                            </li>
+                            <li><a class="home" href="/">होम पेज </a></li>
 
                             <li><a class="world" href="news-category4.html">World</a>
                                 <div class="megadropdown">

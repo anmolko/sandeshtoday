@@ -3,6 +3,7 @@
 
 namespace App\Http\ViewComposer;
 
+use App\Models\Ads;
 use App\Models\Blog;
 use App\Models\User;
 use Carbon\Carbon;
@@ -42,7 +43,7 @@ class SensitiveComposer
        $sortedYear           = $unsortedmonth->sortByDesc('visit_count_total')->slice(0, 6);
        $sortedMonth          = $unsortedyear->sortByDesc('visit_count_total')->slice(0, 6);
 
-
+       $besides_logo         =  Ads::where('placement','home-besides-logo')->where('status','active')->first();
        if(!empty(@$topNavItems)){
            foreach($topNavItems as $menu){
                $menu->title = MenuItem::where('id',$menu->id)->value('title');
@@ -116,6 +117,7 @@ class SensitiveComposer
            ->with('topnews_year', $sortedYear)
            ->with('topnews_month', $sortedMonth)
            ->with('topnews_week', $sortedWeek)
+           ->with('logo_banner', $besides_logo)
            ->with('latestPosts', $latest_news);
     }
 }

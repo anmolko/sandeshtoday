@@ -105,39 +105,6 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="flush-headingBrands">
                                     <button class="accordion-button bg-transparent shadow-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseBrands" aria-expanded="false" aria-controls="flush-collapseBrands">
-                                        <span class="text-muted text-uppercase fs-12 fw-medium">Pages </span> <span class="badge bg-success rounded-pill align-middle ms-1">{{count($pages)}}</span>
-                                    </button>
-                                </h2>
-
-                                <div id="flush-collapseBrands" class="accordion-collapse collapse " aria-labelledby="flush-headingBrands" style="">
-                                    <div class="accordion-body {{(count($menus) == 0) ? 'disabled':''}} text-body pt-0" id="page-list">
-                                        <div class="d-flex flex-column gap-2 mt-3">
-                                            @if(count($pages) !== 0)
-                                                @foreach($pages as $page)
-                                                    <div class="form-check form-check-outline form-check-success {{(in_array($page->slug, $slug_to_disable)) ? 'disabled':''}}">
-                                                        <input class="form-check-input" type="checkbox" id="pages-{{$page->id}}" value="{{$page->id}}" name="select-page[]" {{(count($menus) == 0 || in_array($page->slug, $slug_to_disable)) ? 'disabled':''}}>
-                                                        <label class="form-check-label {{(in_array($page->slug, $slug_to_disable)) ? 'disabled':''}}" for="pages-{{$page->id}}"> {{ucfirst($page->name)}}</label>
-                                                    </div>
-                                                @endforeach
-                                                @else
-                                                    <div class="pb-2">
-                                                        <span class="h6">Please <a href="{{route('pages.index')}}">create a page</a> to add in menu.</span>
-                                                    </div>
-                                                @endif
-
-
-                                            <div class="{{(count($pages) == 0) ? 'disabled':''}}">
-                                                <label class="btn btn-light btn-sm bg-gradient waves-effect waves-light text-decoration-none"><input type="checkbox" id="select-all-pages" class="hidden"> Select All</label>
-                                                <button type="button" class="pull-right btn btn-light bg-gradient waves-effect waves-light btn-sm text-decoration-none pull-right" id="add-pages">Add to Menu</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="flush-headingBrands">
-                                    <button class="accordion-button bg-transparent shadow-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseBrands" aria-expanded="false" aria-controls="flush-collapseBrands">
                                         <span class="text-muted text-uppercase fs-12 fw-medium">Category </span> <span class="badge bg-success rounded-pill align-middle ms-1">{{$cat_count}}</span>
                                     </button>
                                 </h2>
