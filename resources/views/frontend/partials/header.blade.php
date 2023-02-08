@@ -92,8 +92,8 @@
             </div>
             <!-- End Top line -->
 
-            <!-- Logo & advertisement -->
-            <div class="logo-advertisement">
+            <!-- Logo & banner -->
+            <div class="logo-banner">
                 <div class="container">
 
                     <!-- Brand and toggle get grouped for better mobile display -->
@@ -109,21 +109,22 @@
 
                         </a>
                     </div>
-
-                    <div class="advertisement">
-                        <div class="desktop-advert">
-                            @if($logo_banner !== null)
+                    @if($logo_banner !== null)
+                        <div class="banner">
+                            <div class="desktop-banner">
                                 <span>Advertisement</span>
-                                <img src="{{asset('/images/banners/'.@$logo_banner->image)}}" alt="{{$logo_banner->name}}"  />
-                            @endif
-                        </div>
-                        <div class="tablet-advert">
-                            @if($logo_banner !== null)
+                                <a href="{{@$logo_banner->url}}" target="_blank">
+                                    <img src="{{asset('/images/banners/'.@$logo_banner->image)}}" alt="{{$logo_banner->name}}"  />
+                                </a>
+                            </div>
+                            <div class="tablet-banner">
                                 <span>Advertisement</span>
-                                <img src="{{asset('/images/banners/'.@$logo_banner->image)}}" alt="{{$logo_banner->name}}"  />
-                            @endif
+                                <a href="{{@$logo_banner->url}}" target="_blank">
+                                    <img src="{{asset('/images/banners/'.@$logo_banner->image)}}" alt="{{$logo_banner->name}}"  />
+                                </a>
+                            </div>
                         </div>
-                    </div>
+                    @endif
                 </div>
             </div>
             <!-- End Logo & advertisement -->
@@ -304,3 +305,27 @@
 
     </header>
     <!-- End Header -->
+    @if($above_featured !== null )
+        <div class="banner">
+            <div class="container">
+                <div class="desktop-banner">
+                    <span>Advertisement</span>
+                    <a href="{{@$above_featured->url}}" target="_blank">
+                        <img src="{{asset('/images/banners/'.@$above_featured->image)}}" alt="">
+                    </a>
+                </div>
+                <div class="tablet-banner">
+                    <span>Advertisement</span>
+                    <a href="{{@$above_featured->url}}" target="_blank">
+                        <img src="{{asset('/images/banners/'.@$above_featured->image)}}" alt="">
+                    </a>
+                </div>
+                <div class="mobile-banner">
+                    <span>Advertisement</span>
+                    <a href="{{@$above_featured->url}}" target="_blank">
+                        <img src="{{asset('/images/banners/'.@$above_featured->image)}}" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    @endif

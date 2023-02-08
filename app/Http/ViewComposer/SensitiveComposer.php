@@ -44,6 +44,8 @@ class SensitiveComposer
        $sortedMonth          = $unsortedyear->sortByDesc('visit_count_total')->slice(0, 6);
 
        $besides_logo         =  Ads::where('placement','home-besides-logo')->where('status','active')->first();
+       $above_featured_ban   =  Ads::where('placement','home-above-featured-post')->where('status','active')->first();
+       $below_featured_ban   =  Ads::where('placement','home-below-featured-post')->where('status','active')->first();
        if(!empty(@$topNavItems)){
            foreach($topNavItems as $menu){
                $menu->title = MenuItem::where('id',$menu->id)->value('title');
@@ -118,6 +120,8 @@ class SensitiveComposer
            ->with('topnews_month', $sortedMonth)
            ->with('topnews_week', $sortedWeek)
            ->with('logo_banner', $besides_logo)
+           ->with('above_featured', $above_featured_ban)
+           ->with('below_featured', $below_featured_ban)
            ->with('latestPosts', $latest_news);
     }
 }

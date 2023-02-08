@@ -714,16 +714,16 @@
                         <!-- End grid box -->
 
                         <!-- google addsense -->
-                        <div class="advertisement">
-                            <div class="desktop-advert">
+                        <div class="banner">
+                            <div class="desktop-banner">
                                 <span>Advertisement</span>
                                 <img src="{{asset('assets/frontend/upload/addsense/728x90-white.jpg')}}" alt="">
                             </div>
-                            <div class="tablet-advert">
+                            <div class="tablet-banner">
                                 <span>Advertisement</span>
                                 <img src="{{asset('assets/frontend/upload/addsense/468x60-white.jpg')}}" alt="">
                             </div>
-                            <div class="mobile-advert">
+                            <div class="mobile-banner">
                                 <span>Advertisement</span>
                                 <img src="{{asset('assets/frontend/upload/addsense/300x250.jpg')}}" alt="">
                             </div>
@@ -843,16 +843,16 @@
                             </form>
                         </div>
 
-                        <div class="advertisement">
-                            <div class="desktop-advert">
+                        <div class="banner">
+                            <div class="desktop-banner">
                                 <span>Advertisement</span>
                                 <img src="{{asset('assets/frontend/upload/addsense/300x250.jpg')}}" alt="">
                             </div>
-                            <div class="tablet-advert">
+                            <div class="tablet-banner">
                                 <span>Advertisement</span>
                                 <img src="{{asset('assets/frontend/upload/addsense/200x200.jpg')}}" alt="">
                             </div>
-                            <div class="mobile-advert">
+                            <div class="mobile-banner">
                                 <span>Advertisement</span>
                                 <img src="{{asset('assets/frontend/upload/addsense/300x250.jpg')}}" alt="">
                             </div>
@@ -1305,16 +1305,16 @@
 
                         </div>
 
-                        <div class="advertisement">
-                            <div class="desktop-advert">
+                        <div class="banner">
+                            <div class="desktop-banner">
                                 <span>Advertisement</span>
                                 <img src="{{asset('assets/frontend/upload/addsense/300x250.jpg')}}" alt="">
                             </div>
-                            <div class="tablet-advert">
+                            <div class="tablet-banner">
                                 <span>Advertisement</span>
                                 <img src="{{asset('assets/frontend/upload/addsense/200x200.jpg')}}" alt="">
                             </div>
-                            <div class="mobile-advert">
+                            <div class="mobile-banner">
                                 <span>Advertisement</span>
                                 <img src="{{asset('assets/frontend/upload/addsense/300x250.jpg')}}" alt="">
                             </div>

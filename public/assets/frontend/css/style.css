@@ -144,10 +144,10 @@ header.active .nav-list-container {
   -o-transition: all 0.2s ease-in-out;
   margin: 0;
 }
-.navbar-default .advertisement .desktop-advert {
+.navbar-default .banner .desktop-banner {
   max-width: 728px;
 }
-.navbar-default .advertisement .tablet-advert {
+.navbar-default .banner .tablet-banner {
   max-width: 468px;
 }
 .top-line {
@@ -263,31 +263,35 @@ header.active .nav-list-container {
 .navbar-brand img {
   max-width: 100%;
 }
-.logo-advertisement {
+.logo-banner {
   background: #222222;
 }
-.logo-advertisement .desktop-advert,
-.logo-advertisement .tablet-advert {
+
+.desktop-banner a img{
+    width: 100%;
+}
+.logo-banner .desktop-banner,
+.logo-banner .tablet-benner {
   float: right;
 }
-.logo-advertisement .advertisement span {
+.logo-banner .banner span {
   color: #666666;
 }
-.advertisement {
+.banner {
   overflow: hidden;
   padding: 7px 0 12px;
 }
-.advertisement .desktop-advert,
-.advertisement .tablet-advert,
-.advertisement .mobile-advert {
+.banner .desktop-banner,
+.banner .tablet-banner,
+.banner .mobile-banner {
   margin: 0 auto;
   text-align: center;
 }
-.advertisement .tablet-advert,
-.advertisement .mobile-advert {
+.banner .tablet-banner,
+.banner .mobile-banner {
   display: none;
 }
-.advertisement span {
+.banner span {
   color: #ccc;
   font-size: 10px;
   font-family: "Mukta","Glegoo", sans-serif;
@@ -703,7 +707,7 @@ header.second-style .top-line {
 header.second-style .top-line ul.top-line-list li a:hover {
   color: #222222;
 }
-header.second-style .logo-advertisement {
+header.second-style .logo-banner {
   background: #ffffff;
 }
 header.second-style .nav-list-container {
@@ -802,7 +806,7 @@ header.third-style .nav-list-container ul.navbar-right {
   padding-right: 15px;
 }
 /* header 5 */
-header.fifth-style .logo-advertisement {
+header.fifth-style .logo-banner {
   background: #ffffff;
 }
 header.fifth-style .navbar-header {
@@ -1222,7 +1226,7 @@ div.block-content {
   padding: 30px 0 60px;
   position: relative;
 }
-div.block-content .advertisement {
+div.block-content .banner {
   margin-bottom: 30px;
 }
 div.block-content:after {
@@ -2425,14 +2429,14 @@ section.big-slider .big-bxslider li .image-post2 .hover-box .inner-hover h2 {
   margin: 14px 0 0;
   line-height: 16px;
 }
-.sidebar .advertisement {
+.sidebar .banner {
   margin-bottom: 30px;
 }
-.sidebar .advertisement .desktop-advert {
+.sidebar .banner .desktop-banner {
   width: auto;
 }
-.sidebar .advertisement .tablet-advert,
-.sidebar .advertisement .mobile-advert {
+.sidebar .banner .tablet-banner,
+.sidebar .banner .mobile-banner {
   width: auto;
   display: none;
 }
@@ -6021,7 +6025,7 @@ footer .footer-last-line nav.footer-nav ul li:first-child:before {
   .latest-articles.iso-call .news-post {
     width: 293px;
   }
-  .advertisement img {
+  .banner img {
     max-width: 100%;
   }
   .heading-news2 .heading-news-box .news-post {
@@ -6053,12 +6057,12 @@ footer .footer-last-line nav.footer-nav ul li:first-child:before {
   .navbar-nav > li > a.home {
     padding: 15px 8px;
   }
-  .advertisement .desktop-advert,
-  .sidebar .advertisement .desktop-advert {
+  .banner .desktop-banner,
+  .sidebar .banner .desktop-banner {
     display: none;
   }
-  .advertisement .tablet-advert,
-  .sidebar .advertisement .tablet-advert {
+  .banner .tablet-banner,
+  .sidebar .banner .tablet-banner {
     display: block;
   }
   .navbar-brand {
@@ -6207,7 +6211,7 @@ footer .footer-last-line nav.footer-nav ul li:first-child:before {
   .top-line {
     display: none;
   }
-  .navbar-default .advertisement {
+  .navbar-default .banner {
     display: none;
   }
   .navbar-brand,
@@ -6286,12 +6290,12 @@ footer .footer-last-line nav.footer-nav ul li:first-child:before {
     width: 100%;
     margin: 0 0 30px;
   }
-  .advertisement .tablet-advert,
-  .sidebar .advertisement .tablet-advert {
+  .banner .tablet-banner,
+  .sidebar .banner .tablet-banner {
     display: none;
   }
-  .advertisement .mobile-advert,
-  .sidebar .advertisement .mobile-advert {
+  .banner .mobile-banner,
+  .sidebar .banner .mobile-banner {
     display: block;
   }
   .heading-news2 .heading-news-box > .news-post {

@@ -79,12 +79,21 @@
                         </div>
                         <div class="col-md-3">
                             <ul class="social-icons">
-                                <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a class="rss" href="#"><i class="fa fa-rss"></i></a></li>
-                                <li><a class="google" href="#"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a class="pinterest" href="#"><i class="fa fa-pinterest"></i></a></li>
+                                @if(!empty(@$setting_data->facebook))
+                                    <li><a class="facebook" href="{{ (!empty(@$setting_data->facebook)) ? @$setting_data->facebook : "#"  }}"><i class="fa fa-facebook"></i></a></li>
+                                @endif
+                                @if(!empty(@$setting_data->linkedin))
+                                    <li><a class="twitter" href="{{ (!empty(@$setting_data->linkedin)) ? @$setting_data->linkedin : "#"  }}"><i class="fa fa-twitter"></i></a></li>
+                                @endif
+                                @if(!empty(@$setting_data->youtube))
+                                    <li><a class="google" href="{{ (!empty(@$setting_data->youtube)) ? @$setting_data->youtube : "#"  }}"><i class="fa fa-youtube-play"></i></a></li>
+                                @endif
+                                @if(!empty(@$setting_data->instagram))
+                                    <li><a class="linkedin" href="{{ (!empty(@$setting_data->instagram)) ? @$setting_data->instagram : "#"  }}"><i class="fa fa-instagram"></i></a></li>
+                                @endif
+                                @if(!empty(@$setting_data->ticktock))
+                                    <li><a class="pinterest" href="{{ (!empty(@$setting_data->ticktock)) ? @$setting_data->ticktock : "#"  }}"><i class="fa-brands fa-tiktok"></i></a></li>
+                                @endif
                             </ul>
                         </div>
                     </div>
@@ -92,8 +101,8 @@
             </div>
             <!-- End Top line -->
 
-            <!-- Logo & advertisement -->
-            <div class="logo-advertisement">
+            <!-- Logo & banner -->
+            <div class="logo-banner">
                 <div class="container">
 
                     <!-- Brand and toggle get grouped for better mobile display -->
@@ -104,19 +113,27 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="/"><img src="{{asset('assets/frontend/images/logo-black.png')}}" alt=""></a>
-                    </div>
+                        <a class="navbar-brand" href="/">
+                            <img src="<?php if(@$setting_data->logo){?>{{asset('/images/settings/'.@$setting_data->logo)}}<?php }?>"  alt="Sandesh today logo" title="Sandesh today logo">
 
-                    <div class="advertisement">
-                        <div class="desktop-advert">
-                            <span>Advertisement</span>
-                            <img src="{{asset('assets/frontend/upload/addsense/728x90-white.jpg')}}" alt="">
+                        </a>                    </div>
+
+                    @if($logo_banner !== null)
+                        <div class="banner">
+                            <div class="desktop-banner">
+                                <span>Advertisement</span>
+                                <a href="{{@$logo_banner->url}}" target="_blank">
+                                    <img src="{{asset('/images/banners/'.@$logo_banner->image)}}" alt="{{$logo_banner->name}}"  />
+                                </a>
+                            </div>
+                            <div class="tablet-banner">
+                                <span>Advertisement</span>
+                                <a href="{{@$logo_banner->url}}" target="_blank">
+                                    <img src="{{asset('/images/banners/'.@$logo_banner->image)}}" alt="{{$logo_banner->name}}"  />
+                                </a>
+                            </div>
                         </div>
-                        <div class="tablet-advert">
-                            <span>Advertisement</span>
-                            <img src="{{asset('assets/frontend/upload/addsense/468x60-white.jpg')}}" alt="">
-                        </div>
-                    </div>
+                    @endif
                 </div>
             </div>
 
@@ -297,3 +314,27 @@
 
     </header>
     <!-- End Header -->
+    @if($above_featured !== null )
+        <div class="banner">
+            <div class="container">
+                <div class="desktop-banner">
+                    <span>Advertisement</span>
+                    <a href="{{@$above_featured->url}}" target="_blank">
+                        <img src="{{asset('/images/banners/'.@$above_featured->image)}}" alt="">
+                    </a>
+                </div>
+                <div class="tablet-banner">
+                    <span>Advertisement</span>
+                    <a href="{{@$above_featured->url}}" target="_blank">
+                        <img src="{{asset('/images/banners/'.@$above_featured->image)}}" alt="">
+                    </a>
+                </div>
+                <div class="mobile-banner">
+                    <span>Advertisement</span>
+                    <a href="{{@$above_featured->url}}" target="_blank">
+                        <img src="{{asset('/images/banners/'.@$above_featured->image)}}" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+@endif
