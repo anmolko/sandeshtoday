@@ -5,6 +5,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
 
     <link href="{{asset('assets/backend/libs/sweetalert2/sweetalert2.min.css')}}" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs5.min.css" integrity="sha512-ngQ4IGzHQ3s/Hh8kMyG4FC74wzitukRMIcTOoKT3EyzFZCILOPF0twiXOQn75eDINUfKBYmzYn2AA8DkAk8veQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <style>
         .cke_contents {
             height: 900px!important;
@@ -378,16 +381,15 @@
 @endsection
 
 @section('js')
-{{--@include('backend.ckeditor')--}}
 <script src="{{asset('assets/backend/js/pages/form-validation.init.js')}}"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-{{--<script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>--}}
 <script src="{{asset('ckeditor/ckeditor.js')}}"></script>
 
     <!-- Sweet Alerts js -->
 <script src="{{asset('assets/backend/libs/sweetalert2/sweetalert2.min.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 <script src="{{asset('assets/backend/custom_js/blog_credit.js')}}"></script>
+
 
 <script type="text/javascript">
     $(function() {
@@ -404,17 +406,12 @@
             todayHighlight: "true",
         });
         var options = {
-            filebrowserImageBrowseUrl: '/auth/darpan-filemanager?type=Images',
-            filebrowserImageUploadUrl: '/auth/darpan-filemanager/upload?type=Images&_token={{csrf_token()}}',
-            filebrowserBrowseUrl: '/auth/darpan-filemanager?type=Files',
-            filebrowserUploadUrl: '/auth/darpan-filemanager/upload?type=Files&_token={{csrf_token()}}',
-            filebrowserWindowWidth: '640',
-            filebrowserWindowHeight: '480'
+            filebrowserImageBrowseUrl: '/auth/sandeshtoday-filemanager?type=Images',
+            filebrowserImageUploadUrl: '/auth/sandeshtoday-filemanager/upload?type=Images&_token={{csrf_token()}}',
+            filebrowserBrowseUrl: '/auth/sandeshtoday-filemanager?type=Files',
+            filebrowserUploadUrl: '/auth/sandeshtoday-filemanager/upload?type=Files&_token={{csrf_token()}}'
         };
         CKEDITOR.replace( 'ckeditor-classic', options );
-
-        $('.cke_editable').css('font-size','16px');
-
     });
 </script>
 @endsection

@@ -1,5 +1,5 @@
 @extends('backend.layouts.master')
-@section('title', "Darpan File Manager")
+@section('title', "Sandesh Today FileManager")
 
 @section('css')
 

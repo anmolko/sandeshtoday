@@ -197,7 +197,7 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth','AdminMiddleware']], f
     Route::get('/video-gallery/{video}/edit', 'App\Http\Controllers\VideoGalleryController@edit')->name('video.edit');
     Route::post('/video-gallery/update/gallery', 'App\Http\Controllers\VideoGalleryController@videoUpdate')->name('video.galleryUpdate');
 
-    Route::group(['prefix' => 'darpan-filemanager', 'middleware' => ['auth']], function () {
+    Route::group(['prefix' => 'sandeshtoday-filemanager', 'middleware' => ['auth']], function () {
         Lfm::routes();
     });
 
