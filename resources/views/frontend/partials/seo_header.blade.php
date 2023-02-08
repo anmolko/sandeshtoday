@@ -120,7 +120,7 @@
                 </div>
             </div>
 
-            <!-- End Logo & advertisement -->
+            <!-- navbar list container -->
             <div class="nav-list-container">
                 <div class="container">
                     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -172,24 +172,25 @@
                                                 </a>
                                                 <div class="megadropdown">
                                                     <div class="container">
-                                                        <div class="inner-megadropdown world-dropdown">
-                                                            <div class="filter-block">
-                                                                <ul class="filter-posts">
+                                                        <div class="inner-megadropdown tech-dropdown">
+
+                                                            <div class="owl-wrapper">
+                                                                <h1>@if(@$nav->name == NULL) {{ucwords(@$nav->title)}} @else {{ucwords(@$nav->name)}} @endif</h1>
+
+                                                                <ul class="horizontal-filter-posts">
                                                                     @foreach($nav->children[0] as $childNav)
                                                                         @if($childNav->type == 'custom')
                                                                             <li><a class="{{request()->is(@$childNav->slug) ? 'active' : ''}}"
                                                                                    @if(@$childNav->target !== NULL) target="_blank" @endif
                                                                                    href="/{{@$childNav->slug}}">
                                                                                     @if($childNav->name == NULL) {{@$childNav->title}} @else {{@$childNav->name}} @endif
-                                                                                </a>
-                                                                            </li>
+                                                                                </a></li>
                                                                         @elseif($childNav->type == 'category')
                                                                             <li><a class="{{request()->is('category/'.@$childNav->slug) ? 'active' : ''}}"
                                                                                    @if(@$childNav->target !== NULL) target="_blank" @endif
                                                                                    href="{{url('category')}}/{{$childNav->slug}}">
                                                                                     @if(@$childNav->name == NULL) {{@$childNav->title}} @else {{@$childNav->name}} @endif
-                                                                                </a>
-                                                                            </li>
+                                                                                </a></li>
                                                                         @else
                                                                             <li><a class="{{request()->is(@$childNav->slug) ? 'active' : ''}}"
                                                                                    @if(@$childNav->target !== NULL) target="_blank" @endif
@@ -200,36 +201,27 @@
                                                                         @endif
                                                                     @endforeach
                                                                 </ul>
-                                                            </div>
-                                                            <div class="posts-filtered-block">
-                                                                <div class="owl-wrapper">
-                                                                    <h1>  @if(@$nav->name == NULL) {{ucwords(@$nav->title)}} @else {{ucwords(@$nav->name)}} @endif</h1>
-                                                                    <div class="owl-carousel" data-num="4">
-                                                                        @darpanloop(getCategoryRelatedPost($nav->slug,0,5) as $news)
-                                                                        <div class="item news-post standard-post">
-                                                                            <div class="post-gallery">
-                                                                                <img src="{{ asset('/images/blog/'.@$news->image)}}" alt="">
-                                                                            </div>
-                                                                            <div class="post-content">
-                                                                                <h2>
-                                                                                    <a href="{{ url(@$news->url()) }}">{{@$news->title}}</a>
-                                                                                </h2>
-                                                                                <ul class="post-tags">
-                                                                                    <li><i class="fa fa-clock-o"></i>{{@$news->publishedDateNepali()}}</li>
-                                                                                </ul>
-                                                                            </div>
+                                                                <div class="owl-carousel" data-num="4">
+                                                                    @darpanloop(getCategoryRelatedPost($nav->slug,0,5) as $news)
+                                                                    <div class="item news-post standard-post">
+                                                                        <div class="post-gallery">
+                                                                            <img src="{{ asset('/images/blog/'.@$news->image)}}" alt="">
                                                                         </div>
-                                                                        @enddarpanloop
-
-
+                                                                        <div class="post-content">
+                                                                            <h2>
+                                                                                <a href="{{ url(@$news->url()) }}">{{@$news->title}}</a>
+                                                                            </h2>
+                                                                            <ul class="post-tags">
+                                                                                <li><i class="fa fa-clock-o"></i>{{@$news->publishedDateNepali()}}</li>
+                                                                            </ul>
+                                                                        </div>
                                                                     </div>
+                                                                    @enddarpanloop
                                                                 </div>
                                                             </div>
-
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </li>
+                                                </div>                                            </li>
                                         @endif
                                     @else
                                         @if($nav->type == 'custom')
@@ -249,12 +241,12 @@
                                                         <div class="inner-megadropdown tech-dropdown">
 
                                                             <div class="owl-wrapper">
-                                                                <ul class="horizontal-filter-posts">
-                                                                    <li><a class="active" href="#">All</a></li>
-                                                                    <li><a href="#">Software</a></li>
-                                                                    <li><a href="#">Internet</a></li>
-                                                                    <li><a href="#">Mobile</a></li>
-                                                                </ul>
+                                                                {{--                                                                <ul class="horizontal-filter-posts">--}}
+                                                                {{--                                                                    <li><a class="active" href="#">All</a></li>--}}
+                                                                {{--                                                                    <li><a href="#">Software</a></li>--}}
+                                                                {{--                                                                    <li><a href="#">Internet</a></li>--}}
+                                                                {{--                                                                    <li><a href="#">Mobile</a></li>--}}
+                                                                {{--                                                                </ul>--}}
                                                                 <h1>@if(@$nav->name == NULL) {{ucwords(@$nav->title)}} @else {{ucwords(@$nav->name)}} @endif</h1>
                                                                 <div class="owl-carousel" data-num="4">
                                                                     @darpanloop(getCategoryRelatedPost($nav->slug,0,5) as $news)
@@ -297,6 +289,8 @@
                     <!-- /.navbar-collapse -->
                 </div>
             </div>
+            <!-- End navbar list container -->
+
 
         </nav>
         <!-- End Bootstrap navbar -->

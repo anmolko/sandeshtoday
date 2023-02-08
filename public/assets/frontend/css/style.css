@@ -429,8 +429,8 @@ header.active .nav-list-container {
   background: #ffffff;
 }
 .navbar-nav li.drop ul.dropdown li a:hover {
-  color: #222222;
-  background: #fafafa;
+  color: #2a318e;
+  background: #29318d1f;
 }
 .navbar-nav li.drop ul.dropdown li ul.dropdown.level2 {
   top: 0;
@@ -550,14 +550,14 @@ header.active .nav-list-container {
   -moz-transition: all 0.2s ease-in-out;
   -webkit-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
-  color: #999999;
+  color: #2a328fc2;
   font-size: 14px;
   font-family: "Mukta","Glegoo", sans-serif;
   font-weight: 700;
   text-transform: uppercase;
   padding: 3px 10px;
   background: transparent;
-  border: 1px solid #cccccc;
+  border: 1px solid #29308d;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   -o-border-radius: 3px;
@@ -580,23 +580,22 @@ header.active .nav-list-container {
 }
 .navbar-nav .megadropdown .inner-megadropdown ul.horizontal-filter-posts li a:hover,
 .navbar-nav .megadropdown .inner-megadropdown ul.horizontal-filter-posts li a.active {
-  color: #222222;
-  background: #f5d76e;
-  border: 1px solid #f5d76e;
+  color: #ffffff;
+  background: #e94033a1;
+  border: 1px solid #e9403300;
 }
 .navbar-nav .megadropdown .inner-megadropdown ul.horizontal-filter-posts li a:hover:after,
 .navbar-nav .megadropdown .inner-megadropdown ul.horizontal-filter-posts li a.active:after {
-  border-top-color: #f5d76e;
+  border-top-color: #cf504691;
 }
 .navbar-nav .megadropdown .inner-megadropdown .owl-wrapper h1 {
   color: #222222;
-  font-size: 16px;
-    font-family: "Mukta","Glegoo", sans-serif;
-
+  font-size: 18px;
+  font-family: "Mukta","Glegoo", sans-serif;
   font-weight: 700;
   margin: 0 0 30px;
   text-transform: uppercase;
-  margin-bottom: 17px;
+  margin-bottom: 8px;
 }
 .navbar-nav .megadropdown .inner-megadropdown .owl-wrapper .news-post.item {
   margin: 0 10px;
@@ -2944,7 +2943,7 @@ a.read-more-button:hover {
   display: inline-block;
   margin-right: 7px;
   color: #ccc;
-  font-size: 12px;
+  font-size: 14px;
   font-family: "Mukta","Glegoo", sans-serif;
   font-style: italic;
   transition: all 0.4s ease-in-out;
@@ -3028,7 +3027,7 @@ ul.post-tags li {
   display: inline-block;
   margin-right: 7px;
   color: #999999;
-  font-size: 12px;
+  font-size: 14px;
   font-family: "Mukta","Glegoo", sans-serif;
   font-style: italic;
   transition: all 0.2s ease-in-out;
@@ -3067,7 +3066,7 @@ ul.post-tags li:last-child {
 }
 .standard-post .post-content h2 {
   color: #333333;
-  font-size: 13px;
+  font-size: 18px;
   font-family: "Mukta","Glegoo", sans-serif;
   font-weight: 700;
   line-height: 20px;
