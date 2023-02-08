@@ -1,6 +1,48 @@
 @extends('frontend.layouts.master')
 @section('title') Home @endsection
 @section('content')
+
+    <!-- Featured post Start -->
+    @if(count($featured)>0)
+        <div class="hero-section section mt-5 mb-20">
+            <div class="container">
+                @foreach($featured as $news)
+                    <div class="featured-post featured-post-2 {{!$loop->first ? "pt-5 pb-2":""}}">
+                        <div class="featured post-container">
+                            <h2>
+                                <a href="{{ url(@$news->url()) }}">
+                                    {{@$news->title}} </a>
+                            </h2>
+                            <div class="sandeshtoday-title">
+                                <ul class="post-tags featured-post-details">
+                                    <li>
+                                        <div class="sandeshtoday-author-wrap">
+                                            <span class="author-img">
+                                            <img src="{{asset('assets/backend/images/favicon-32x32.png')}}" alt=""></span>
+                                            <span class="author-name"> {{ ($news->authors !== null ) ? ucwords(@$news->authors) : "Sandesh Today"}}  </span>
+                                        </div>
+                                    </li>
+                                    <li><i class="fa fa-clock-o"></i>
+                                        {{  @$news->getMinsAgoinNepali() }}
+                                    </li>
+                                    <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
+                                </ul>
+                            </div>
+                            @if($loop->first || $news->show_featured_image !== null )
+                                <div class="featured-post-img">
+                                    <a href="{{ url(@$news->url()) }}">
+                                        <img src="{{(@$news->image !== null) ?  asset('/images/blog/'.@$news->image) : asset('assets/backend/images/darpan_dainik.png')}}" alt="{{@$news->title}}" loading="lazy">
+                                    </a>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    @endif
+
+
     <!-- heading-news-section
         ================================================== -->
     <section class="heading-news">
