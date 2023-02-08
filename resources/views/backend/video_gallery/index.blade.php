@@ -62,7 +62,6 @@
                                                                 <label>Video Type </label>
                                                                 <div class="input-group mb-3">
                                                                     <select class="form-control shadow-none" name="type[]" id="type_0" required readonly>
-                                                                        <option value disabled readonly> Select Video Type</option>
                                                                         <option value="youtube" {{($value->type == 'youtube') ? "selected":""}}> YouTube </option>
                                                                     </select>
                                                                     <button class="btn btn-danger remove-field"><i class="ri-delete-bin-line" aria-hidden="true"></i></button>
@@ -90,7 +89,6 @@
                                                             <label>Video Type </label>
                                                             <div class="input-group mb-3">
                                                                 <select class="form-control shadow-none" name="type[]" id="type_0" required readonly>
-                                                                    <option value disabled readonly > Select Video Type</option>
                                                                     <option value="youtube" selected> YouTube </option>
                                                                 </select>
                                                                 <button class="btn btn-danger remove-field"><i class="ri-delete-bin-line" aria-hidden="true"></i></button>
@@ -169,7 +167,7 @@
                 var newElem = $('.multi-field:last-child', $wrapper).clone(true).appendTo($wrapper).attr('id', 'cloned-' + counter).find("input").val("");
                 //remove the initial id from select and add new ID
                 $('.multi-field').find('select').last().removeAttr('id').attr('id', 'type_' + counter).attr('readonly', 'readonly').find('option').focus();
-                $('.multi-field').find('select').last().val('');
+                // $('.multi-field').find('select').last().val('');
             });
 
             $('.multi-field .remove-field', $wrapper).click(function() {
