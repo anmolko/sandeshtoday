@@ -245,9 +245,11 @@
                                 <li class="active">
                                     <a href="#option1" data-toggle="tab">लोकप्रिय</a>
                                 </li>
-                                <li>
-                                    <a href="#option2" data-toggle="tab">धेरै कमेन्ट</a>
-                                </li>
+                                @if(count($popular_comments)>0)
+                                    <li>
+                                        <a href="#option2" data-toggle="tab">धेरै कमेन्ट रहेको</a>
+                                    </li>
+                                @endif
                             </ul>
 
                             <div class="tab-content">
@@ -273,59 +275,31 @@
 
                                     </ul>
                                 </div>
-                                <div class="tab-pane" id="option2">
+                                @if(count($popular_comments)>0)
+                                    <div class="tab-pane" id="option2">
                                     <ul class="list-posts">
 
-                                        <li>
-                                            <img src="upload/news-posts/listw3.jpg" alt="">
-                                            <div class="post-content">
-                                                <h2><a href="single-post.html">Phasellus ultrices nulla quis nibh. Quisque a lectus. </a></h2>
-                                                <ul class="post-tags">
-                                                    <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                </ul>
-                                            </div>
-                                        </li>
+                                        @sandeshloop(@$popular_comments as $popular)
 
-                                        <li>
-                                            <img src="upload/news-posts/listw4.jpg" alt="">
-                                            <div class="post-content">
-                                                <h2><a href="single-post.html">Donec consectetuer ligula vulputate sem tristique cursus. </a></h2>
-                                                <ul class="post-tags">
-                                                    <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                </ul>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <img src="upload/news-posts/listw5.jpg" alt="">
-                                            <div class="post-content">
-                                                <h2><a href="single-post.html">Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.</a></h2>
-                                                <ul class="post-tags">
-                                                    <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <img src="upload/news-posts/listw1.jpg" alt="">
-                                            <div class="post-content">
-                                                <h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-                                                <ul class="post-tags">
-                                                    <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                </ul>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <img src="upload/news-posts/listw2.jpg" alt="">
-                                            <div class="post-content">
-                                                <h2><a href="single-post.html">Sed arcu. Cras consequat.</a></h2>
-                                                <ul class="post-tags">
-                                                    <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                </ul>
-                                            </div>
-                                        </li>
+                                            <li>
+                                                <a href="{{ url(@$popular->url()) }}">
+                                                    <img src="{{($popular->image !== null) ?  asset('/images/blog/'.@$popular->image) : asset('assets/backend/images/sandesh_today.png')}}" alt="post">
+                                                </a>
+                                                <div class="post-content">
+                                                    <h2>
+                                                        <a href="{{ url(@$popular->url()) }}">
+                                                            {{@$popular->title}}
+                                                        </a>
+                                                    </h2>
+                                                    <ul class="post-tags">
+                                                        <li><i class="fa fa fa-comments-o"></i>{{ @$popular->comments_count }}</li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        @endsandeshloop
                                     </ul>
                                 </div>
+                                @endif
                             </div>
                         </div>
 

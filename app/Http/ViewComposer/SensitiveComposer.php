@@ -46,6 +46,8 @@ class SensitiveComposer
        $besides_logo         =  Ads::where('placement','home-besides-logo')->where('status','active')->first();
        $above_featured_ban   =  Ads::where('placement','home-above-featured-post')->where('status','active')->first();
        $below_featured_ban   =  Ads::where('placement','home-below-featured-post')->where('status','active')->first();
+       $most_commented       =  Blog::withCount('comments')->orderBy('comments_count', 'desc')->take(6)->get();
+
        if(!empty(@$topNavItems)){
            foreach($topNavItems as $menu){
                $menu->title = MenuItem::where('id',$menu->id)->value('title');
@@ -122,6 +124,7 @@ class SensitiveComposer
            ->with('logo_banner', $besides_logo)
            ->with('above_featured', $above_featured_ban)
            ->with('below_featured', $below_featured_ban)
+           ->with('popular_comments', $most_commented)
            ->with('latestPosts', $latest_news);
     }
 }
