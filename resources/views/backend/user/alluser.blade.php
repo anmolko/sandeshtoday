@@ -193,7 +193,7 @@
                                             </thead>
                                             <tbody>
                                             @if(!empty($admin))
-                                                @darpanloop($admin as $user)
+                                                @sandeshloop($admin as $user)
                                                 <tr id="user-block-cover2-{{$user->id}}">
                                                     <td>
                                                         <div class="avatar-lg img-thumbnail rounded-circle flex-shrink-0">
@@ -248,7 +248,7 @@
 
                                                     </td>
                                                 </tr>
-                                                @enddarpanloop
+                                                @endsandeshloop
                                             @endif
                                             </tbody>
                                         </table>
@@ -276,7 +276,7 @@
                                             </thead>
                                             <tbody>
                                             @if(!empty($general))
-                                                @darpanloop($general as $user)
+                                                @sandeshloop($general as $user)
                                                 <tr id="user-block-cover2-{{$user->id}}">
                                                     <td>
                                                         <div class="avatar-lg img-thumbnail rounded-circle flex-shrink-0">
@@ -331,7 +331,7 @@
 
                                                     </td>
                                                 </tr>
-                                                @enddarpanloop
+                                                @endsandeshloop
                                             @endif
                                             </tbody>
                                         </table>
@@ -360,7 +360,7 @@
                                             </thead>
                                             <tbody>
                                             @if(!empty($viewers))
-                                                @darpanloop($viewers as $user)
+                                                @sandeshloop($viewers as $user)
                                                 <tr id="user-block-cover2-{{$user->id}}">
                                                     <td>
 
@@ -415,7 +415,7 @@
 
                                                     </td>
                                                 </tr>
-                                                @enddarpanloop
+                                                @endsandeshloop
                                             @endif
                                             </tbody>
                                         </table>

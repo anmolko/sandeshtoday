@@ -199,7 +199,7 @@
                                                                     @sandeshloop(getCategoryRelatedPost($nav->slug,0,5) as $news)
                                                                     <div class="item news-post standard-post">
                                                                         <div class="post-gallery">
-                                                                            <img src="{{ asset('/images/blog/'.@$news->image)}}" alt="">
+                                                                            <img src="{{($news->image !== null) ?  asset('/images/blog/'.@$news->image) : asset('assets/backend/images/sandesh_today.png')}}" alt="">
                                                                         </div>
                                                                         <div class="post-content">
                                                                             <h2>
@@ -246,7 +246,7 @@
                                                                     @sandeshloop(getCategoryRelatedPost($nav->slug,0,5) as $news)
                                                                     <div class="item news-post standard-post">
                                                                         <div class="post-gallery">
-                                                                            <img src="{{ asset('/images/blog/'.@$news->image)}}" alt="">
+                                                                            <img src="{{($news->image !== null) ?  asset('/images/blog/'.@$news->image) : asset('assets/backend/images/sandesh_today.png')}}" alt="">
                                                                         </div>
                                                                         <div class="post-content">
                                                                             <h2>

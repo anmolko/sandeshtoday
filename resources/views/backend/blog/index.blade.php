@@ -92,23 +92,23 @@
                                     </thead>
                                     <tbody id="blog-list">
                                         @if(!empty($blogs))
-                                            @darpanloop($blogs as $blog)
+                                            @sandeshloop($blogs as $blog)
                                                 <tr id="blog-individual-{{@$blog->id}}">
                                                     <td>
-                                                        <img src="{{  ($blog->image !== null) ?  asset('/images/blog/'.@$blog->image) : asset('assets/backend/images/darpan_dainik.png')}}"
-                                                             alt="{{@$blog->slug}}" class="figure-img rounded-circle {{  ($blog->image !== null) ? "avatar-lg":"custom-height"}}">
+                                                        <img src="{{  ($blog->image !== null) ?  asset('/images/blog/'.@$blog->image) : asset('assets/backend/images/sandesh_today.png')}}"
+                                                              class="figure-img rounded-circle {{  ($blog->image !== null) ? "avatar-lg":"custom-height"}}">
                                                     </td>
                                                     <td>
                                                      <span class="title"> {{ ucwords( @$blog->title) }} </span>
                                                     </td>
                                                     <td>
-                                                                @foreach(@$blog->categories as $key=>$category)
-                                                                    <a  href="{{route('blogcategory.blog',@$category->id)}}">{{ ucfirst(@$category->name) }}
-                                                                   </a>{{($loop->last) ?"":"," }}
-                                                                     @if (($key+1) % 5 === 0)
-                                                                           <br>
-                                                                     @endif
-                                                                @endforeach
+                                                        @foreach(@$blog->categories as $key=>$category)
+                                                            <a  href="{{route('blogcategory.blog',@$category->id)}}">{{ ucfirst(@$category->name) }}
+                                                           </a>{{($loop->last) ?"":"," }}
+                                                             @if (($key+1) % 5 === 0)
+                                                                   <br>
+                                                             @endif
+                                                        @endforeach
 
                                                     </td>
                                                     <td>
@@ -148,7 +148,7 @@
 
                                                     </td>
                                                 </tr>
-                                            @enddarpanloop
+                                            @endsandeshloop
                                         @endif
                                     </tbody>
                                 </table>

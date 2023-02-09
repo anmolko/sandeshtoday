@@ -126,7 +126,7 @@
                                         </thead>
                                         <tbody id="ads-list">
                                         @if(!empty($ads))
-                                            @darpanloop($ads as $ad)
+                                            @sandeshloop($ads as $ad)
                                             <tr>
                                                 <td>
                                                     <span class="title"> {{ ucwords( @$ad->name) }} </span>
@@ -165,7 +165,7 @@
 
                                                 </td>
                                             </tr>
-                                            @enddarpanloop
+                                            @endsandeshloop
                                         @endif
                                         </tbody>
                                     </table>

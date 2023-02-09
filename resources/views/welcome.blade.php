@@ -67,7 +67,7 @@
         @endif
     @endif
 
-    <!-- block-wrapper-section
+    <!-- latest-post-section
 			================================================== -->
     <section class="block-wrapper">
         <div class="container">
@@ -81,7 +81,7 @@
                         <div class="grid-box">
 
                             <div class="title-section">
-                                <h1><span>ताजा समाचार</span></h1>
+                                <h1><span>ताजा अपडेट</span></h1>
                             </div>
                             <div class="row">
                                 @foreach(getLatestPosts(0,4) as $latest_news_feature)
@@ -179,7 +179,7 @@
                         </div>
                         <!-- End grid box -->
 
-                        <!-- google addsense -->
+                        <!-- homepage banner -->
                         <div class="banner">
                             @sandeshloop(getHomepageBanner('home-banner',0,1) as $banner)
                                 <div class="desktop-banner">
@@ -203,7 +203,7 @@
                             @endsandeshloop
 
                         </div>
-                        <!-- End google addsense -->
+                        <!-- End homepage banner -->
 
 
                     </div>
@@ -215,6 +215,70 @@
 
                     <!-- sidebar -->
                     <div class="sidebar home-sidebar">
+                        <div class="widget tab-posts-widget">
+
+                            <ul class="nav nav-tabs two-nav-tabs" id="myTab">
+                                <li class="active">
+                                    <a href="#popular1" data-toggle="tab">लोकप्रिय</a>
+                                </li>
+                                @if(count($popular_comments)>0)
+                                    <li>
+                                        <a href="#commented1" data-toggle="tab">धेरै कमेन्ट रहेको</a>
+                                    </li>
+                                @endif
+                            </ul>
+
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="popular1">
+                                    <ul class="list-posts">
+                                        @sandeshloop(@$topnews_week as $popular)
+                                        <li>
+                                            <a href="{{ url(@$popular->url()) }}">
+                                                <img src="{{($popular->image !== null) ?  asset('/images/blog/'.@$popular->image) : asset('assets/backend/images/sandesh_today.png')}}" alt="post">
+                                            </a>
+                                            <div class="post-content">
+                                                <h2>
+                                                    <a href="{{ url(@$popular->url()) }}">
+                                                        {{@$popular->title}}
+                                                    </a>
+                                                </h2>
+                                                <ul class="post-tags">
+                                                    <li><i class="fa fa-clock-o"></i>{{  $popular->getMinsAgoinNepali() }}</li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        @endsandeshloop
+
+                                    </ul>
+                                </div>
+                                @if(count($popular_comments)>0)
+                                    <div class="tab-pane" id="commented1">
+                                        <ul class="list-posts">
+
+                                            @sandeshloop(@$popular_comments as $popular)
+
+                                            <li>
+                                                <a href="{{ url(@$popular->url()) }}">
+                                                    <img src="{{($popular->image !== null) ?  asset('/images/blog/'.@$popular->image) : asset('assets/backend/images/sandesh_today.png')}}" alt="post">
+                                                </a>
+                                                <div class="post-content">
+                                                    <h2>
+                                                        <a href="{{ url(@$popular->url()) }}">
+                                                            {{@$popular->title}}
+                                                        </a>
+                                                    </h2>
+                                                    <ul class="post-tags">
+                                                        <li><i class="fa fa fa-comments-o"></i>{{ @$popular->comments_count }}</li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            @endsandeshloop
+                                        </ul>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="banner side-banner">
                             @sandeshloop(getHomepageBanner('home-sidebar-banner',0,1) as $banner)
 
@@ -239,69 +303,6 @@
                             @endsandeshloop
                         </div>
 
-                        <div class="widget tab-posts-widget">
-
-                            <ul class="nav nav-tabs two-nav-tabs" id="myTab">
-                                <li class="active">
-                                    <a href="#option1" data-toggle="tab">लोकप्रिय</a>
-                                </li>
-                                @if(count($popular_comments)>0)
-                                    <li>
-                                        <a href="#option2" data-toggle="tab">धेरै कमेन्ट रहेको</a>
-                                    </li>
-                                @endif
-                            </ul>
-
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="option1">
-                                    <ul class="list-posts">
-                                        @sandeshloop(@$topnews_week as $popular)
-                                            <li>
-                                                <a href="{{ url(@$popular->url()) }}">
-                                                    <img src="{{($popular->image !== null) ?  asset('/images/blog/'.@$popular->image) : asset('assets/backend/images/sandesh_today.png')}}" alt="post">
-                                                </a>
-                                                <div class="post-content">
-                                                    <h2>
-                                                        <a href="{{ url(@$popular->url()) }}">
-                                                            {{@$popular->title}}
-                                                        </a>
-                                                    </h2>
-                                                    <ul class="post-tags">
-                                                        <li><i class="fa fa-clock-o"></i>{{  $popular->getMinsAgoinNepali() }}</li>
-                                                    </ul>
-                                                </div>
-                                            </li>
-                                        @endsandeshloop
-
-                                    </ul>
-                                </div>
-                                @if(count($popular_comments)>0)
-                                    <div class="tab-pane" id="option2">
-                                        <ul class="list-posts">
-
-                                            @sandeshloop(@$popular_comments as $popular)
-
-                                                <li>
-                                                    <a href="{{ url(@$popular->url()) }}">
-                                                        <img src="{{($popular->image !== null) ?  asset('/images/blog/'.@$popular->image) : asset('assets/backend/images/sandesh_today.png')}}" alt="post">
-                                                    </a>
-                                                    <div class="post-content">
-                                                        <h2>
-                                                            <a href="{{ url(@$popular->url()) }}">
-                                                                {{@$popular->title}}
-                                                            </a>
-                                                        </h2>
-                                                        <ul class="post-tags">
-                                                            <li><i class="fa fa fa-comments-o"></i>{{ @$popular->comments_count }}</li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                            @endsandeshloop
-                                        </ul>
-                                    </div>
-                                @endif
-                            </div>
-                        </div>
 
 
 
@@ -312,101 +313,39 @@
                 </div>
 
             </div>
-
         </div>
     </section>
     <!-- End block-wrapper-section -->
 
 
-
-
-    <!-- features-today-section
-        ================================================== -->
     <section class="features-today">
         <div class="container">
 
             <div class="title-section">
-                <h1><span>Today's Featured</span></h1>
+                <h1><span>समाचार</span></h1>
             </div>
 
             <div class="features-today-box owl-wrapper">
                 <div class="owl-carousel" data-num="4">
-
-                    <div class="item news-post standard-post">
+                    @sandeshloop(getCategoryRelatedPost('समाचार',0,8) as $news)
+                        <div class="item news-post standard-post">
                         <div class="post-gallery">
-                            <img src="{{asset('assets/frontend/upload/news-posts/st1.jpg')}}" alt="">
-                            <a class="category-post world" href="world.html">Music</a>
+                            <a href="{{ url(@$news->url()) }}">
+                                <img src="{{($news->image !== null) ?  asset('/images/blog/'.@$news->image) : asset('assets/backend/images/sandesh_today.png')}}" alt="post">
+                            </a>
                         </div>
                         <div class="post-content">
-                            <h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
+                            <h2>
+                                <a href="{{ url(@$news->url()) }}">
+                                    {{@$news->title}}
+                                </a>
+                            </h2>
                             <ul class="post-tags">
-                                <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                <li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
-                                <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
+                                <li><i class="fa fa-clock-o"></i>{{@$news->publishedDateNepali()}}</li>
                             </ul>
                         </div>
                     </div>
-
-                    <div class="item news-post standard-post">
-                        <div class="post-gallery">
-                            <img src="{{asset('assets/frontend/upload/news-posts/st2.jpg')}}" alt="">
-                            <a class="category-post sport" href="sport.html">Sport</a>
-                        </div>
-                        <div class="post-content">
-                            <h2><a href="single-post.html">Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</a></h2>
-                            <ul class="post-tags">
-                                <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                <li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
-                                <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="item news-post standard-post">
-                        <div class="post-gallery">
-                            <img src="{{asset('assets/frontend/upload/news-posts/st3.jpg')}}" alt="">
-                            <a class="category-post food" href="food.html">Food &amp; Health</a>
-                        </div>
-                        <div class="post-content">
-                            <h2><a href="single-post.html">Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.</a></h2>
-                            <ul class="post-tags">
-                                <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                <li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
-                                <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="item news-post standard-post">
-                        <div class="post-gallery">
-                            <img src="{{asset('assets/frontend/upload/news-posts/st4.jpg')}}" alt="">
-                            <a class="category-post sport" href="sport.html">Sport</a>
-                        </div>
-                        <div class="post-content">
-                            <h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. </a></h2>
-                            <ul class="post-tags">
-                                <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                <li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
-                                <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="item news-post standard-post">
-                        <div class="post-gallery">
-                            <img src="{{asset('assets/frontend/upload/news-posts/st1.jpg')}}" alt="">
-                            <a class="category-post travel" href="travel.html">Travel</a>
-                        </div>
-                        <div class="post-content">
-                            <h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-                            <ul class="post-tags">
-                                <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                <li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
-                                <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-
+                    @endsandeshloop
                 </div>
             </div>
 
@@ -422,168 +361,107 @@
                 <div class="col-sm-8">
 
                     <!-- block content -->
-                    <div class="block-content">
+                    <div class="block-content pb-0">
 
                         <!-- carousel box -->
                         <div class="carousel-box owl-wrapper">
 
                             <div class="title-section">
-                                <h1><span class="world">world</span></h1>
+                                <h1><span class="world">अर्थ</span></h1>
                             </div>
 
                             <div class="owl-carousel" data-num="2">
 
                                 <div class="item">
-                                    <div class="news-post image-post2">
-                                        <div class="post-gallery">
-                                            <img src="{{asset('assets/frontend/upload/news-posts/im1.jpg')}}" alt="">
-                                            <div class="hover-box">
-                                                <div class="inner-hover">
-                                                    <h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-                                                    <ul class="post-tags">
-                                                        <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                        <li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
-                                                        <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-                                                        <li><i class="fa fa-eye"></i>872</li>
-                                                    </ul>
+                                    @foreach(getCategoryRelatedPost('अर्थ',0,5) as $news)
+
+                                        @if($loop->first)
+                                        <div class="news-post image-post2">
+                                            <div class="post-gallery">
+                                                <div class="veil">
+                                                    <img src="{{($news->image !== null) ?  asset('/images/blog/'.@$news->image) : asset('assets/backend/images/sandesh_today.png')}}" alt="">
+                                                </div>
+                                                <div class="hover-box">
+                                                    <div class="inner-hover">
+                                                        <h2>
+                                                            <a href="{{ url(@$news->url()) }}">
+                                                                {{@$news->title}}
+                                                            </a>
+                                                        </h2>
+                                                        <ul class="post-tags tagged">
+                                                            <li><i class="fa fa-clock-o"></i>{{@$news->publishedDateNepali()}}</li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                        @else
+                                            <ul class="list-posts">
+                                                <li>
+                                                        <a href="{{ url(@$news->url()) }}">
+                                                            <img src="{{($news->image !== null) ?  asset('/images/blog/'.@$news->image) : asset('assets/backend/images/sandesh_today.png')}}" alt="post">
+                                                        </a>
+                                                    <div class="post-content">
+                                                        <h2>
+                                                            <a href="{{ url(@$news->url()) }}">
+                                                                {{@$news->title}}
+                                                            </a>
+                                                        </h2>
+                                                        <ul class="post-tags">
+                                                            <li><i class="fa fa-clock-o"></i>{{@$news->publishedDateNepali()}}</li>
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        @endif
 
-                                    <ul class="list-posts">
-                                        <li>
-                                            <img src="{{asset('assets/frontend/upload/news-posts/list1.jpg')}}" alt="">
-                                            <div class="post-content">
-                                                <h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-                                                <ul class="post-tags">
-                                                    <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                </ul>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <img src="{{asset('assets/frontend/upload/news-posts/list2.jpg')}}" alt="">
-                                            <div class="post-content">
-                                                <h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-                                                <ul class="post-tags">
-                                                    <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                </ul>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <img src="{{asset('assets/frontend/upload/news-posts/list3.jpg')}}" alt="">
-                                            <div class="post-content">
-                                                <h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-                                                <ul class="post-tags">
-                                                    <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                    @endforeach
                                 </div>
 
                                 <div class="item">
-                                    <div class="news-post image-post2">
-                                        <div class="post-gallery">
-                                            <img src="{{asset('assets/frontend/upload/news-posts/im2.jpg')}}" alt="">
-                                            <div class="hover-box">
-                                                <div class="inner-hover">
-                                                    <h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-                                                    <ul class="post-tags">
-                                                        <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                        <li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
-                                                        <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-                                                        <li><i class="fa fa-eye"></i>872</li>
-                                                    </ul>
+                                    @foreach(getCategoryRelatedPost('अर्थ',5,5) as $news)
+
+                                        @if($loop->first)
+                                            <div class="news-post image-post2">
+                                                <div class="post-gallery">
+                                                    <div class="veil">
+                                                        <img src="{{($news->image !== null) ?  asset('/images/blog/'.@$news->image) : asset('assets/backend/images/sandesh_today.png')}}" alt="">
+                                                    </div>
+                                                    <div class="hover-box">
+                                                        <div class="inner-hover">
+                                                            <h2>
+                                                                <a href="{{ url(@$news->url()) }}">
+                                                                    {{@$news->title}}
+                                                                </a>
+                                                            </h2>
+                                                            <ul class="post-tags tagged">
+                                                                <li><i class="fa fa-clock-o"></i>{{@$news->publishedDateNepali()}}</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
+                                        @else
+                                            <ul class="list-posts">
+                                                <li>
+                                                    <a href="{{ url(@$news->url()) }}">
+                                                        <img src="{{($news->image !== null) ?  asset('/images/blog/'.@$news->image) : asset('assets/backend/images/sandesh_today.png')}}" alt="post">
+                                                    </a>
+                                                    <div class="post-content">
+                                                        <h2>
+                                                            <a href="{{ url(@$news->url()) }}">
+                                                                {{@$news->title}}
+                                                            </a>
+                                                        </h2>
+                                                        <ul class="post-tags">
+                                                            <li><i class="fa fa-clock-o"></i>{{@$news->publishedDateNepali()}}</li>
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        @endif
 
-                                    <ul class="list-posts">
-                                        <li>
-                                            <img src="{{asset('assets/frontend/upload/news-posts/list4.jpg')}}" alt="">
-                                            <div class="post-content">
-                                                <h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-                                                <ul class="post-tags">
-                                                    <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                </ul>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <img src="{{asset('assets/frontend/upload/news-posts/list5.jpg')}}" alt="">
-                                            <div class="post-content">
-                                                <h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-                                                <ul class="post-tags">
-                                                    <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                </ul>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <img src="{{asset('assets/frontend/upload/news-posts/list6.jpg')}}" alt="">
-                                            <div class="post-content">
-                                                <h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-                                                <ul class="post-tags">
-                                                    <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <div class="item">
-                                    <div class="news-post image-post2">
-                                        <div class="post-gallery">
-                                            <img src="{{asset('assets/frontend/upload/news-posts/im3.jpg')}}" alt="">
-                                            <div class="hover-box">
-                                                <div class="inner-hover">
-                                                    <h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-                                                    <ul class="post-tags">
-                                                        <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                        <li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
-                                                        <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-                                                        <li><i class="fa fa-eye"></i>872</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <ul class="list-posts">
-                                        <li>
-                                            <img src="{{asset('assets/frontend/upload/news-posts/list7.jpg')}}" alt="">
-                                            <div class="post-content">
-                                                <h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-                                                <ul class="post-tags">
-                                                    <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                </ul>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <img src="{{asset('assets/frontend/upload/news-posts/list8.jpg')}}" alt="">
-                                            <div class="post-content">
-                                                <h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-                                                <ul class="post-tags">
-                                                    <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                </ul>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <img src="{{asset('assets/frontend/upload/news-posts/list9.jpg')}}" alt="">
-                                            <div class="post-content">
-                                                <h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-                                                <ul class="post-tags">
-                                                    <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                    @endforeach
                                 </div>
 
                             </div>
@@ -591,254 +469,31 @@
                         </div>
                         <!-- End carousel box -->
 
-                        <!-- carousel box -->
-                        <div class="carousel-box owl-wrapper">
-                            <div class="title-section">
-                                <h1><span>Gallery</span></h1>
-                            </div>
-                            <div class="owl-carousel" data-num="4">
-
-                                <div class="item news-post image-post3">
-                                    <img src="{{asset('assets/frontend/upload/news-posts/gal1.jpg')}}" alt="">
-                                    <div class="hover-box">
-                                        <h2><a href="single-post.html">Donec odio. Quisque volutpat mattis eros.</a></h2>
-                                        <ul class="post-tags">
-                                            <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                        </ul>
-                                    </div>
+                        <!-- homepage banner 2 -->
+                        <div class="banner">
+                            @sandeshloop(getHomepageBanner('home-banner',1,1) as $banner)
+                                <div class="desktop-banner">
+                                    <span>Advertisement</span>
+                                    <a href="{{@$banner->url}}" target="_blank">
+                                        <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
+                                    </a>
                                 </div>
-
-                                <div class="item news-post image-post3">
-                                    <img src="{{asset('assets/frontend/upload/news-posts/gal2.jpg')}}" alt="">
-                                    <div class="hover-box">
-                                        <h2><a href="single-post.html">Nullam malesuada erat ut turpis. </a></h2>
-                                        <ul class="post-tags">
-                                            <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                        </ul>
-                                    </div>
+                                <div class="tablet-banner">
+                                    <span>Advertisement</span>
+                                    <a href="{{@$banner->url}}" target="_blank">
+                                        <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
+                                    </a>
                                 </div>
-
-                                <div class="item news-post image-post3">
-                                    <img src="{{asset('assets/frontend/upload/news-posts/gal3.jpg')}}" alt="">
-                                    <div class="hover-box">
-                                        <h2><a href="single-post.html">Suspendisse urna nibh.</a></h2>
-                                        <ul class="post-tags">
-                                            <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <div class="item news-post image-post3">
-                                    <img src="{{asset('assets/frontend/upload/news-posts/gal4.jpg')}}" alt="">
-                                    <div class="hover-box">
-                                        <h2><a href="single-post.html">Donec nec justo eget felis facilisis fermentum. Aliquam </a></h2>
-                                        <ul class="post-tags">
-                                            <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <div class="item news-post image-post3">
-                                    <img src="{{asset('assets/frontend/upload/news-posts/gal1.jpg')}}" alt="">
-                                    <div class="hover-box">
-                                        <h2><a href="single-post.html">Donec odio. Quisque volutpat mattis eros.</a></h2>
-                                        <ul class="post-tags">
-                                            <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <!-- End carousel box -->
-
-                        <!-- grid box -->
-                        <div class="grid-box">
-                            <div class="row">
-
-                                <div class="col-md-6">
-                                    <div class="title-section">
-                                        <h1><span class="fashion">Fashion</span></h1>
-                                    </div>
-                                    <div class="image-post-slider">
-                                        <ul class="bxslider">
-                                            <li>
-                                                <div class="news-post image-post2">
-                                                    <div class="post-gallery">
-                                                        <img src="{{asset('assets/frontend/upload/news-posts/im1.jpg')}}" alt="">
-                                                        <div class="hover-box">
-                                                            <div class="inner-hover">
-                                                                <h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-                                                                <ul class="post-tags">
-                                                                    <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                                    <li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
-                                                                    <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-                                                                    <li><i class="fa fa-eye"></i>872</li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="news-post image-post2">
-                                                    <div class="post-gallery">
-                                                        <img src="{{asset('assets/frontend/upload/news-posts/im2.jpg')}}" alt="">
-                                                        <div class="hover-box">
-                                                            <div class="inner-hover">
-                                                                <h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-                                                                <ul class="post-tags">
-                                                                    <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                                    <li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
-                                                                    <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-                                                                    <li><i class="fa fa-eye"></i>872</li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="news-post image-post2">
-                                                    <div class="post-gallery">
-                                                        <img src="{{asset('assets/frontend/upload/news-posts/im3.jpg')}}" alt="">
-                                                        <div class="hover-box">
-                                                            <div class="inner-hover">
-                                                                <h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-                                                                <ul class="post-tags">
-                                                                    <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                                    <li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
-                                                                    <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-                                                                    <li><i class="fa fa-eye"></i>872</li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="news-post image-post2">
-                                                    <div class="post-gallery">
-                                                        <img src="{{asset('assets/frontend/upload/news-posts/im4.jpg')}}" alt="">
-                                                        <div class="hover-box">
-                                                            <div class="inner-hover">
-                                                                <h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-                                                                <ul class="post-tags">
-                                                                    <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                                    <li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
-                                                                    <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-                                                                    <li><i class="fa fa-eye"></i>872</li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="title-section">
-                                        <h1><span class="world">Lifestyle</span></h1>
-                                    </div>
-
-                                    <div class="owl-wrapper">
-                                        <div class="owl-carousel" data-num="1">
-
-                                            <div class="item">
-                                                <ul class="list-posts">
-                                                    <li>
-                                                        <img src="{{asset('assets/frontend/upload/news-posts/list7.jpg')}}" alt="">
-                                                        <div class="post-content">
-                                                            <h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-                                                            <ul class="post-tags">
-                                                                <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-
-                                                    <li>
-                                                        <img src="{{asset('assets/frontend/upload/news-posts/list8.jpg')}}" alt="">
-                                                        <div class="post-content">
-                                                            <h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-                                                            <ul class="post-tags">
-                                                                <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-
-                                                    <li>
-                                                        <img src="{{asset('assets/frontend/upload/news-posts/list9.jpg')}}" alt="">
-                                                        <div class="post-content">
-                                                            <h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-                                                            <ul class="post-tags">
-                                                                <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-
-                                            <div class="item">
-                                                <ul class="list-posts">
-                                                    <li>
-                                                        <img src="{{asset('assets/frontend/upload/news-posts/list2.jpg')}}" alt="">
-                                                        <div class="post-content">
-                                                            <h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-                                                            <ul class="post-tags">
-                                                                <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-
-                                                    <li>
-                                                        <img src="{{asset('assets/frontend/upload/news-posts/list6.jpg')}}" alt="">
-                                                        <div class="post-content">
-                                                            <h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-                                                            <ul class="post-tags">
-                                                                <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-
-                                                    <li>
-                                                        <img src="{{asset('assets/frontend/upload/news-posts/list1.jpg')}}" alt="">
-                                                        <div class="post-content">
-                                                            <h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-                                                            <ul class="post-tags">
-                                                                <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-                        <!-- End grid box -->
-
-                        <!-- google addsense -->
-                        <div class="banner home-banner">
-                            <div class="desktop-banner">
+                                <div class="mobile-banner">
                                 <span>Advertisement</span>
-                                <img src="{{asset('assets/frontend/upload/addsense/728x90-white.jpg')}}" alt="">
+                                <a href="{{@$banner->url}}" target="_blank">
+                                    <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
+                                </a>
                             </div>
-                            <div class="tablet-banner">
-                                <span>Advertisement</span>
-                                <img src="{{asset('assets/frontend/upload/addsense/468x60-white.jpg')}}" alt="">
-                            </div>
-                            <div class="mobile-banner">
-                                <span>Advertisement</span>
-                                <img src="{{asset('assets/frontend/upload/addsense/300x250.jpg')}}" alt="">
-                            </div>
+                            @endsandeshloop
+
                         </div>
-                        <!-- End google addsense -->
+                        <!-- End homepage banner 2 -->
 
                     </div>
                     <!-- End block content -->
@@ -849,124 +504,28 @@
 
                     <!-- sidebar -->
                     <div class="sidebar">
-
-                        <div class="widget social-widget">
-                            <div class="title-section">
-                                <h1><span>Stay Connected</span></h1>
+                        @sandeshloop(getHomepageBanner('home-sidebar-banner',1,3) as $banner)
+                            <div class="banner home-banner">
+                                <div class="desktop-banner">
+                                    <span>Advertisement</span>
+                                    <a href="{{@$banner->url}}" target="_blank">
+                                        <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
+                                    </a>
+                                </div>
+                                <div class="tablet-banner">
+                                    <span>Advertisement</span>
+                                    <a href="{{@$banner->url}}" target="_blank">
+                                        <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
+                                    </a>
+                                </div>
+                                <div class="mobile-banner">
+                                    <span>Advertisement</span>
+                                    <a href="{{@$banner->url}}" target="_blank">
+                                        <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
+                                    </a>
+                                </div>
                             </div>
-                            <ul class="social-share">
-                                <li>
-                                    <a href="#" class="rss"><i class="fa fa-rss"></i></a>
-                                    <span class="number">9,455</span>
-                                    <span>Subscribers</span>
-                                </li>
-                                <li>
-                                    <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                                    <span class="number">56,743</span>
-                                    <span>Fans</span>
-                                </li>
-                                <li>
-                                    <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                                    <span class="number">43,501</span>
-                                    <span>Followers</span>
-                                </li>
-                                <li>
-                                    <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
-                                    <span class="number">35,003</span>
-                                    <span>Followers</span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="widget features-slide-widget">
-                            <div class="title-section">
-                                <h1><span>Featured Posts</span></h1>
-                            </div>
-                            <div class="image-post-slider">
-                                <ul class="bxslider">
-                                    <li>
-                                        <div class="news-post image-post2">
-                                            <div class="post-gallery">
-                                                <img src="{{asset('assets/frontend/upload/news-posts/im3.jpg')}}" alt="">
-                                                <div class="hover-box">
-                                                    <div class="inner-hover">
-                                                        <h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-                                                        <ul class="post-tags">
-                                                            <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                            <li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
-                                                            <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-                                                            <li><i class="fa fa-eye"></i>872</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="news-post image-post2">
-                                            <div class="post-gallery">
-                                                <img src="{{asset('assets/frontend/upload/news-posts/im1.jpg')}}" alt="">
-                                                <div class="hover-box">
-                                                    <div class="inner-hover">
-                                                        <h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-                                                        <ul class="post-tags">
-                                                            <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                            <li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
-                                                            <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-                                                            <li><i class="fa fa-eye"></i>872</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="news-post image-post2">
-                                            <div class="post-gallery">
-                                                <img src="{{asset('assets/frontend/upload/news-posts/im2.jpg')}}" alt="">
-                                                <div class="hover-box">
-                                                    <div class="inner-hover">
-                                                        <h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-                                                        <ul class="post-tags">
-                                                            <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                            <li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
-                                                            <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-                                                            <li><i class="fa fa-eye"></i>872</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="widget subscribe-widget">
-                            <form class="subscribe-form">
-                                <h1>Subscribe to RSS Feeds</h1>
-                                <input type="text" name="sumbscribe" id="subscribe" placeholder="Email"/>
-                                <button id="submit-subscribe">
-                                    <i class="fa fa-arrow-circle-right"></i>
-                                </button>
-                                <p>Get all latest content delivered to your email a few times a month.</p>
-                            </form>
-                        </div>
-
-                        <div class="banner home-banner">
-                            <div class="desktop-banner">
-                                <span>Advertisement</span>
-                                <img src="{{asset('assets/frontend/upload/addsense/300x250.jpg')}}" alt="">
-                            </div>
-                            <div class="tablet-banner">
-                                <span>Advertisement</span>
-                                <img src="{{asset('assets/frontend/upload/addsense/200x200.jpg')}}" alt="">
-                            </div>
-                            <div class="mobile-banner">
-                                <span>Advertisement</span>
-                                <img src="{{asset('assets/frontend/upload/addsense/300x250.jpg')}}" alt="">
-                            </div>
-                        </div>
+                        @endsandeshloop
 
                     </div>
                     <!-- End sidebar -->
@@ -978,6 +537,79 @@
         </div>
     </section>
     <!-- End block-wrapper-section -->
+
+
+    <section class="heading-news2">
+
+        <div class="container">
+            <div class="title-section white">
+                <h1><span>राजनीति</span></h1>
+            </div>
+
+            <div class="iso-call heading-news-box">
+                <div class="image-slider snd-size">
+                    <span class="top-stories">राजनीति</span>
+                    <ul class="bxslider">
+                        @foreach(getCategoryRelatedPost('राजनीति',0,3) as $news)
+                            <li>
+                                <div class="news-post image-post">
+                                    <img src="{{(@$news->image !== null) ?  asset('/images/blog/'.@$news->image) : asset('assets/backend/images/darpan_dainik.png')}}" alt="post">
+                                    <div class="hover-box">
+                                        <div class="inner-hover">
+                                            <h2>
+                                                <a href="{{ url(@$news->url()) }}">{{@$news->title}}</a>
+                                            </h2>
+                                            <ul class="post-tags">
+                                                <li><i class="fa fa-clock-o"></i>{{@$news->publishedDateNepali()}}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        @endforeach
+
+                    </ul>
+                </div>
+                @foreach(getCategoryRelatedPost('राजनीति',3,4) as $news)
+                    @if($loop->first)
+                        <div class="news-post image-post default-size">
+                            <img src="{{(@$news->image !== null) ?  asset('/images/blog/'.@$news->image) : asset('assets/backend/images/darpan_dainik.png')}}" alt="post">
+                        <div class="hover-box">
+                            <div class="inner-hover">
+                                <h2>
+                                    <a href="{{ url(@$news->url()) }}">{{@$news->title}}</a>
+                                </h2>
+                                <ul class="post-tags">
+                                    <li><i class="fa fa-clock-o"></i>{{@$news->publishedDateNepali()}}</li>
+                                </ul>
+                                <p>Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis.</p>
+                            </div>
+                        </div>
+                    </div>
+                    @else
+                        <div class="news-post image-post">
+                            <img src="{{(@$news->image !== null) ?  asset('/images/blog/'.@$news->image) : asset('assets/backend/images/darpan_dainik.png')}}" alt="post">
+                            <div class="hover-box">
+                                <div class="inner-hover">
+                                    <h2>
+                                        <a href="{{ url(@$news->url()) }}">{{@$news->title}}</a>
+                                    </h2>
+                                    <ul class="post-tags">
+                                        <li><i class="fa fa-clock-o"></i>{{@$news->publishedDateNepali()}}</li>
+                                    </ul>
+                                    <p>Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis.</p>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+
+                @endforeach
+
+
+            </div>
+        </div>
+
+    </section>
 
     <!-- feature-video-section
         ================================================== -->

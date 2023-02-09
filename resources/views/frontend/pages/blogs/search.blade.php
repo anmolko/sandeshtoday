@@ -41,7 +41,7 @@
                         <div class="body">
                             <div class="row">
                                 @if(count($searchPosts)>0)
-                                    @darpanloop(@$searchPosts as $news)
+                                    @sandeshloop(@$searchPosts as $news)
                                     <div class="post fashion-post post-default-list post-search post-separator-border" id="posts">
                                         <div class="post-wrap">
 
@@ -71,7 +71,7 @@
 
                                         </div>
                                     </div>
-                                    @enddarpanloop
+                                    @endsandeshloop
                                 @else
                                     <div class="post sports-post post-separator-border col-md-12 col-12">
                                         <div class="post-wrap" style="text-align: center">

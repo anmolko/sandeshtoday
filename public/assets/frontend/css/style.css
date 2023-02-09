@@ -469,7 +469,7 @@ header.active .nav-list-container {
   -o-transition: all 0.2s ease-in-out;
 }
 .navbar-nav .megadropdown .inner-megadropdown {
-  background: #fff;
+  background: #e7e9f7;
   border-top: 3px solid #f44336;
   margin-top: -1px;
   overflow: hidden;
@@ -2423,7 +2423,7 @@ section.big-slider .big-bxslider li .image-post2 .hover-box .inner-hover h2 {
   line-height: 16px;
 }
 .sidebar .banner {
-  margin-bottom: 30px;
+  margin-bottom: 0px;
 }
 .sidebar .banner .desktop-banner {
   width: auto;
@@ -2490,7 +2490,7 @@ section.big-slider .big-bxslider li .image-post2 .hover-box .inner-hover h2 {
   padding-right: 30px;
 }
 .sidebar .tab-posts-widget .tab-pane ul.list-posts > li img {
-  max-width: 90px;
+  max-width: 110px;
 }
 .sidebar .tags-widget ul.tag-list {
   margin: 0;
@@ -3246,10 +3246,11 @@ ul.post-tags li:last-child {
   color: #ffffff;
 }
 .image-post2 .hover-box h2 a:hover {
-  opacity: 0.7;
+    opacity: 1;
+    color: #eae7e7;
 }
 .image-post2 .hover-box ul.post-tags li {
-  color: #ccc;
+  color: #fff;
 }
 .image-post2 .hover-box ul.tagged li {
   color: #fff;
@@ -6111,7 +6112,7 @@ footer .footer-last-line nav.footer-nav ul li:first-child:before {
     display: none;
   }
   .sidebar .tab-posts-widget ul.nav-tabs li a {
-    font-size: 10px;
+    font-size: 18px;
   }
   .sidebar .tab-posts-widget .tab-pane ul.list-posts > li {
     padding-left: 10px;

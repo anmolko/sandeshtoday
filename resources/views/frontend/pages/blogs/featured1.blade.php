@@ -9,7 +9,7 @@
                                 <div class="popular-post-slider">
 
 
-                                    @darpanloop(getCategoryRelatedPost(@$category->slug,0,3) as $news)
+                                    @sandeshloop(getCategoryRelatedPost(@$category->slug,0,3) as $news)
                                         <div class="post post-overlay">
                                             <div class="post-wrap">
 
@@ -35,7 +35,7 @@
 
                                             </div>
                                         </div>
-                                    @enddarpanloop
+                                    @endsandeshloop
                                 </div>
 
                             </div>

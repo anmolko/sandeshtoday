@@ -17,7 +17,7 @@
                         </div>
                         <div class="body">
                             <div class="row">
-                                @darpanloop(@$allPosts as $news)
+                                @sandeshloop(@$allPosts as $news)
                                     <!-- Post Start -->
                                     <div class="post sports-post post-separator-border col-md-4 col-12">
                                     <div class="post-wrap">
@@ -37,7 +37,7 @@
 
                                     </div>
                                 </div><!-- Post End -->
-                                @enddarpanloop
+                                @endsandeshloop
 
 
                                 {{ $allPosts->links('vendor.pagination.default') }}
