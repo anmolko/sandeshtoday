@@ -24,11 +24,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Blade::directive('darpanloop', function ($expression) {
+        Blade::directive('sandeshloop', function ($expression) {
             return "<?php foreach ($expression): ?>";
         });
 
-        Blade::directive('enddarpanloop', function ($expression) {
+        Blade::directive('endsandeshloop', function ($expression) {
             return "<?php endforeach; ?>";
         });
     }

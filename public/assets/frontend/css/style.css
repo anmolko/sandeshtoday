@@ -255,8 +255,11 @@ header.active .nav-list-container {
   background: #222222;
 }
 
-.desktop-banner a img{
-    width: 100%;
+.home-banner .desktop-banner a img{
+    width: 80%;
+}
+.side-banner .desktop-banner a img{
+    max-width: 100%;
 }
 .logo-banner .desktop-banner,
 .logo-banner .tablet-benner {
@@ -844,10 +847,9 @@ p {
   margin-bottom: 30px;
 }
 .title-section h1 {
-  color: #222222;
-  font-size: 15px;
-    font-family: "Mukta","Glegoo", sans-serif;
-
+  color: #2c3593;
+  font-size: 24px;
+  font-family: "Mukta","Glegoo", sans-serif;
   font-weight: 700;
   margin: 0 0 30px;
   text-transform: uppercase;
@@ -2257,6 +2259,9 @@ section.big-slider .big-bxslider li .image-post2 .hover-box .inner-hover h2 {
 .sidebar {
   padding: 30px 0;
 }
+.home-sidebar{
+    padding: 0px 0;
+}
 .sidebar .widget {
   margin-bottom: 40px;
 }
@@ -2440,6 +2445,9 @@ section.big-slider .big-bxslider li .image-post2 .hover-box .inner-hover h2 {
   margin: 0;
   padding-left: 1px;
 }
+.sidebar .tab-posts-widget ul.two-nav-tabs li {
+    width: 50%;
+}
 .sidebar .tab-posts-widget ul.nav-tabs li a {
   display: inline-block;
   text-decoration: none;
@@ -2448,14 +2456,14 @@ section.big-slider .big-bxslider li .image-post2 .hover-box .inner-hover h2 {
   -webkit-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
   display: block;
-  padding: 11px 3px;
-  background: #222222;
+  padding: 14px 3px;
+  background: #1f267c;
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   -o-border-radius: 0px;
   border-radius: 0px;
   color: #ffffff;
-  font-size: 13px;
+  font-size: 18px;
     font-family: "Mukta","Glegoo", sans-serif;
 
   text-transform: uppercase;
@@ -2482,7 +2490,7 @@ section.big-slider .big-bxslider li .image-post2 .hover-box .inner-hover h2 {
   padding-right: 30px;
 }
 .sidebar .tab-posts-widget .tab-pane ul.list-posts > li img {
-  max-width: 75px;
+  max-width: 90px;
 }
 .sidebar .tags-widget ul.tag-list {
   margin: 0;
@@ -3019,7 +3027,7 @@ ul.post-tags li {
   display: inline-block;
   margin-right: 7px;
   color: #666666;
-  font-size: 14px;
+  font-size: 12px;
   font-family: "Mukta","Glegoo", sans-serif;
   font-style: italic;
   transition: all 0.2s ease-in-out;
@@ -3031,6 +3039,9 @@ ul.post-tags li i {
   color: #666666ba;
   margin-right: 6px;
     font-size: 16px;
+}
+ul.tagged li i {
+    color: #fff;
 }
 ul.post-tags li a {
   display: inline-block;
@@ -3212,18 +3223,18 @@ ul.post-tags li:last-child {
   left: inherit;
 }
 .image-post2 .hover-box h2 {
-  color: #333333;
-  font-size: 13px;
-  font-family: "Mukta","Glegoo", sans-serif;
-  font-weight: 700;
-  line-height: 20px;
-  margin: 0 0 10px;
-  font-size: 18px;
-  line-height: 24px;
-  margin-bottom: 7px;
-  margin-top: 10px;
-  max-height: 48px;
-  overflow: hidden;
+    color: #333333;
+    font-size: 13px;
+    font-family: "Mukta","Glegoo", sans-serif;
+    font-weight: 700;
+    line-height: 20px;
+    margin: 0 0 10px;
+    font-size: 26px;
+    line-height: 34px;
+    margin-bottom: 7px;
+    margin-top: 10px;
+    max-height: 65px;
+    overflow: hidden;
 }
 .image-post2 .hover-box h2 a {
   display: inline-block;
@@ -3239,6 +3250,9 @@ ul.post-tags li:last-child {
 }
 .image-post2 .hover-box ul.post-tags li {
   color: #ccc;
+}
+.image-post2 .hover-box ul.tagged li {
+  color: #fff;
 }
 .image-post2 .hover-box ul.post-tags li a {
   color: #ccc;
@@ -3281,7 +3295,7 @@ ul.list-posts > li {
   overflow: hidden;
 }
 ul.list-posts > li img {
-  width: 100px;
+  width: 120px;
   margin-right: 20px;
   float: left;
 }
@@ -3305,15 +3319,15 @@ ul.list-posts > li .post-content > a:hover {
   opacity: 0.7;
 }
 ul.list-posts > li .post-content h2 {
-  color: #333333;
-  font-family: "Mukta","Glegoo", sans-serif;
-  font-weight: 700;
-  line-height: 20px;
-  margin: 0 0 10px;
-  font-size: 13px;
-  max-height: 40px;
-  overflow: hidden;
-  margin-bottom: 7px;
+    color: #333333;
+    font-family: "Mukta","Glegoo", sans-serif;
+    font-weight: 700;
+    line-height: 26px;
+    margin: 0 0 10px;
+    font-size: 18px;
+    max-height: 50px;
+    overflow: hidden;
+    margin-bottom: 4px;
 }
 ul.list-posts > li .post-content h2 a {
   display: inline-block;
@@ -6694,6 +6708,11 @@ ul.demo-list li a i {
     padding-bottom: 16px;
 }
 
+.border-below{
+    border-bottom: 1px solid #d6d3d3;
+    padding-bottom: 16px;
+}
+
 .featured-post .sandeshtoday-title {
     display: flex;
 }
@@ -6740,4 +6759,23 @@ ul.demo-list li a i {
     margin-left: auto;
     line-height: 33px;
     margin-right: auto;
+}
+
+.veil{
+    position: relative;
+}
+.veil:before{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    content: "";
+    z-index: 0;
+    opacity: 0.3;
+}
+
+.pb-0{
+    padding-bottom: 0px!important;
 }

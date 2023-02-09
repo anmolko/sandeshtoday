@@ -58,15 +58,15 @@
                                         <option value="above-post-featured"> Above Post Featured</option>
                                         <option value="below-post-featured">Below Post Featured</option>
                                         <option value="in-between-post">In Between Post (use 250 x 250px size)  </option>
-                                        <option value="post-side-bar-banner">Post SideBar Banner - 10 total</option>
+                                        <option value="post-side-bar-banner">Post SideBar Banner</option>
                                         <option value="post-end">Post End</option>
                                     </optgroup>
                                     <optgroup label="Home Page">
                                         <option value="home-besides-logo">Home Besides Logo</option>
                                         <option value="home-above-featured-post">Home Above Featured Post</option>
                                         <option value="home-below-featured-post">Home Below Featured Post</option>
-                                        <option value="home-sidebar-banner">Home Sidebar Banner (use 300 x 200px size-14 total)</option>
-                                        <option value="home-banner">Home Banner-9 total</option>
+                                        <option value="home-sidebar-banner">Home Sidebar Banner (use 300 x 250px size)</option>
+                                        <option value="home-banner">Home Banner</option>
                                     </optgroup>
                                 </select>
                                 <div class="invalid-feedback">

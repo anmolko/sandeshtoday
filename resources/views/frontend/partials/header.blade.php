@@ -211,7 +211,7 @@
                                                                     @endforeach
                                                                 </ul>
                                                                 <div class="owl-carousel" data-num="4">
-                                                                    @darpanloop(getCategoryRelatedPost($nav->slug,0,5) as $news)
+                                                                    @sandeshloop(getCategoryRelatedPost($nav->slug,0,5) as $news)
                                                                     <div class="item news-post standard-post">
                                                                         <div class="post-gallery">
                                                                             <img src="{{ asset('/images/blog/'.@$news->image)}}" alt="">
@@ -225,7 +225,7 @@
                                                                             </ul>
                                                                         </div>
                                                                     </div>
-                                                                    @enddarpanloop
+                                                                    @endsandeshloop
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -258,7 +258,7 @@
 {{--                                                                </ul>--}}
                                                                 <h1>@if(@$nav->name == NULL) {{ucwords(@$nav->title)}} @else {{ucwords(@$nav->name)}} @endif</h1>
                                                                 <div class="owl-carousel" data-num="4">
-                                                                    @darpanloop(getCategoryRelatedPost($nav->slug,0,5) as $news)
+                                                                    @sandeshloop(getCategoryRelatedPost($nav->slug,0,5) as $news)
                                                                     <div class="item news-post standard-post">
                                                                         <div class="post-gallery">
                                                                             <img src="{{ asset('/images/blog/'.@$news->image)}}" alt="">
@@ -272,7 +272,7 @@
                                                                             </ul>
                                                                         </div>
                                                                     </div>
-                                                                    @enddarpanloop
+                                                                    @endsandeshloop
                                                                 </div>
                                                             </div>
                                                         </div>
