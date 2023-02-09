@@ -277,28 +277,28 @@
                                 </div>
                                 @if(count($popular_comments)>0)
                                     <div class="tab-pane" id="option2">
-                                    <ul class="list-posts">
+                                        <ul class="list-posts">
 
-                                        @sandeshloop(@$popular_comments as $popular)
+                                            @sandeshloop(@$popular_comments as $popular)
 
-                                            <li>
-                                                <a href="{{ url(@$popular->url()) }}">
-                                                    <img src="{{($popular->image !== null) ?  asset('/images/blog/'.@$popular->image) : asset('assets/backend/images/sandesh_today.png')}}" alt="post">
-                                                </a>
-                                                <div class="post-content">
-                                                    <h2>
-                                                        <a href="{{ url(@$popular->url()) }}">
-                                                            {{@$popular->title}}
-                                                        </a>
-                                                    </h2>
-                                                    <ul class="post-tags">
-                                                        <li><i class="fa fa fa-comments-o"></i>{{ @$popular->comments_count }}</li>
-                                                    </ul>
-                                                </div>
-                                            </li>
-                                        @endsandeshloop
-                                    </ul>
-                                </div>
+                                                <li>
+                                                    <a href="{{ url(@$popular->url()) }}">
+                                                        <img src="{{($popular->image !== null) ?  asset('/images/blog/'.@$popular->image) : asset('assets/backend/images/sandesh_today.png')}}" alt="post">
+                                                    </a>
+                                                    <div class="post-content">
+                                                        <h2>
+                                                            <a href="{{ url(@$popular->url()) }}">
+                                                                {{@$popular->title}}
+                                                            </a>
+                                                        </h2>
+                                                        <ul class="post-tags">
+                                                            <li><i class="fa fa fa-comments-o"></i>{{ @$popular->comments_count }}</li>
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                            @endsandeshloop
+                                        </ul>
+                                    </div>
                                 @endif
                             </div>
                         </div>

@@ -46,7 +46,7 @@ class SensitiveComposer
        $besides_logo         =  Ads::where('placement','home-besides-logo')->where('status','active')->first();
        $above_featured_ban   =  Ads::where('placement','home-above-featured-post')->where('status','active')->first();
        $below_featured_ban   =  Ads::where('placement','home-below-featured-post')->where('status','active')->first();
-       $most_commented       =  Blog::withCount('comments')->orderBy('comments_count', 'desc')->take(6)->get();
+       $most_commented       =  Blog::has('comments', '>', 0)->withCount('comments')->orderBy('comments_count', 'desc')->take(6)->get();
 
        if(!empty(@$topNavItems)){
            foreach($topNavItems as $menu){
