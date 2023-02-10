@@ -86,7 +86,7 @@
                             <div class="row">
                                 @foreach(getLatestPosts(0,4) as $latest_news_feature)
                                     @if($loop->first)
-                                        <div class="col-md-7">
+                                        <div class="col-md-7 fresh-update">
                                             <div class="news-post image-post2">
                                                 <div class="post-gallery ">
                                                     <div class="veil">
@@ -229,7 +229,7 @@
                             </ul>
 
                             <div class="tab-content">
-                                <div class="tab-pane active" id="popular1">
+                                <div class="tab-pane active sidebar-content" id="popular1">
                                     <ul class="list-posts">
                                         @sandeshloop(@$topnews_week as $popular)
                                         <li>
@@ -252,7 +252,7 @@
                                     </ul>
                                 </div>
                                 @if(count($popular_comments)>0)
-                                    <div class="tab-pane" id="commented1">
+                                    <div class="tab-pane sidebar-content" id="commented1">
                                         <ul class="list-posts">
 
                                             @sandeshloop(@$popular_comments as $popular)
@@ -281,20 +281,27 @@
 
                         <div class="banner side-banner">
                             @sandeshloop(getHomepageBanner('home-sidebar-banner',0,1) as $banner)
-
-                            <div class="desktop-banner">
+                                <div class="desktop-banner">
+                                    <span>Advertisement</span>
+                                    <a href="{{@$banner->url}}" target="_blank">
+                                        <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
+                                    </a>
+                                </div>
+                                <div class="tablet-banner">
+                                    <span>Advertisement</span>
+                                    <a href="{{@$banner->url}}" target="_blank">
+                                        <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
+                                    </a>
+                                </div>
+                                <div class="mobile-banner">
                                 <span>Advertisement</span>
                                 <a href="{{@$banner->url}}" target="_blank">
                                     <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
                                 </a>
                             </div>
-                            <div class="tablet-banner">
-                                <span>Advertisement</span>
-                                <a href="{{@$banner->url}}" target="_blank">
-                                    <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
-                                </a>
-                            </div>
-                            <div class="mobile-banner">
+                            @endsandeshloop
+                            @sandeshloop(getHomepageBanner('home-sidebar-banner',1,2) as $banner)
+                                <div class="tablet-banner">
                                 <span>Advertisement</span>
                                 <a href="{{@$banner->url}}" target="_blank">
                                     <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
@@ -302,11 +309,6 @@
                             </div>
                             @endsandeshloop
                         </div>
-
-
-
-
-
                     </div>
                     <!-- End sidebar -->
 
@@ -536,8 +538,8 @@
         </div>
     </section>
     <!-- End block-wrapper-section -->
-    <!-- heading-news-section2
-        ================================================== -->
+
+
     <section class="heading-news2">
 
         <div class="container">
@@ -601,350 +603,133 @@
     <!-- End heading-news-section -->
 
 
-    <!-- block-wrapper-section
-        ================================================== -->
     <section class="block-wrapper">
         <div class="container">
             <div class="row">
-                <div class="col-sm-8">
+                <div class="col-md-8 col-sm-8">
 
                     <!-- block content -->
-                    <div class="block-content">
+                    <div class="block-content pb-0">
 
-                        <!-- masonry box -->
-                        <div class="masonry-box">
+                        <!-- carousel box -->
+                        <div class="carousel-box owl-wrapper">
 
                             <div class="title-section">
-                                <h1><span>Latest Articles</span></h1>
+                                <h1><span>देश/प्रदेश</span></h1>
                             </div>
 
-                            <div class="latest-articles iso-call">
+                            <div class="owl-carousel desh" data-num="2">
 
-                                <div class="news-post standard-post2 default-size">
-                                    <div class="post-gallery">
-                                        <img src="{{asset('assets/frontend/upload/news-posts/1.jpg')}}" alt="">
-                                    </div>
-                                    <div class="post-title">
-                                        <h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-                                        <ul class="post-tags">
-                                            <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                            <li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
-                                            <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                @foreach(getCategoryRelatedPost('देश/प्रदेश',0,8)->chunk(2) as $chunked)
 
-                                <div class="news-post standard-post2">
-                                    <div class="post-gallery">
-                                        <img src="{{asset('assets/frontend/upload/news-posts/2.jpg')}}" alt="">
+                                    <div class="item">
+                                        @foreach(@$chunked as $news)
+                                            <div class="news-post image-post2">
+                                            <div class="post-gallery">
+                                                <div class="veil">
+                                                    <img src="{{(@$news->image !== null) ?  asset('/images/blog/'.@$news->image) : asset('assets/backend/images/sandesh_today.png')}}" alt="post">
+                                                </div>
+                                                <div class="hover-box">
+                                                    <div class="inner-hover">
+                                                        <h2>
+                                                            <a href="{{ url(@$news->url()) }}">{{@$news->title}}</a>
+                                                        </h2>
+                                                        <ul class="post-tags">
+                                                            <li><i class="fa fa-clock-o"></i>{{@$news->publishedDateNepali()}}</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @endforeach
                                     </div>
-                                    <div class="post-title">
-                                        <h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-                                        <ul class="post-tags">
-                                            <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                            <li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
-                                            <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <div class="news-post standard-post2">
-                                    <div class="post-gallery">
-                                        <img src="{{asset('assets/frontend/upload/news-posts/3.jpg')}}" alt="">
-                                    </div>
-                                    <div class="post-title">
-                                        <h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-                                        <ul class="post-tags">
-                                            <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                            <li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
-                                            <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <div class="news-post standard-post2">
-                                    <div class="post-gallery">
-                                        <img src="{{asset('assets/frontend/upload/news-posts/4.jpg')}}" alt="">
-                                    </div>
-                                    <div class="post-title">
-                                        <h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-                                        <ul class="post-tags">
-                                            <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                            <li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
-                                            <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <div class="news-post standard-post2">
-                                    <div class="post-gallery">
-                                        <img src="{{asset('assets/frontend/upload/news-posts/5.jpg')}}" alt="">
-                                    </div>
-                                    <div class="post-title">
-                                        <h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-                                        <ul class="post-tags">
-                                            <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                            <li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
-                                            <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <div class="news-post standard-post2">
-                                    <div class="post-gallery">
-                                        <img src="{{asset('assets/frontend/upload/news-posts/6.jpg')}}" alt="">
-                                    </div>
-                                    <div class="post-title">
-                                        <h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-                                        <ul class="post-tags">
-                                            <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                            <li><i class="fa fa-user"></i>by <a href="#">John Doe</a></li>
-                                            <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                @endforeach
 
                             </div>
 
                         </div>
-                        <!-- End masonry box -->
+                        <!-- End carousel box -->
 
-                        <!-- pagination box -->
-                        <div class="pagination-box">
-                            <ul class="pagination-list">
-                                <li><a class="active" href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><span>...</span></li>
-                                <li><a href="#">9</a></li>
-                                <li><a href="#">Next</a></li>
-                            </ul>
-                            <p>Page 1 of 9</p>
+
+                        <div class="banner">
+                            @sandeshloop(getHomepageBanner('home-banner',2,1) as $banner)
+                                <div class="desktop-banner">
+                                    <span>Advertisement</span>
+                                    <a href="{{@$banner->url}}" target="_blank">
+                                        <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
+                                    </a>
+                                </div>
+                                <div class="tablet-banner">
+                                    <span>Advertisement</span>
+                                    <a href="{{@$banner->url}}" target="_blank">
+                                        <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
+                                    </a>
+                                </div>
+                                <div class="mobile-banner">
+                                    <span>Advertisement</span>
+                                    <a href="{{@$banner->url}}" target="_blank">
+                                        <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
+                                    </a>
+                                </div>
+                            @endsandeshloop
                         </div>
-                        <!-- End pagination box -->
-
                     </div>
                     <!-- End block content -->
 
                 </div>
 
-                <div class="col-sm-4">
+                <div class="col-md-4 col-sm-4">
 
                     <!-- sidebar -->
-                    <div class="sidebar">
+                    <div class="sidebar large-sidebar">
 
-                        <div class="widget tab-posts-widget">
-
-                            <ul class="nav nav-tabs" id="myTab">
-                                <li class="active">
-                                    <a href="#option1" data-toggle="tab">Popular</a>
-                                </li>
-                                <li>
-                                    <a href="#option2" data-toggle="tab">Recent</a>
-                                </li>
-                                <li>
-                                    <a href="#option3" data-toggle="tab">Top Reviews</a>
-                                </li>
-                            </ul>
-
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="option1">
-                                    <ul class="list-posts">
-                                        <li>
-                                            <img src="{{asset('assets/frontend/upload/news-posts/listw1.jpg')}}" alt="">
-                                            <div class="post-content">
-                                                <h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-                                                <ul class="post-tags">
-                                                    <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                </ul>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <img src="{{asset('assets/frontend/upload/news-posts/listw2.jpg')}}" alt="">
-                                            <div class="post-content">
-                                                <h2><a href="single-post.html">Sed arcu. Cras consequat. </a></h2>
-                                                <ul class="post-tags">
-                                                    <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                </ul>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <img src="{{asset('assets/frontend/upload/news-posts/listw3.jpg')}}" alt="">
-                                            <div class="post-content">
-                                                <h2><a href="single-post.html">Phasellus ultrices nulla quis nibh. Quisque a lectus.  </a></h2>
-                                                <ul class="post-tags">
-                                                    <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                </ul>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <img src="{{asset('assets/frontend/upload/news-posts/listw4.jpg')}}" alt="">
-                                            <div class="post-content">
-                                                <h2><a href="single-post.html">Donec consectetuer ligula vulputate sem tristique cursus. </a></h2>
-                                                <ul class="post-tags">
-                                                    <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                </ul>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <img src="{{asset('assets/frontend/upload/news-posts/listw5.jpg')}}" alt="">
-                                            <div class="post-content">
-                                                <h2><a href="single-post.html">Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi. </a></h2>
-                                                <ul class="post-tags">
-                                                    <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="tab-pane" id="option2">
-                                    <ul class="list-posts">
-
-                                        <li>
-                                            <img src="{{asset('assets/frontend/upload/news-posts/listw3.jpg')}}" alt="">
-                                            <div class="post-content">
-                                                <h2><a href="single-post.html">Phasellus ultrices nulla quis nibh. Quisque a lectus. </a></h2>
-                                                <ul class="post-tags">
-                                                    <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                </ul>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <img src="{{asset('assets/frontend/upload/news-posts/listw4.jpg')}}" alt="">
-                                            <div class="post-content">
-                                                <h2><a href="single-post.html">Donec consectetuer ligula vulputate sem tristique cursus. </a></h2>
-                                                <ul class="post-tags">
-                                                    <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                </ul>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <img src="{{asset('assets/frontend/upload/news-posts/listw5.jpg')}}" alt="">
-                                            <div class="post-content">
-                                                <h2><a href="single-post.html">Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.</a></h2>
-                                                <ul class="post-tags">
-                                                    <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <img src="{{asset('assets/frontend/upload/news-posts/listw1.jpg')}}" alt="">
-                                            <div class="post-content">
-                                                <h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-                                                <ul class="post-tags">
-                                                    <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                </ul>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <img src="{{asset('assets/frontend/upload/news-posts/listw2.jpg')}}" alt="">
-                                            <div class="post-content">
-                                                <h2><a href="single-post.html">Sed arcu. Cras consequat.</a></h2>
-                                                <ul class="post-tags">
-                                                    <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="tab-pane" id="option3">
-                                    <ul class="list-posts">
-
-                                        <li>
-                                            <img src="{{asset('assets/frontend/upload/news-posts/listw4.jpg')}}" alt="">
-                                            <div class="post-content">
-                                                <h2><a href="single-post.html">Donec consectetuer ligula vulputate sem tristique cursus. </a></h2>
-                                                <ul class="post-tags">
-                                                    <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                </ul>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <img src="{{asset('assets/frontend/upload/news-posts/listw1.jpg')}}" alt="">
-                                            <div class="post-content">
-                                                <h2><a href="single-post.html">Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. </a></h2>
-                                                <ul class="post-tags">
-                                                    <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                </ul>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <img src="{{asset('assets/frontend/upload/news-posts/listw3.jpg')}}" alt="">
-                                            <div class="post-content">
-                                                <h2><a href="single-post.html">Phasellus ultrices nulla quis nibh. Quisque a lectus.  </a></h2>
-                                                <ul class="post-tags">
-                                                    <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                </ul>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <img src="{{asset('assets/frontend/upload/news-posts/listw2.jpg')}}" alt="">
-                                            <div class="post-content">
-                                                <h2><a href="single-post.html">Sed arcu. Cras consequat.</a></h2>
-                                                <ul class="post-tags">
-                                                    <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                </ul>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <img src="{{asset('assets/frontend//upload/news-posts/listw5.jpg')}}" alt="">
-                                            <div class="post-content">
-                                                <h2><a href="single-post.html">Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.</a></h2>
-                                                <ul class="post-tags">
-                                                    <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="widget tags-widget">
-
+                        <div class="widget features-slide-widget">
                             <div class="title-section">
-                                <h1><span>Popular Tags</span></h1>
+                                <h1><span>विचार</span></h1>
                             </div>
+                            <div class="image-post-slider mb-30">
+                                <ul class="bxslider">
+                                    @sandeshloop(getCategoryRelatedPost('विचार',0,2) as $news)
+                                        <li>
+                                            <div class="news-post image-post2">
+                                                <div class="post-gallery">
+                                                    <div class="veil">
+                                                        <img src="{{(@$news->image !== null) ?  asset('/images/blog/'.@$news->image) : asset('assets/backend/images/sandesh_today.png')}}" alt="post">
+                                                    </div>
+                                                    <div class="hover-box">
+                                                        <div class="inner-hover">
+                                                            <h2>
+                                                                <a href="{{ url(@$news->url()) }}">{{@$news->title}}</a>
+                                                            </h2>
+                                                            <ul class="post-tags">
+                                                                <li><i class="fa fa-clock-o"></i>{{@$news->publishedDateNepali()}}</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    @endsandeshloop
 
-                            <ul class="tag-list">
-                                <li><a href="#">News</a></li>
-                                <li><a href="#">Fashion</a></li>
-                                <li><a href="#">Politics</a></li>
-                                <li><a href="#">Sport</a></li>
-                                <li><a href="#">Food</a></li>
-                                <li><a href="#">Videos</a></li>
-                                <li><a href="#">Business</a></li>
-                                <li><a href="#">Travel</a></li>
-                                <li><a href="#">World</a></li>
-                                <li><a href="#">Music</a></li>
+                                </ul>
+                            </div>
+                            <ul class="list-posts hide-2posts-md">
+                                @sandeshloop(getCategoryRelatedPost('विचार',2,5) as $news)
+                                    <li>
+                                        <div class="bichar">
+                                            <img class="bichar-image" src="{{(@$news->image !== null) ?  asset('/images/blog/'.@$news->image) : asset('assets/backend/images/sandesh_today.png')}}" alt="post">
+                                        </div>
+                                        <div class="post-content">
+                                            <h2>
+                                                <a href="{{ url(@$news->url()) }}">{{@$news->title}}</a>
+                                            </h2>
+                                            <ul class="post-tags">
+                                                <li><i class="fa fa-clock-o"></i>{{@$news->publishedDateNepali()}}</li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                @endsandeshloop
                             </ul>
-
-                        </div>
-
-                        <div class="banner home-banner">
-                            <div class="desktop-banner ">
-                                <span>Advertisement</span>
-                                <img src="{{asset('assets/frontend/upload/addsense/300x250.jpg')}}" alt="">
-                            </div>
-                            <div class="tablet-banner">
-                                <span>Advertisement</span>
-                                <img src="{{asset('assets/frontend/upload/addsense/200x200.jpg')}}" alt="">
-                            </div>
-                            <div class="mobile-banner">
-                                <span>Advertisement</span>
-                                <img src="{{asset('assets/frontend/upload/addsense/300x250.jpg')}}" alt="">
-                            </div>
                         </div>
 
                     </div>
@@ -956,5 +741,5 @@
 
         </div>
     </section>
-    <!-- End block-wrapper-section -->
+
 @endsection

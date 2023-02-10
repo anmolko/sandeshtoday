@@ -1410,7 +1410,7 @@ section.feature-video .owl-theme .owl-controls .owl-buttons div.owl-next:hover:a
 /* heading news style */
 .heading-news2 {
   padding: 10px 0 35px;
-  background: #060b47;
+  background: #191e5f;
 }
 .heading-news2 .ticker-news-box {
   padding-bottom: 10px;
@@ -6104,9 +6104,9 @@ footer .footer-last-line nav.footer-nav ul li:first-child:before {
     padding: 0 20px;
   }
   .sidebar .image-post-slider .news-post .hover-box .inner-hover h2 {
-    font-size: 14px;
-    line-height: 18px;
-    max-height: 36px;
+      font-size: 20px;
+      line-height: 28px;
+      max-height: 85px;
   }
   .sidebar .image-post-slider .news-post .hover-box .inner-hover .post-tags li:last-child {
     display: none;
@@ -6115,7 +6115,7 @@ footer .footer-last-line nav.footer-nav ul li:first-child:before {
     display: none;
   }
   .sidebar .tab-posts-widget ul.nav-tabs li a {
-    font-size: 18px;
+    font-size: 16px;
   }
   .sidebar .tab-posts-widget .tab-pane ul.list-posts > li {
     padding-left: 10px;
@@ -6221,10 +6221,51 @@ footer .footer-last-line nav.footer-nav ul li:first-child:before {
         max-height: 79px;
     }
 
-    .artha-section .image-post2 .hover-box h2{
-        max-height: 70px;
+    .sidebar-content ul.list-posts > li .post-content h2{
+        max-height: 85px;
+        overflow: scroll;
         font-size: 16px;
+        line-height: 18px;
+    }
+    .hide-2posts-md li:last-child{
+        display: none;
+    }
+    .hide-2posts-md li:nth-child(2){
+        display: none;
+    }
+
+    ul.hide-2posts-md > li .post-content h2{
+        max-height: 80px;
+        line-height: 20px;
+        font-size: 16px;
+    }
+
+    .sidebar .tab-posts-widget .tab-pane ul.list-posts > li img{
+        max-width: 100px;
+    }
+    .image-post2 .hover-box h2{
+        max-height: 100px;
+    }
+    .tagged{
+        display: none;
+    }
+
+    .artha-section .image-post2 .hover-box h2{
+        max-height: 95px;
+        font-size: 18px;
+        line-height: 25px;
+        margin-top: 0px;
+    }
+
+    .desh .image-post2 .hover-box h2{
+        font-size: 20px;
         line-height: 24px;
+        max-height: 95px;
+        margin-top: 0px;
+    }
+
+    .desh ul.post-tags{
+        display:none;
     }
 }
 
@@ -6803,4 +6844,22 @@ ul.demo-list li a i {
 
 .pt-15{
     padding-top: 15px;
+}
+.mb-30{
+    margin-bottom:30px
+}
+
+.bichar{
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    border: solid 2px #fff;
+    overflow: hidden;
+    float: left;
+}
+
+.bichar-image{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
