@@ -1410,7 +1410,7 @@ section.feature-video .owl-theme .owl-controls .owl-buttons div.owl-next:hover:a
 /* heading news style */
 .heading-news2 {
   padding: 10px 0 35px;
-  background: #222222;
+  background: #060b47;
 }
 .heading-news2 .ticker-news-box {
   padding-bottom: 10px;
@@ -2457,7 +2457,7 @@ section.big-slider .big-bxslider li .image-post2 .hover-box .inner-hover h2 {
   -o-transition: all 0.2s ease-in-out;
   display: block;
   padding: 14px 3px;
-  background: #1f267c;
+  background: #060b47;
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   -o-border-radius: 0px;
@@ -2908,9 +2908,9 @@ a.read-more-button:hover {
   font-size: 13px;
   font-family: "Mukta","Glegoo", sans-serif;
   font-weight: 700;
-  line-height: 20px;
+    line-height: 24px;
   margin: 0 0 10px;
-  font-size: 15px;
+  font-size: 20px;
   text-transform: uppercase;
 }
 .image-post .hover-box .inner-hover h2 a {
@@ -2973,8 +2973,8 @@ a.read-more-button:hover {
 span.top-stories {
   color: #ffffff;
   display: inline-block;
-  font-size: 11px;
-  font-family: "Mukta","Glegoo", sans-serif;
+  font-size: 14px;
+  font-family: "Glegoo", sans-serif;
   font-weight: 700;
   text-transform: uppercase;
   padding: 4px 10px;
@@ -3319,6 +3319,9 @@ ul.list-posts > li .post-content > a {
 ul.list-posts > li .post-content > a:hover {
   opacity: 0.7;
 }
+
+
+
 ul.list-posts > li .post-content h2 {
     color: #333333;
     font-family: "Mukta","Glegoo", sans-serif;
@@ -6211,6 +6214,20 @@ footer .footer-last-line nav.footer-nav ul li:first-child:before {
     min-width: auto;
   }
 }
+@media only screen and (min-width: 500px) and (max-width: 768px) {
+    .artha-section ul.list-posts > li .post-content h2{
+        font-size: 16px;
+        line-height: 20px;
+        max-height: 79px;
+    }
+
+    .artha-section .image-post2 .hover-box h2{
+        max-height: 70px;
+        font-size: 16px;
+        line-height: 24px;
+    }
+}
+
 @media (max-width: 767px) {
     .featured-post-2  {
         padding: 0;
@@ -6446,10 +6463,13 @@ footer .footer-last-line nav.footer-nav ul li:first-child:before {
   }
   section.big-slider .big-bxslider li .image-post2 .hover-box .inner-hover h2,
   .image-post2 .hover-box h2 {
-    font-size: 15px;
-    line-height: 18px;
-    max-height: 36px;
+      font-size: 18px;
+      line-height: 24px;
+      max-height: 95px;
   }
+    ul.list-posts > li .post-content h2{
+        max-height: 79px;
+    }
   .other-posts-box {
     padding: 0;
   }
@@ -6779,4 +6799,8 @@ ul.demo-list li a i {
 
 .pb-0{
     padding-bottom: 0px!important;
+}
+
+.pt-15{
+    padding-top: 15px;
 }

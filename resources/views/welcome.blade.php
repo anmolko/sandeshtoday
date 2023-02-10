@@ -370,7 +370,7 @@
                                 <h1><span class="world">अर्थ</span></h1>
                             </div>
 
-                            <div class="owl-carousel" data-num="2">
+                            <div class="owl-carousel artha-section" data-num="2">
 
                                 <div class="item">
                                     @foreach(getCategoryRelatedPost('अर्थ',0,5) as $news)
@@ -463,7 +463,6 @@
 
                                     @endforeach
                                 </div>
-
                             </div>
 
                         </div>
@@ -537,184 +536,70 @@
         </div>
     </section>
     <!-- End block-wrapper-section -->
-
-
+    <!-- heading-news-section2
+        ================================================== -->
     <section class="heading-news2">
 
         <div class="container">
-            <div class="title-section white">
+
+            <div class="title-section white pt-15">
                 <h1><span>राजनीति</span></h1>
             </div>
-
             <div class="iso-call heading-news-box">
                 <div class="image-slider snd-size">
-                    <span class="top-stories">राजनीति</span>
+                    <span class="top-stories"> भर्खरै </span>
                     <ul class="bxslider">
-                        @foreach(getCategoryRelatedPost('राजनीति',0,3) as $news)
+                       @sandeshloop(getCategoryRelatedPost('राजनीति',0,3) as $news)
                             <li>
                                 <div class="news-post image-post">
-                                    <img src="{{(@$news->image !== null) ?  asset('/images/blog/'.@$news->image) : asset('assets/backend/images/darpan_dainik.png')}}" alt="post">
+                                    <div class="veil">
+                                        <img src="{{(@$news->image !== null) ?  asset('/images/blog/'.@$news->image) : asset('assets/backend/images/sandesh_today.png')}}" alt="post">
+                                    </div>
                                     <div class="hover-box">
                                         <div class="inner-hover">
                                             <h2>
                                                 <a href="{{ url(@$news->url()) }}">{{@$news->title}}</a>
                                             </h2>
-                                            <ul class="post-tags">
+                                            <ul class="post-tags tagged">
                                                 <li><i class="fa fa-clock-o"></i>{{@$news->publishedDateNepali()}}</li>
+{{--                                                <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>--}}
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                             </li>
-                        @endforeach
-
+                        @endsandeshloop
                     </ul>
                 </div>
                 @foreach(getCategoryRelatedPost('राजनीति',3,4) as $news)
-                    @if($loop->first)
-                        <div class="news-post image-post default-size">
-                            <img src="{{(@$news->image !== null) ?  asset('/images/blog/'.@$news->image) : asset('assets/backend/images/darpan_dainik.png')}}" alt="post">
+                    <div class="news-post image-post {{($loop->first) ? "default-size":""}}">
+                        <div class="veil">
+                            <img src="{{(@$news->image !== null) ?  asset('/images/blog/'.@$news->image) : asset('assets/backend/images/sandesh_today.png')}}" alt="post">
+                        </div>
                         <div class="hover-box">
                             <div class="inner-hover">
                                 <h2>
                                     <a href="{{ url(@$news->url()) }}">{{@$news->title}}</a>
                                 </h2>
-                                <ul class="post-tags">
+                                <ul class="post-tags tagged">
                                     <li><i class="fa fa-clock-o"></i>{{@$news->publishedDateNepali()}}</li>
+{{--                                    <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>--}}
                                 </ul>
-                                <p>Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis.</p>
+{{--                                <p>Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis.</p>--}}
                             </div>
                         </div>
                     </div>
-                    @else
-                        <div class="news-post image-post">
-                            <img src="{{(@$news->image !== null) ?  asset('/images/blog/'.@$news->image) : asset('assets/backend/images/darpan_dainik.png')}}" alt="post">
-                            <div class="hover-box">
-                                <div class="inner-hover">
-                                    <h2>
-                                        <a href="{{ url(@$news->url()) }}">{{@$news->title}}</a>
-                                    </h2>
-                                    <ul class="post-tags">
-                                        <li><i class="fa fa-clock-o"></i>{{@$news->publishedDateNepali()}}</li>
-                                    </ul>
-                                    <p>Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis.</p>
-                                </div>
-                            </div>
-                        </div>
-                    @endif
-
                 @endforeach
 
 
+
+
             </div>
         </div>
 
     </section>
+    <!-- End heading-news-section -->
 
-    <!-- feature-video-section
-        ================================================== -->
-    <section class="feature-video">
-        <div class="container">
-            <div class="title-section white">
-                <h1><span>Featured Video</span></h1>
-            </div>
-
-            <div class="features-video-box owl-wrapper">
-                <div class="owl-carousel" data-num="4">
-
-                    <div class="item news-post video-post">
-                        <img alt="" src="{{asset('assets/frontend/upload/news-posts/video1.jpg')}}">
-                        <a href="https://www.youtube.com/watch?v=LL59es7iy8Q" class="video-link"><i class="fa fa-play-circle-o"></i></a>
-                        <div class="hover-box">
-                            <h2><a href="single-post.html">Lorem ipsum dolor sit consectetuer adipiscing elit. Donec odio. </a></h2>
-                            <ul class="post-tags">
-                                <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="item news-post video-post">
-                        <img alt="" src="{{asset('assets/frontend/upload/news-posts/video2.jpg')}}">
-                        <a href="https://www.youtube.com/watch?v=LL59es7iy8Q" class="video-link"><i class="fa fa-play-circle-o"></i></a>
-                        <div class="hover-box">
-                            <h2><a href="single-post.html">Quisque volutpat mattis eros. </a></h2>
-                            <ul class="post-tags">
-                                <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="item news-post video-post">
-                        <img alt="" src="{{asset('assets/frontend/upload/news-posts/video3.jpg')}}">
-                        <a href="https://www.youtube.com/watch?v=LL59es7iy8Q" class="video-link"><i class="fa fa-play-circle-o"></i></a>
-                        <div class="hover-box">
-                            <h2><a href="single-post.html">Nullam malesuada erat ut turpis. </a></h2>
-                            <ul class="post-tags">
-                                <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="item news-post video-post">
-                        <img alt="" src="{{asset('assets/frontend/upload/news-posts/video4.jpg')}}">
-                        <a href="https://www.youtube.com/watch?v=LL59es7iy8Q" class="video-link"><i class="fa fa-play-circle-o"></i></a>
-                        <div class="hover-box">
-                            <h2><a href="single-post.html">Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</a></h2>
-                            <ul class="post-tags">
-                                <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="item news-post video-post">
-                        <img alt="" src="{{asset('assets/frontend/upload/news-posts/video1.jpg')}}">
-                        <a href="https://www.youtube.com/watch?v=LL59es7iy8Q" class="video-link"><i class="fa fa-play-circle-o"></i></a>
-                        <div class="hover-box">
-                            <h2><a href="single-post.html">Lorem ipsum dolor sit consectetuer adipiscing elit. Donec odio. </a></h2>
-                            <ul class="post-tags">
-                                <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="item news-post video-post">
-                        <img alt="" src="{{asset('assets/frontend/upload/news-posts/video2.jpg')}}">
-                        <a href="https://www.youtube.com/watch?v=LL59es7iy8Q" class="video-link"><i class="fa fa-play-circle-o"></i></a>
-                        <div class="hover-box">
-                            <h2><a href="single-post.html">Quisque volutpat mattis eros. </a></h2>
-                            <ul class="post-tags">
-                                <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="item news-post video-post">
-                        <img alt="" src="{{asset('assets/frontend/upload/news-posts/video3.jpg')}}">
-                        <a href="https://www.youtube.com/watch?v=LL59es7iy8Q" class="video-link"><i class="fa fa-play-circle-o"></i></a>
-                        <div class="hover-box">
-                            <h2><a href="single-post.html">Nullam malesuada erat ut turpis. </a></h2>
-                            <ul class="post-tags">
-                                <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="item news-post video-post">
-                        <img alt="" src="{{asset('assets/frontend/upload/news-posts/video4.jpg')}}">
-                        <a href="https://www.youtube.com/watch?v=LL59es7iy8Q" class="video-link"><i class="fa fa-play-circle-o"></i></a>
-                        <div class="hover-box">
-                            <h2><a href="single-post.html">Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</a></h2>
-                            <ul class="post-tags">
-                                <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End feature-video-section -->
 
     <!-- block-wrapper-section
         ================================================== -->
