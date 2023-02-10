@@ -42,9 +42,10 @@ class VideoGalleryController extends Controller
         $type = count($request->input('url'));
         for ($i=0;$i<$type;$i++){
             $data=[
-                'url'       => $request->input('url')[$i],
-                'type'            => $request->input('type')[$i],
-                'created_by'      => Auth::user()->id,
+                'title'         => $request->input('title')[$i],
+                'url'           => $request->input('url')[$i],
+                'type'          => $request->input('type')[$i],
+                'created_by'    => Auth::user()->id,
             ];
             $status = VideoGallery::create($data);
         }
@@ -99,6 +100,7 @@ class VideoGalleryController extends Controller
         for ($i=0;$i<$type;$i++){
             if($request->input('id')[$i] == null){
                 $data=[
+                    'title'         => $request->input('title')[$i],
                     'url'            => $request->input('url')[$i],
                     'type'           => $request->input('type')[$i],
                     'created_by'     => Auth::user()->id,
@@ -107,6 +109,7 @@ class VideoGalleryController extends Controller
             }
             else{
                 $video               = VideoGallery::find($request->input('id')[$i]);
+                $video->title        = $request->input('title')[$i];
                 $video->url          = $request->input('url')[$i];
                 $video->type         = $request->input('type')[$i];
                 $video->updated_by   = Auth::user()->id;

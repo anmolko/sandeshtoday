@@ -9,5 +9,5 @@ class VideoGallery extends Model
 {
     use HasFactory;
     protected $table ='video_gallery';
-    protected $fillable = ['id','url','type','created_by','updated_by'];
+    protected $fillable = ['id','title','url','type','created_by','updated_by'];
 }

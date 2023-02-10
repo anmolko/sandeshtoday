@@ -59,7 +59,14 @@
                                                     <div id="multi-fields">
                                                         @foreach($video_section_elements as $key=>$value)
                                                             <div class="multi-field custom-card" style="border-bottom: 1px dotted #e3e3e3; margin-bottom: 1rem ">
-                                                                <label>Video Type </label>
+                                                                <label>Title <span class="text-danger">*</span></label>
+                                                                <div class="input-group mb-3">
+                                                                    <input type="text" class="form-control" name="title[]" value="{{@$value->title}}" required>
+                                                                    <div class="invalid-feedback">
+                                                                        Please enter the title.
+                                                                    </div>
+                                                                </div>
+                                                                <label>Video Type <span class="text-danger">*</span></label>
                                                                 <div class="input-group mb-3">
                                                                     <select class="form-control shadow-none" name="type[]" id="type_0" required readonly>
                                                                         <option value="youtube" {{($value->type == 'youtube') ? "selected":""}}> YouTube </option>
@@ -86,6 +93,13 @@
                                                 @else
                                                     <div id="multi-fields">
                                                         <div class="multi-field custom-card mt-2" style="border-bottom: 1px dotted #e3e3e3; ">
+                                                            <label>Title <span class="text-danger">*</span></label>
+                                                            <div class="input-group mb-3">
+                                                                <input type="text" class="form-control" name="name" required>
+                                                                <div class="invalid-feedback">
+                                                                    Please enter the name.
+                                                                </div>
+                                                            </div>
                                                             <label>Video Type </label>
                                                             <div class="input-group mb-3">
                                                                 <select class="form-control shadow-none" name="type[]" id="type_0" required readonly>

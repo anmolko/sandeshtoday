@@ -759,12 +759,11 @@
                                     <img alt="" src="{{ getYoutubeDetails(@$video->url) }}" />
                                 </div>
                                 <a href="{{@$video->url}}" class="video-link"><i class="fa fa-play-circle-o"></i></a>
-{{--                                <div class="hover-box">--}}
-{{--                                    <h2>--}}
-{{--                                        <a href="single-post.html">--}}
-{{--                                        </a>--}}
-{{--                                    </h2>--}}
-{{--                                </div>--}}
+                                <div class="hover-box">
+                                    <h2><a> {{@$video->title}}</a>
+
+                                    </h2>
+                                </div>
                             </div>
                         @endforeach
 

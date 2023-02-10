@@ -3357,23 +3357,23 @@ ul.list-posts > li .post-content h2 a:hover {
   left: 0;
   width: 100%;
   padding: 10px;
-  background: rgba(34, 34, 34, 0.8);
-  transition: all 0.2s ease-in-out;
+    background: rgb(81 86 148);
+    transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   -webkit-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
 }
 .image-post3 .hover-box h2,
 .video-post .hover-box h2 {
-  color: #333333;
-  font-family: "Mukta","Glegoo", sans-serif;
-  font-weight: 700;
-  line-height: 20px;
-  margin: 0 0 10px;
-  font-size: 13px;
-  max-height: 40px;
-  overflow: hidden;
-  margin-bottom: 0;
+    color: #333333;
+    font-family: "Mukta","Glegoo", sans-serif;
+    font-weight: 700;
+    line-height: 26px;
+    margin: 0 0 10px;
+    font-size: 18px;
+    max-height: 50px;
+    overflow: hidden;
+    margin-bottom: 0;
 }
 .image-post3 .hover-box h2 a,
 .video-post .hover-box h2 a {
