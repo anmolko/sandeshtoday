@@ -319,7 +319,7 @@
     </section>
     <!-- End block-wrapper-section -->
 
-
+    <!-- block-wrapper-section  SAMACHAR -->
     <section class="features-today">
         <div class="container">
 
@@ -355,7 +355,7 @@
     </section>
     <!-- End features-today-section -->
 
-    <!-- block-wrapper-section
+    <!-- block-wrapper-section  ARTHA
         ================================================== -->
     <section class="block-wrapper">
         <div class="container">
@@ -539,7 +539,7 @@
     </section>
     <!-- End block-wrapper-section -->
 
-
+    {{-- RAJNITI --}}
     <section class="heading-news2">
 
         <div class="container">
@@ -602,7 +602,7 @@
     </section>
     <!-- End heading-news-section -->
 
-
+    {{-- DESH PRADESH--}}
     <section class="block-wrapper">
         <div class="container">
             <div class="row">
@@ -741,5 +741,38 @@
 
         </div>
     </section>
+
+    @if(count($video_all)>0)
+        <!-- feature-video-section -->
+        <section class="feature-video">
+            <div class="container">
+                <div class="title-section">
+                    <h1><span>भिडियो</span></h1>
+                </div>
+
+                <div class="features-video-box owl-wrapper">
+                    <div class="owl-carousel" data-num="3">
+
+                        @foreach(@$video_all as $video)
+                            <div class="item news-post video-post">
+                                <div class="veil">
+                                    <img alt="" src="{{ getYoutubeDetails(@$video->url) }}" />
+                                </div>
+                                <a href="{{@$video->url}}" class="video-link"><i class="fa fa-play-circle-o"></i></a>
+{{--                                <div class="hover-box">--}}
+{{--                                    <h2>--}}
+{{--                                        <a href="single-post.html">--}}
+{{--                                        </a>--}}
+{{--                                    </h2>--}}
+{{--                                </div>--}}
+                            </div>
+                        @endforeach
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End feature-video-section -->
+    @endif
 
 @endsection

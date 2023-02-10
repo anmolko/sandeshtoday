@@ -280,20 +280,31 @@ if (! function_exists('checkEven')) {
     }
 }
 
-if (! function_exists('getYoutubeThumbnail')) {
+if (! function_exists('getYoutubeDetails')) {
     /**
      * returns youtube thumbnail based on its link
      *
      * @param  string  $link
+     * @param  string  $type
      * @return string
      */
-    function getYoutubeThumbnail($link)
+    function getYoutubeDetails($link)
     {
-        $video     = explode("v=", $link);
-        $video_id  = $video[1];
-        return "https://img.youtube.com/vi/".$video_id."/hqdefault.jpg";
+        $video_id = explode("?v=", $link);
+        if (!isset($video_id[1])) {
+            $video_id = explode("youtu.be/", $link);
+        }
+        $youtubeID = $video_id[1];
+        if (empty($video_id[1])) {
+            $video_id = explode("/v/", $link);
+        }
+        $video_id       = explode("&", $video_id[1]);
+        $youtubeVideoID = $video_id[0];
+         return "https://img.youtube.com/vi/".$youtubeVideoID."/hqdefault.jpg";
+
     }
 }
+
 if (! function_exists('getVimeoThumbnail')) {
     /**
      * returns vimeo thumbnail based on its link

@@ -848,7 +848,7 @@ p {
 }
 .title-section h1 {
   color: #2c3593;
-  font-size: 24px;
+  font-size: 26px;
   font-family: "Mukta","Glegoo", sans-serif;
   font-weight: 700;
   margin: 0 0 30px;
@@ -1290,7 +1290,7 @@ div.block-content:after {
 /* feature-video style */
 section.feature-video {
   padding: 30px 0 45px;
-  background: #222222;
+  background: #fafafa;
   overflow: hidden;
 }
 section.feature-video .owl-carousel {
@@ -1308,7 +1308,7 @@ section.feature-video .features-video-box:before {
   content: '';
   width: 10000px;
   height: 100%;
-  background: rgba(34, 34, 34, 0.7);
+  background: rgb(33 36 76 / 45%);
   right: 100%;
   top: 0;
   z-index: 2;
@@ -1318,7 +1318,7 @@ section.feature-video .features-video-box:after {
   content: '';
   width: 10000px;
   height: 100%;
-  background: rgba(34, 34, 34, 0.7);
+  background: rgb(33 36 76 / 45%);
   left: 100%;
   top: 0;
 }
@@ -3412,12 +3412,12 @@ ul.list-posts > li .post-content h2 a:hover {
   -webkit-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
   position: absolute;
-  top: 20px;
-  left: 20px;
-  color: #ffffff;
-  font-size: 30px;
-  padding: 1px;
-  outline: none;
+    top: 88px;
+    left: 150px;
+    color: #ffffff;
+    font-size: 75px;
+    padding: 1px;
+    outline: none;
 }
 .video-post a:hover {
   opacity: 0.6;
