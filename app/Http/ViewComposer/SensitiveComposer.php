@@ -5,6 +5,7 @@ namespace App\Http\ViewComposer;
 
 use App\Models\Ads;
 use App\Models\Blog;
+use App\Models\Category;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\View\View;
@@ -47,6 +48,7 @@ class SensitiveComposer
        $above_featured_ban   =  Ads::where('placement','home-above-featured-post')->where('status','active')->first();
        $below_featured_ban   =  Ads::where('placement','home-below-featured-post')->where('status','active')->first();
        $most_commented       =  Blog::has('comments', '>', 0)->withCount('comments')->orderBy('comments_count', 'desc')->take(6)->get();
+       $footer_cat           =  Category::has('blogs', '>', 0)->withCount('blogs')->orderBy('blogs_count', 'desc')->take(10)->get();
        $this_week            =  Blog::where('created_at', '>=', $sevenDaysAgo)->orderBy('created_at', 'desc')->take(8)->get();
 
        if(!empty(@$topNavItems)){
@@ -127,6 +129,7 @@ class SensitiveComposer
            ->with('below_featured', $below_featured_ban)
            ->with('popular_comments', $most_commented)
            ->with('footer_news', $this_week)
+           ->with('footer_categories', $footer_cat)
            ->with('latestPosts', $latest_news);
     }
 }

@@ -43,11 +43,15 @@
     <div class="container">
         <div class="footer-widgets-part">
             <div class="row">
-                <div class="col-md-3">
-                    <div class="widget text-widget">
-                        <h1>About</h1>
-                        <p>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis. </p>
-                        <p>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. </p>
+                <div class="col-md-4">
+                    <div class="widget text-widget footer-descp">
+                        <h1>हाम्रो बारेमा</h1>
+                        @if(!empty(@$setting_data->website_description)) {!! ucfirst(@$setting_data->website_description) !!} @else
+                            <p><a href="/">Sandesh today</a> is a news and entertainment channel that engages viewers through live and often quickly
+                                interactions between celebs, journalists and special guests. News is
+                                refreshment for people who don’t have time for their daily dose of information.
+                                Sandesh today offers you a solution to understanding yourself better.</p>
+                        @endif
                     </div>
                     <div class="widget social-widget">
                         <h1>Stay Connected</h1>
@@ -71,99 +75,101 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="widget posts-widget">
-                        <h1>Random Post</h1>
-                        <ul class="list-posts">
-                            <li>
-                                <img src="upload/news-posts/listw4.jpg" alt="">
-                                <div class="post-content">
-                                    <a href="travel.html">travel</a>
-                                    <h2><a href="single-post.html">Pellentesque odio nisi, euismod in ultricies in, diam. </a></h2>
-                                    <ul class="post-tags">
-                                        <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                    </ul>
-                                </div>
-                            </li>
+                    <div class="widget categories-widget">
+                        <h1>समाचार</h1>
+                        <ul class="category-list">
+                            @foreach(@$footer_categories as $category)
+                                <li>
+                                    <a href="{{ route('blog.category',@$category->slug) }}">{{@$category->name}} <span>{{@$category->blogs_count}}</span></a>
+                                </li>
+                            @endforeach
 
-                            <li>
-                                <img src="upload/news-posts/listw1.jpg" alt="">
-                                <div class="post-content">
-                                    <a href="business.html">business</a>
-                                    <h2><a href="single-post.html">Sed arcu. Cras consequat.</a></h2>
-                                    <ul class="post-tags">
-                                        <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                    </ul>
-                                </div>
-                            </li>
-
-                            <li>
-                                <img src="upload/news-posts/listw3.jpg" alt="">
-                                <div class="post-content">
-                                    <a href="tech.html">tech</a>
-                                    <h2><a href="single-post.html">Phasellus ultrices nulla quis nibh. Quisque a lectus.</a></h2>
-                                    <ul class="post-tags">
-                                        <li><i class="fa fa-clock-o"></i>27 may 2013</li>
-                                    </ul>
-                                </div>
-                            </li>
                         </ul>
                     </div>
+                </div>
+                <div class="col-md-2">
+                    @if(@$footer_nav_data1 !== null)
+
+                    <div class="widget categories-widget">
+                        <h1>@if(@$footer_nav_title1 !== null) {{@$footer_nav_title1}} @else सन्देश टूडे @endif</h1>
+                        <ul class="category-list single-category">
+                            <li><a href="/"> होम पेज </a></li>
+
+                            @if(!empty($footer_nav_data1))
+                                @foreach($footer_nav_data1 as $nav)
+                                    @if(!empty($nav->children[0]))
+                                    @else
+                                        @if($nav->type == 'custom')
+                                            <li>
+                                                <a href="{{ (str_contains(@$nav->slug,'http')) ? $nav->slug: '/'.$nav->slug }}"
+                                                   @if($nav->target == NULL)  @else target="{{$nav->target}}" @endif
+                                                > @if($nav->name == NULL) {{$nav->title}} @else {{$nav->name}} @endif </a>
+                                            </li>
+                                        @elseif($nav->type == 'category')
+                                            <li>
+                                                <a href="{{url('category')}}/{{$nav->slug}}"
+                                                   @if($nav->target == NULL)  @else target="{{$nav->target}}" @endif
+                                                > @if($nav->name == NULL) {{$nav->title}} @else {{$nav->name}} @endif </a>
+                                            </li>
+                                        @else
+                                            <li>
+                                                <a href="{{url('/')}}/{{$nav->slug}}"
+                                                   @if($nav->target == NULL)  @else target="{{$nav->target}}" @endif
+                                                > @if($nav->name == NULL) {{$nav->title}} @else {{$nav->name}} @endif </a>
+                                            </li>
+                                        @endif
+                                    @endif
+                                @endforeach
+                            @endif
+                        </ul>
+                    </div>
+                    @endif
                 </div>
                 <div class="col-md-3">
                     <div class="widget categories-widget">
-                        <h1>Hot Categories</h1>
-                        <ul class="category-list">
-                            <li>
-                                <a href="#">Business <span>12</span></a>
-                            </li>
-                            <li>
-                                <a href="#">Sport <span>26</span></a>
-                            </li>
-                            <li>
-                                <a href="#">LifeStyle <span>55</span></a>
-                            </li>
-                            <li>
-                                <a href="#">Fashion <span>37</span></a>
-                            </li>
-                            <li>
-                                <a href="#">Technology <span>62</span></a>
-                            </li>
-                            <li>
-                                <a href="#">Music <span>10</span></a>
-                            </li>
-                            <li>
-                                <a href="#">Culture <span>43</span></a>
-                            </li>
-                            <li>
-                                <a href="#">Design <span>74</span></a>
-                            </li>
-                            <li>
-                                <a href="#">Entertainment <span>11</span></a>
-                            </li>
-                            <li>
-                                <a href="#">video <span>41</span></a>
-                            </li>
-                            <li>
-                                <a href="#">Travel <span>11</span></a>
-                            </li>
-                            <li>
-                                <a href="#">Food <span>29</span></a>
-                            </li>
+                        <h1>सम्पर्क ठेगाना</h1>
+                        <a href="/">
+                            <img src="<?php if(@$setting_data->logo_white){?>{{asset('/images/settings/'.@$setting_data->logo_white)}}<?php } ?>" alt="Logo">
+                        </a>
+
+                        <ul class="category-list single-category address-detail" style="margin-top: 20px;">
+                            @if(@$setting_data->address !== null)
+                                <li>
+                                    <i class="fa fa-location-arrow"></i>
+                                    <span>{{@$setting_data->address}}</span>
+                                </li>
+                            @endif
+                            @if(@$setting_data->phone !== null)
+                                <li>
+                                    <i class="fa fa-phone"></i>
+                                    <span>
+                                        <a href="tel:@if(!empty(@$setting_data->phone)) {{@$setting_data->phone}} @else +9771238798 @endif">
+                                        {{@$setting_data->phone}}
+                                        </a>
+                                    </span>
+                                </li>
+                            @endif
+                            @if(@$setting_data->mobile !== null)
+                                <li>
+                                    <i class="fa fa-mobile"></i>
+                                    <span>
+                                        <a href="tel:@if(!empty(@$setting_data->mobile)) {{@$setting_data->mobile}} @else +9771238798 @endif">
+                                        {{@$setting_data->mobile}}
+                                        </a>
+                                    </span>
+                                </li>
+                            @endif
+                            @if(@$setting_data->email !== null)
+                                <li>
+                                    <i class="fa fa-keyboard-o"></i>
+                                    <span>
+                                        <a href="mailto:@if(!empty(@$setting_data->email)) {{@$setting_data->email}} @else example@gmail.com @endif">
+                                            {{@$setting_data->email}}
+                                        </a>
+                                    </span>
+                                </li>
+                             @endif
                         </ul>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="widget flickr-widget">
-                        <h1>Flickr Photos</h1>
-                        <ul class="flickr-list">
-                            <li><a href="#"><img src="upload/flickr/1.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="upload/flickr/2.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="upload/flickr/3.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="upload/flickr/4.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="upload/flickr/5.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="upload/flickr/6.jpg" alt=""></a></li>
-                        </ul>
-                        <a href="#">View more photos...</a>
                     </div>
                 </div>
             </div>
