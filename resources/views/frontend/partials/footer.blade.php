@@ -1,3 +1,42 @@
+
+<section class="heading-news3">
+    <div class="title-section" style="text-align: center">
+        <h1><span>छुटाउनुभयो कि ?</span></h1>
+    </div>
+    <div class="heading-news-box">
+
+
+        <div class="owl-wrapper">
+            <div class="owl-carousel" data-num="4">
+                @foreach($footer_news as $news)
+                    <div class="item">
+                        <div class="news-post image-post2">
+                            <div class="post-gallery">
+                                <div class="veil">
+                                    <img src="{{(@$news->image !== null) ?  asset('/images/blog/'.@$news->image) : asset('assets/backend/images/sandesh_today.png')}}" alt="post">
+                                </div>
+                                <div class="hover-box">
+                                    <div class="inner-hover">
+                                        <h2>
+                                            <a href="{{ url(@$news->url()) }}">{{@$news->title}}</a>
+                                        </h2>
+                                        <ul class="post-tags tagged">
+                                            <li><i class="fa fa-clock-o"></i>{{@$news->publishedDateNepali()}}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
 <!-- footer
         ================================================== -->
 <footer>

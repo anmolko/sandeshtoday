@@ -1659,7 +1659,7 @@ section.feature-video .owl-theme .owl-controls .owl-buttons div.owl-next:hover:a
 /*-------------------------------------------------*/
 .heading-news3 {
   padding: 10px 0;
-  border-top: 1px solid #f0f0f0;
+  /*border-top: 1px solid #f0f0f0;*/
   border-bottom: 1px solid #f0f0f0;
   background: #fff;
 }
@@ -1690,11 +1690,11 @@ section.feature-video .owl-theme .owl-controls .owl-buttons div.owl-next:hover:a
   z-index: 2;
 }
 .heading-news3 .news-post.image-post2 .hover-box .inner-hover h2 {
-  font-size: 24px;
-  text-transform: uppercase;
-  font-weight: 900;
-  line-height: 30px;
-  max-height: 60px;
+    font-size: 22px;
+    text-transform: uppercase;
+    font-weight: 900;
+    line-height: 26px;
+    max-height: 110px;
 }
 .heading-news3 .news-post.image-post2:hover .hover-box {
   background: rgba(255, 255, 255, 0.9);

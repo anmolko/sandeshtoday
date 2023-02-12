@@ -47,6 +47,7 @@ class SensitiveComposer
        $above_featured_ban   =  Ads::where('placement','home-above-featured-post')->where('status','active')->first();
        $below_featured_ban   =  Ads::where('placement','home-below-featured-post')->where('status','active')->first();
        $most_commented       =  Blog::has('comments', '>', 0)->withCount('comments')->orderBy('comments_count', 'desc')->take(6)->get();
+       $this_week            =  Blog::where('created_at', '>=', $sevenDaysAgo)->orderBy('created_at', 'desc')->take(8)->get();
 
        if(!empty(@$topNavItems)){
            foreach($topNavItems as $menu){
@@ -125,6 +126,7 @@ class SensitiveComposer
            ->with('above_featured', $above_featured_ban)
            ->with('below_featured', $below_featured_ban)
            ->with('popular_comments', $most_commented)
+           ->with('footer_news', $this_week)
            ->with('latestPosts', $latest_news);
     }
 }

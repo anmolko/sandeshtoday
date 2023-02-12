@@ -978,7 +978,8 @@
                                             <div class="news-post image-post">
                                                 <div class="veil">
                                                     <img src="{{(@$news->image !== null) ?  asset('/images/blog/'.@$news->image) : asset('assets/backend/images/sandesh_today.png')}}" alt="post">
-                                                </div>                                            <div class="hover-box">
+                                                </div>
+                                                <div class="hover-box">
                                                     <span class="top-stories"> भर्खरै </span>
                                                     <div class="inner-hover">
                                                         <h2>
@@ -1041,5 +1042,6 @@
             </div>
         </div>
     </section>
+
 
 @endsection
