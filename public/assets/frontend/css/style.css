@@ -3098,6 +3098,9 @@ ul.post-tags li:last-child {
   -webkit-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
 }
+.clip .post-title{
+    height: 120px;
+}
 .standard-post2 .post-title h2 {
   color: #333333;
   font-size: 13px;
@@ -6835,7 +6838,7 @@ ul.demo-list li a i {
     background-color: #000000;
     content: "";
     z-index: 0;
-    opacity: 0.3;
+    opacity: 0.4;
 }
 
 .pb-0{
@@ -6862,4 +6865,12 @@ ul.demo-list li a i {
     height: 100%;
     width: 100%;
     object-fit: cover;
+}
+
+.clip .post-title h2{
+    line-height: 24px;
+    overflow: hidden;
+    font-size: 18px;
+    max-height: 3.6em;
+
 }

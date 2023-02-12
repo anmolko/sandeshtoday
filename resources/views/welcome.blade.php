@@ -774,4 +774,55 @@
         <!-- End feature-video-section -->
     @endif
 
+    <section class="block-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <!-- block content -->
+                    <div class="block-content">
+
+                        <!-- masonry box -->
+                        <div class="masonry-box">
+
+                            <div class="title-section">
+                                <h1><span>समाज</span></h1>
+                            </div>
+
+                            <div class="latest-articles iso-call">
+                                @sandeshloop(getCategoryRelatedPost('समाज',0,6) as $news)
+
+                                    <div class="news-post standard-post2 default-size clip">
+                                    <div class="post-gallery">
+                                        <img src="{{(@$news->image !== null) ?  asset('/images/blog/'.@$news->image) : asset('assets/backend/images/sandesh_today.png')}}" alt="post">
+                                    </div>
+                                    <div class="post-title">
+                                        <h2>
+                                            <a href="{{ url(@$news->url()) }}">{{@$news->title}}</a>
+                                        </h2>
+                                        <ul class="post-tags">
+                                            <li><i class="fa fa-clock-o"></i>{{@$news->publishedDateNepali()}}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                @endsandeshloop
+
+                            </div>
+
+                        </div>
+                        <!-- End masonry box -->
+
+
+                    </div>
+                    <!-- End block content -->
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </section>
+
 @endsection
