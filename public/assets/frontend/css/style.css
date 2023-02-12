@@ -6224,6 +6224,11 @@ footer .footer-last-line nav.footer-nav ul li:first-child:before {
         max-height: 79px;
     }
 
+    .image-slider .image-post .hover-box .inner-hover h2{
+        font-size: 22px;
+        font-weight: 900;
+        line-height: 26px;
+    }
     .sidebar-content ul.list-posts > li .post-content h2{
         max-height: 85px;
         overflow: scroll;
@@ -6235,6 +6240,10 @@ footer .footer-last-line nav.footer-nav ul li:first-child:before {
     }
     .hide-2posts-md li:nth-child(2){
         display: none;
+    }
+    .sports li:last-child{
+        display: none;
+
     }
 
     ul.hide-2posts-md > li .post-content h2{
@@ -6490,9 +6499,9 @@ footer .footer-last-line nav.footer-nav ul li:first-child:before {
     display: none;
   }
   .image-post-slider .image-post2 .hover-box h2 {
-    font-size: 13px;
-    line-height: 18px;
-    max-height: 36px;
+      font-size: 18px;
+      line-height: 24px;
+      max-height: 95px;
     overflow: hidden;
   }
   .slider-caption-box #bx-pager {
