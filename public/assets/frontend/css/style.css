@@ -5764,7 +5764,9 @@ footer .categories-widget ul.address-detail li a {
     display: inline;
 }
 
-
+.footer-last-line .copyright a {
+ color: #f44336;
+}
 
 footer .categories-widget ul.category-list li a span {
     display: inline-block;
@@ -5973,8 +5975,8 @@ footer .footer-last-line {
   border-top: 1px solid #333333;
 }
 footer .footer-last-line p {
-  font-size: 12px;
-  color: #666666;
+  font-size: 14px;
+  color: #eae3e3;
 }
 footer .footer-last-line nav.footer-nav {
   text-align: right;
