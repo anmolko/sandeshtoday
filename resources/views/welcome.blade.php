@@ -19,7 +19,7 @@
                                         <div class="sandeshtoday-author-wrap">
                                             <span class="author-img">
                                             <img src="{{asset('assets/backend/images/favicon-32x32.png')}}" alt=""></span>
-                                            <span class="author-name"> {{ ($news->authors !== null ) ? ucwords(@$news->authors) : "Sandesh Today"}}  </span>
+                                            <span class="author-name"> {{ ($news->authors !== null ) ? ucwords(@$news->authors) : "सन्देश टूडे"}}  </span>
                                         </div>
                                     </li>
                                     <li><i class="fa fa-clock-o"></i>

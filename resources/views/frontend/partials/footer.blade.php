@@ -216,6 +216,7 @@
 <script type="text/javascript" src="{{asset('assets/frontend/js/retina-1.1.0.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/frontend/js/plugins-scroll.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/frontend/js/script.js')}}"></script>
-
+@yield('js')
+@stack('scripts')
 </body>
 </html>

@@ -3035,6 +3035,9 @@ ul.post-tags li {
   -webkit-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
 }
+ul.featured-post-details li{
+    font-size: 16px;
+}
 ul.post-tags li i {
   color: #666666ba;
   margin-right: 6px;
@@ -3875,16 +3878,23 @@ div.list-post .post-content h2 a:hover {
   margin-top: -10px;
 }
 .single-post-box .title-post h1 {
-  color: #333333;
-  font-size: 24px;
+  color: #27308c;
+  font-size: 46px;
   font-family: "Mukta","Glegoo", sans-serif;
   font-weight: 700;
-  line-height: 30px;
+  line-height: 60px;
   margin: 0 0 8px;
 }
 .single-post-box .share-post-box {
   margin-bottom: 10px;
   padding: 0 20px;
+  border-bottom: 1px solid #f0f0f0;
+}
+.single-post-box .border-top{
+    border-top: 1px solid #f0f0f0;
+}
+div.block-content .share-post-box .banner{
+    margin-bottom: 14px;
 }
 .single-post-box .share-post-box ul.share-box {
   margin: 0;
@@ -3977,6 +3987,8 @@ div.list-post .post-content h2 a:hover {
 .single-post-box > .post-content p {
   padding: 0 20px;
   margin-bottom: 18px;
+  font-size: 22px;
+  line-height: 1.8;
 }
 .single-post-box > .post-content p a {
   display: inline-block;
@@ -6524,7 +6536,11 @@ footer .footer-last-line nav.footer-nav ul li:first-child:before {
     font-size: 16px;
     line-height: 20px;
   }
-  footer .categories-widget ul.category-list li {
+    .single-post-box .title-post h1{
+        font-size: 40px;
+        line-height: 45px;
+    }
+    footer .categories-widget ul.category-list li {
     width: 100%;
     float: none;
     padding-left: 0 !important;
@@ -6919,5 +6935,17 @@ ul.demo-list li a i {
     overflow: hidden;
     font-size: 18px;
     max-height: 3.6em;
-
 }
+.single-post-box .sticky-header{
+    position: fixed;
+    width: 65em;
+    top: 70px;
+    background-color: #fff;
+    z-index: 98;
+    transition: all 0.3s ;
+    padding: 5px 5px 5px;
+}
+.editor-content{
+    text-align: justify;
+}
+
