@@ -6949,3 +6949,13 @@ ul.demo-list li a i {
     text-align: justify;
 }
 
+.single-post-box .sticky-header h1{
+    font-size: 32px;
+    line-height: 40px;
+}
+
+.single-post-box .bottom{
+    top:auto;
+    bottom:0;
+    position:absolute;
+}

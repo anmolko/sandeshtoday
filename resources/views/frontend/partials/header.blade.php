@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     @if(\Request::is('/'))
-        <title>@if(!empty(@$setting_data->website_name)) {{ucwords(@$setting_data->website_name)}} @else Sandesh Today @endif </title>
+        <title>@if(!empty(@$setting_data->website_name)) {{ucwords(@$setting_data->website_name)}} @else सन्देश टूडे | Sandesh Today @endif </title>
     @else
-        <title>@yield('title') | @if(!empty(@$setting_data->website_name)) {{ucwords(@$setting_data->website_name)}} @else Sandesh Today  @endif </title>
+        <title>@yield('title') | @if(!empty(@$setting_data->website_name)) {{ucwords(@$setting_data->website_name)}} @else सन्देश टूडे | Sandesh Today  @endif </title>
     @endif
     <meta name="description" content="@if(!empty(@$setting_data->meta_description)) {{ucwords(@$setting_data->meta_description)}} @else Sandesh Today aims to bring you the latest news from all over nepal swiftly and accurately @endif "/>
     <meta name="keywords" content="@if(!empty(@$setting_data->meta_tags)) {{@$setting_data->meta_tags}} @else Nepali News, Sandesh Today, Nepal, Online News, News Portal, Nepali News Portal @endif ">
 
-    <meta property="og:site_name" content="@if(!empty(@$setting_data->website_name)) {{ucwords(@$setting_data->website_name)}} @else Sandesh Today @endif " />
-    <meta property="og:title" content="@if(!empty(@$setting_data->meta_title)) {{ucwords(@$setting_data->meta_title)}} @else Sandesh Today  @endif" />
+    <meta property="og:site_name" content="@if(!empty(@$setting_data->website_name)) {{ucwords(@$setting_data->website_name)}} @else सन्देश टूडे | Sandesh Today @endif " />
+    <meta property="og:title" content="@if(!empty(@$setting_data->meta_title)) {{ucwords(@$setting_data->meta_title)}} @else सन्देश टूडे | Sandesh Today  @endif" />
     <meta property="og:url" content="https://sandeshtoday.com" />
     <meta property="og:description" content="@if(!empty(@$setting_data->meta_description)) {{ucwords(@$setting_data->meta_description)}} @else Sandesh Today aims to bring you the latest news from all over nepal swiftly and accurately @endif" />
     <meta property="og:type" content="News website" />

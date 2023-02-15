@@ -20,11 +20,6 @@
         .single-post  .elementor-top-section {
             padding: 0;
         }
-        .bottom{
-            top:auto;
-            bottom:0;
-            position:absolute;
-        }
 
         #st-1 .st-btn:hover {
             opacity: .7;
@@ -72,7 +67,7 @@
 </style>
 @endsection
 @section('seo')
-    <title>{{ucfirst(@$singleBlog->title)}} | @if(!empty(@$setting_data->website_name)) {{ucwords(@$setting_data->website_name)}} @else दर्पण दैनिक @endif</title>
+    <title>{{ucfirst(@$singleBlog->title)}} | @if(!empty(@$setting_data->website_name)) {{ucwords(@$setting_data->website_name)}} @else सन्देश टूडे @endif</title>
     <meta name='description' itemprop='description'  content='{{ucfirst(@$singleBlog->meta_description)}}' />
     <meta name='keywords' content='{{ucfirst(@$singleBlog->meta_tags)}}' />
     <meta property='article:published_time' content='<?php if(@$singleBlog->updated_at !=''){?>{{@$singleBlog->updated_at}} <?php }else {?> {{@$singleBlog->created_at}} <?php }?>' />
@@ -83,9 +78,9 @@
     <meta property="og:type" content="News Portal" />
     <meta property="og:locale" content="en-us" />
     <meta property="og:locale:alternate"  content="en-us" />
-    <meta property="og:site_name" content="@if(!empty(@$setting_data->website_name)) {{ucwords(@$setting_data->website_name)}} @else  दर्पण दैनिक @endif" />
-    <meta property="og:image" content="{{($singleBlog->image !== null) ?  asset('/images/blog/'.@$singleBlog->image) : asset('assets/backend/images/darpan_dainik.png')}}" />
-    <meta property="og:image:url" content="{{($singleBlog->image !== null) ?  asset('/images/blog/'.@$singleBlog->image) : asset('assets/backend/images/darpan_dainik.png')}}" />
+    <meta property="og:site_name" content="@if(!empty(@$setting_data->website_name)) {{ucwords(@$setting_data->website_name)}} @else  सन्देश टूडे @endif" />
+    <meta property="og:image" content="{{($singleBlog->image !== null) ?  asset('/images/blog/'.@$singleBlog->image) : asset('assets/backend/images/sandesh_today.png')}}" />
+    <meta property="og:image:url" content="{{($singleBlog->image !== null) ?  asset('/images/blog/'.@$singleBlog->image) : asset('assets/backend/images/sandesh_today.png')}}" />
     <meta property="og:image:size" content="300" />
 
 @endsection
@@ -763,7 +758,7 @@
 
     <script>
         $(window).scroll(function () {
-            var threshold =500;
+            var threshold =650;
             if ($(window).scrollTop() >= threshold){
                 $('#sticky-me').addClass('sticky-header');
             }else{
@@ -780,33 +775,25 @@
         });
         $(document).ready(function () {
 
-            // var size = '22';
-            // $("#big").on("click",function(){
-            //     size = size + 2;
-            //     if(size<26 ){
-            //         $(".editor-flx p").css("font-size",size + "px");
-            //     }else{
-            //         $(".editor-flx p").css("font-size",26 + "px");
-            //     }
-            // });
-            // $("#normal").on("click",function(){
-            //     size = 20;
-            //     $(".editor-flx p").css("font-size",size + "px");
-            // });
-            // $("#small").on("click",function(){
-            //     size = size - 2;
-            //     if(size>14){
-            //         $(".editor-flx p").css("font-size",size+ "px");
-            //     } else {
-            //         $(".editor-flx p").css("font-size",16+ "px");
-            //     }
-            // });
-
             var number = $('.editor-content').find('p').size();
+
             if(number => 2){
-                var banner1 = '<div class="inside-editor-content col-lg-12 col-md-6 col-12"> ' +
+                var banner1 ='<div class="banner"> ' +
+                    '<div class="desktop-banner"> ' +
+                    '<span>Advertisement</span> ' +
                     '<a href="{{(@$between1->url !== null) ? @$between1->url:"#"}}" target="_blank">' +
-                    '<img src="{{asset('/images/banners/'.@$between1->image)}}" alt="{{@$between1->name}}"></a>' +
+                    '<img src="{{asset('/images/banners/'.@$between1->image)}}" alt=""></a> ' +
+                    '</div>' +
+                    '<div class="tablet-banner">' +
+                    '<span>Advertisement</span>' +
+                    '<a href="{{(@$between1->url !== null) ? @$between1->url:"#"}}" target="_blank">' +
+                    '<img src="{{asset('/images/banners/'.@$between1->image)}}" alt=""></a> ' +
+                    '</div> ' +
+                    '<div class="mobile-banner"> ' +
+                    '<span>Advertisement</span> ' +
+                    '<a href="{{(@$between1->url !== null) ? @$between1->url:"#"}}" target="_blank">' +
+                    '<img src="{{asset('/images/banners/'.@$between1->image)}}" alt=""></a> ' +
+                    '</div> ' +
                     '</div>';
                 $( ".editor-content p:nth-child(2)" ).after().append(banner1);
             }
