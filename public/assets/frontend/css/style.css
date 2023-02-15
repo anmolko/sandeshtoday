@@ -2368,6 +2368,9 @@ section.big-slider .big-bxslider li .image-post2 .hover-box .inner-hover h2 {
 .sidebar .features-slide-widget ul.list-posts li img {
   max-width: 70px;
 }
+.sidebar .single-post-sidebar ul.list-posts li img {
+  max-width: 90px;
+}
 .sidebar .features-slide-widget ul.list-posts li .post-content {
   margin-left: 90px;
 }
@@ -3326,8 +3329,6 @@ ul.list-posts > li .post-content > a:hover {
   opacity: 0.7;
 }
 
-
-
 ul.list-posts > li .post-content h2 {
     color: #333333;
     font-family: "Mukta","Glegoo", sans-serif;
@@ -3958,7 +3959,7 @@ div.block-content .share-post-box .banner{
 }
 .single-post-box .post-gallery {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
 }
 .single-post-box .post-gallery img {
   width: 100%;
@@ -4308,10 +4309,10 @@ div.block-content .share-post-box .banner{
   color: #333333;
   font-family: "Mukta","Glegoo", sans-serif;
   font-weight: 700;
-  line-height: 20px;
+  line-height: 26px;
   margin: 0 0 10px;
-  font-size: 13px;
-  max-height: 40px;
+  font-size: 16px;
+  max-height: 50px;
   overflow: hidden;
   margin-bottom: 7px;
 }
@@ -4363,6 +4364,22 @@ div.block-content .share-post-box .banner{
   font-weight: 700;
   border: none;
   margin: 0;
+}
+.single-post-box .sticky-header{
+    position: fixed;
+    width: 65em;
+    top: 70px;
+    background-color: #fff;
+    z-index: 98;
+    transition: all 0.3s ;
+    padding: 5px 0px 5px 15px;
+}
+.editor-content{
+    text-align: justify;
+}
+.single-post-box .sticky-header h1{
+    font-size: 32px;
+    line-height: 40px;
 }
 .single-post-box .about-more-autor ul.nav-tabs li a:hover {
   background: #f44336;
@@ -6532,14 +6549,28 @@ footer .footer-last-line nav.footer-nav ul li:first-child:before {
   }
 }
 @media (max-width: 500px) {
-  .image-slider .image-post .hover-box .inner-hover h2 {
-    font-size: 16px;
-    line-height: 20px;
-  }
     .single-post-box .title-post h1{
         font-size: 40px;
         line-height: 45px;
     }
+  .image-slider .image-post .hover-box .inner-hover h2 {
+    font-size: 16px;
+    line-height: 20px;
+  }
+    .single-post-box .sticky-header {
+        width: 30em;
+        top: 10px;
+        padding: 8px 0px 5px 5px;
+    }
+    .single-post-box .sticky-header h1{
+        font-size: 24px;
+        line-height: 30px;
+    }
+
+    .sticky-header ul.featured-post-details li{
+        font-size: 14px;
+    }
+
     footer .categories-widget ul.category-list li {
     width: 100%;
     float: none;
@@ -6934,28 +6965,30 @@ ul.demo-list li a i {
     line-height: 24px;
     overflow: hidden;
     font-size: 18px;
-    max-height: 3.6em;
-}
-.single-post-box .sticky-header{
-    position: fixed;
-    width: 65em;
-    top: 70px;
-    background-color: #fff;
-    z-index: 98;
-    transition: all 0.3s ;
-    padding: 5px 5px 5px;
-}
-.editor-content{
-    text-align: justify;
-}
-
-.single-post-box .sticky-header h1{
-    font-size: 32px;
-    line-height: 40px;
+    max-height: 4em;
 }
 
 .single-post-box .bottom{
     top:auto;
-    bottom:0;
+    /*bottom:0;*/
     position:absolute;
+}
+
+.inside-editor-content{
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+    padding: 20px 0 35px;
+    border-top: 1px solid #f1f1f1;
+    border-bottom: 1px solid #f1f1f1;
+}
+.inside-editor-content:after {
+    content: 'ADVERTISEMENT';
+    font-size: 13px;
+    width: 100%;
+    text-align: center;
+    color: rgba(0,0,0,.58);
+    position: absolute;
+    bottom: 5px;
 }
