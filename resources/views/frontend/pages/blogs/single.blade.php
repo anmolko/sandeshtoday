@@ -251,31 +251,57 @@
                             <!-- End carousel box -->
 
                             <!-- contact form box -->
-                            <div class="contact-form-box">
+                            <div class="contact-form-box comment-block">
                                 <div class="title-section">
-                                    <h1><span>Leave a Comment</span> <span class="email-not-published">Your email address will not be published.</span></h1>
+                                    <h1><span>प्रतिक्रिया गर्नुहोस्</span> <span class="email-not-published">Your email address will not be published.</span></h1>
                                 </div>
-                                <form id="comment-form">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label for="name">Name*</label>
-                                            <input id="name" name="name" type="text">
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label for="mail">E-mail*</label>
-                                            <input id="mail" name="mail" type="text">
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label for="website">Website</label>
-                                            <input id="website" name="website" type="text">
+                                <div class="writing">
+                                    {!! Form::open(['route' => 'comments.store','method'=>'post','class'=>'needs-validation','id'=>'slider-list-form','novalidate'=>'','enctype'=>'multipart/form-data']) !!}
+
+{{--                                    <input type="hidden" class="form-control" name="user_id" id="user_id" value="{{ ( Auth::user()->user_type == 'viewer') ? Auth::user()->id :1}}" readonly required>--}}
+                                    <input type="hidden" class="form-control" name="user_id" id="user_id" value="1" readonly required>
+                                    <input type="hidden" class="form-control" name="blog_id" id="blog_id" value="{{@$singleBlog->id}}" readonly required>
+                                    <textarea name="comment" class="textarea" rows="8" required></textarea><br/>
+                                    <div class="footer">
+                                        <div class="group-button">
+                                            <button type="submit" class="btn primary" id="send-comment"> <i class="fa fa-comment"></i> प्रतिक्रिया दिनुहोस्</button>
                                         </div>
                                     </div>
-                                    <label for="comment">Comment*</label>
-                                    <textarea id="comment" name="comment"></textarea>
-                                    <button type="submit" id="submit-contact">
-                                        <i class="fa fa-comment"></i> Post Comment
-                                    </button>
-                                </form>
+                                    {!! Form::close() !!}
+                                </div>
+
+                                <div class="forum-box">
+                                    <div class="forum-table single-topic">
+                                        <p class="posted-in-category">Posted In: <a href="#">Getting Started</a></p>
+                                        <div class="table-row">
+                                            <div class="forum-post comment-post">
+                                                <img src="{{asset('assets/frontend/upload/users/avatar7.jpg')}}" alt="">
+                                                <div class="post-autor-date">
+                                                    <p><a href="#">John</a></p>
+                                                    <div class="content-post-area">
+                                                        <p>Suspendisse mauris. Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula. Integer adipiscing risus a sem. Nullam quis massa sit amet nibh viverra malesuada. </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="table-row">
+                                            <div class="forum-post comment-post">
+                                                <img src="{{asset('assets/frontend/upload/users/avatar1.jpg')}}" alt="">
+                                                <div class="post-autor-date">
+                                                    <p><a href="#">Jane</a></p>
+                                                    <div class="content-post-area">
+                                                        <p>Nunc sem lacus, accumsan quis, faucibus non, congue vel, arcu. Ut scelerisque hendrerit tellus. Integer sagittis. Vivamus a mauris eget arcu gravida tristique.  Nunc iaculis mi in ante. Vivamus imperdiet nibh feugiat est.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <p class="line-for-loggin">You must be logged in to create new topics.</p>
+
+                                </div>
                             </div>
                             <!-- End contact form box -->
 
@@ -410,7 +436,22 @@
                                 @endsandeshloop
                             @endif
 
-
+{{--                            <div class="widget post-widget">--}}
+{{--                                <div class="title-section">--}}
+{{--                                    <h1><span>Featured Video</span></h1>--}}
+{{--                                </div>--}}
+{{--                                <div class="news-post video-post">--}}
+{{--                                    <img alt="" src="upload/news-posts/video-sidebar.jpg">--}}
+{{--                                    <a href="https://www.youtube.com/watch?v=LL59es7iy8Q" class="video-link"><i class="fa fa-play-circle-o"></i></a>--}}
+{{--                                    <div class="hover-box">--}}
+{{--                                        <h2><a href="single-post.html">Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. </a></h2>--}}
+{{--                                        <ul class="post-tags">--}}
+{{--                                            <li><i class="fa fa-clock-o"></i>27 may 2013</li>--}}
+{{--                                        </ul>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <p>Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis. </p>--}}
+{{--                            </div>--}}
                     </div>
                     <!-- End sidebar -->
 
@@ -504,7 +545,6 @@
             });
 
         });
-
         $(document).on('click','#saveLikeDislike',function(){
             var _comment = $(this).data('comment');
             var _type    = $(this).data('type');
@@ -535,8 +575,5 @@
                 }
             });
         });
-
-
-
     </script>
 @endsection

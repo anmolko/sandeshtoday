@@ -69,7 +69,7 @@ class FrontController extends Controller
 
 
     public function blogs(){
-        $allPosts       = $this->blog->orderBy('created_at', 'DESC')->where('status','publish')->paginate(30);
+        $allPosts       = $this->blog->orderBy('created_at', 'DESC')->where('status','publish')->paginate(10);
         return view('frontend.pages.blogs.index',compact('allPosts'));
     }
 

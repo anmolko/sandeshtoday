@@ -32,7 +32,7 @@ class SensitiveComposer
        $footerItemTitle3     = @$footerMenu[2]->title;
        $today                = new Carbon;
        $todayDate            = $today->toDateString().' 23:59:59';
-       $sevenDaysAgo         = $today->subDays(7)->toDateString().' 00:00:00';
+       $sevenDaysAgo         = $today->subDays(10)->toDateString().' 00:00:00';
        $top_blog_year        = Blog::popularThisYear()->get();
        $top_blog_week        = Blog::popularThisWeek()->get();
        $top_blog_month       = Blog::popularLastDays(30)->get();

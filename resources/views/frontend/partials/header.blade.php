@@ -290,8 +290,8 @@
                                 @endforeach
                             @endif
                         </ul>
-                        <form class="navbar-form navbar-right" role="search">
-                            <input type="text" id="search" name="search" placeholder="Search here">
+                        <form method="get" id="searchform" action="{{route('searchBlog')}}"  class="navbar-form navbar-right">
+                            <input id="s" name="s" type="text" placeholder="Search here" oninvalid="this.setCustomValidity('Type a keyword')" oninput="this.setCustomValidity('')" required />
                             <button type="submit" id="search-submit"><i class="fa fa-search"></i></button>
                         </form>
                     </div>

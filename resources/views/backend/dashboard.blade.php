@@ -417,7 +417,7 @@
                                                 @foreach($feeds as $feed)
                                                         <div class="d-flex {{($loop->first) ? "":"mt-4"}} align-middle">
                                                         <div class="flex-shrink-0">
-                                                            <img src="{{asset('/images/blog/'.@$feed->image)}}" class="rounded img-fluid"
+                                                            <img src="{{($feed->image !== null) ?  asset('/images/blog/'.@$feed->image) : asset('assets/backend/images/sandesh_today.png')}}" class="rounded img-fluid"
                                                                  style="height: 60px;" alt="">
                                                         </div>
                                                         <div class="flex-grow-1 ms-3">

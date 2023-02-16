@@ -3116,6 +3116,13 @@ ul.post-tags li:last-child {
   margin: 0 0 10px;
   font-size: 16px;
 }
+.all-post .post-title h2 {
+    font-size: 1.8em;
+    line-height: 30px;
+}
+.all-post .post-title {
+    height: 9.5em;
+}
 .standard-post2 .post-title h2 a {
   display: inline-block;
   text-decoration: none;
@@ -3889,7 +3896,7 @@ div.list-post .post-content h2 a:hover {
 .single-post-box .share-post-box {
   margin-bottom: 10px;
   padding: 0 20px;
-  border-bottom: 1px solid #f0f0f0;
+  /*border-bottom: 1px solid #f0f0f0;*/
 }
 .single-post-box .border-top{
     border-top: 1px solid #f0f0f0;
@@ -4232,18 +4239,18 @@ div.block-content .share-post-box .banner{
   -webkit-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
   padding: 6px 10px;
-  border: 1px solid #efefef;
+  border: 1px solid #959ad6;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   -o-border-radius: 2px;
   border-radius: 2px;
-  color: #999999;
-  font-size: 12px;
+  color: #2b3491;
+  font-size: 16px;
   font-family: "Mukta","Glegoo", sans-serif;
 }
 .single-post-box .post-tags-box ul.tags-box li a:hover {
-  background: #222222;
-  border: 1px solid #222222;
+  background: #2c3492;
+  border: 1px solid #2c3492;
   color: #ffffff;
 }
 .single-post-box .prev-next-posts {
@@ -4703,13 +4710,13 @@ div.block-content .share-post-box .banner{
 }
 .contact-form-box #contact-form button,
 .contact-form-box #comment-form button {
-  color: #ccc;
-  font-size: 11px;
+  color: #fff;
+  font-size: 14px;
   font-family: "Mukta","Glegoo", sans-serif;
   font-weight: 700;
   text-transform: uppercase;
-  background: #222222;
-  padding: 8px 10px;
+  background: #2a328f;
+  padding: 10px 12px;
   border: none;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -5155,9 +5162,9 @@ ul.autor-list > li:hover .autor-box {
   font-size: 13px;
 }
 .forum-table p.posted-in-category {
-  font-size: 11px;
+  font-size: 12px;
   margin: 7px 0;
-  padding-left: 20px;
+  /*padding-left: 20px;*/
 }
 .forum-table p.posted-in-category a {
   display: inline-block;
@@ -6991,4 +6998,52 @@ ul.demo-list li a i {
     color: rgba(0,0,0,.58);
     position: absolute;
     bottom: 5px;
+}
+.comment-block .writing {
+    background: #ffffff;
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 24px;
+    padding: 12px;
+}
+.comment-block .writing .textarea {
+    width: 100%;
+    font-family: "Mukta","Glegoo", sans-serif;
+    color: #585757;
+    height: 70px;
+    overflow-y: auto;
+    appearance: none;
+    border: 0;
+    outline: 0;
+    resize: none;
+    font-size: 16px;
+    line-height: 24px;
+}
+.comment-block .btn.primary {
+    min-width: 64px;
+    padding: 8px 12px;
+    height: 40px;
+    color: #fff;
+    display: inline-flex;
+    font-family: "Mukta","Glegoo", sans-serif;
+    background: #29318d;
+    border-radius: 8px;
+}
+.comment-block .btn.primary i{
+    margin-top: 0.2em;
+    margin-right: 0.2em;
+}
+.comment-block .writing .footer {
+    margin-top: 12px;
+    padding-top: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #e8e8e8;
+}
+
+.comment-block .writing:focus-within {
+    border: 1px solid #1725d0;
+    box-shadow: 0px 0px 2px 2px rgb(99 108 216 / 30%);
 }

@@ -3,53 +3,41 @@
 
 @section('content')
 
-    <!-- Post Section Start -->
-    <div class="post-section section mt-50">
+    <section class="block-wrapper">
         <div class="container">
 
-            <!-- Feature Post Row Start -->
-            <div class="row">
-
-                <div class="col-lg-12 col-12 mb-50">
-                    <div class="post-block-wrapper all-news-block">
-                        <div class="head feature-head mb-3">
-                            <h4 class="title">समाचार</h4>
-                        </div>
-                        <div class="body">
-                            <div class="row">
-                                @sandeshloop(@$allPosts as $news)
-                                    <!-- Post Start -->
-                                    <div class="post sports-post post-separator-border col-md-4 col-12">
-                                    <div class="post-wrap">
-
-                                        <!-- Image -->
-                                        <a class="image" href="{{ url(@$news->url()) }}">
-                                            <img src="{{($news->image !== null) ?  asset('/images/blog/'.@$news->image) : asset('assets/backend/images/darpan_dainik.png')}}"
-                                                 alt="post"></a>
-
-                                        <!-- Content -->
-                                        <div class="content">
-
-                                            <!-- Title -->
-                                            <h4 class="title"><a href="{{ url(@$news->url()) }}">{{@$news->title}}</a></h4>
-
-                                        </div>
-
-                                    </div>
-                                </div><!-- Post End -->
-                                @endsandeshloop
-
-
-                                {{ $allPosts->links('vendor.pagination.default') }}
-
-
-                            </div>
-                        </div>
-
+            <!-- block content -->
+            <div class="block-content non-sidebar">
+                <div class="grid-box">
+                    <div class="title-section">
+                        <h1><span class="world">समाचार</span></h1>
                     </div>
+                    @sandeshloop(@$allPosts->chunk(2) as $chunked)
+                        <div class="row">
+                            @foreach($chunked as $news)
+                                <div class="col-md-6">
+                                    <div class="news-post standard-post2 all-post">
+                                        <div class="post-gallery">
+                                            <img src="{{($news->image !== null) ?  asset('/images/blog/'.@$news->image) : asset('assets/backend/images/sandesh_today.png')}}" alt="post">
+                                        </div>
+                                        <div class="post-title">
+                                            <h2>
+                                                <a href="{{ url(@$news->url()) }}">{{@$news->title}}</a>
+                                            </h2>
+                                            <ul class="post-tags">
+                                                <li><i class="fa fa-clock-o"></i>{{@$news->publishedDateNepali()}}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    @endsandeshloop
+                    {{ $allPosts->links('vendor.pagination.default') }}
+
                 </div>
             </div>
+            <!-- End block content -->
         </div>
-    </div>
-
+    </section>
 @endsection
