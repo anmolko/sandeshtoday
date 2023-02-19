@@ -1,7 +1,7 @@
 @extends('frontend.layouts.seo_master')
 @section('title'){{ucfirst(@$singleBlog->title)}} @endsection
 @section('css')
-    <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=63ebb6ef4a4876001374e2fd&product=sticky-share-buttons&source=platform" async="async"></script>
+    <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=63d38be7e591ca001a314048&product=inline-share-buttons&source=platform" async="async"></script>
 
     <style>
      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap");
@@ -21,149 +21,6 @@
             padding: 0;
         }
 
-        #st-1 .st-btn:hover {
-            opacity: .7;
-            top: 4px!important;
-        }
-
-        .post-block-wrapper .comment-head{
-            border-bottom: none;
-        }
-
-     .post-block-wrapper .comment-head::before, .post-block-wrapper .comment-head::after{
-         background-color: transparent;
-     }
-
-     .post-block-wrapper .comment-head .post-block-tab-list > li{
-         margin-right: 0px;
-         box-shadow: 0px 1px 1px rgb(0 0 0 / 6%);
-     }
-     .comment-head .post-block-tab-list.feature-post-tab-list > li > a.active{
-         background: #f7f7f7;
-     }
-     .post-block-wrapper .comment-head .post-block-tab-list > li a{
-         width: 100%;
-         height: 35px;
-         border: 1px solid #f1f1f1;
-         line-height: 24px;
-         font-size: 16px;
-         padding: 5px 8px;
-     }
-
-     .comment-block .group-radio .post-block-tab-list li:last-child{
-         border-top-right-radius: 8px;
-         border-right: 1px solid #e8e8e8;
-         border-top: 1px solid #e8e8e8;
-         border-bottom: 1px solid #e8e8e8;
-         border-bottom-right-radius: 8px;
-     }
-     .comment-block .group-radio .post-block-tab-list li:first-child{
-        border-top-left-radius: 8px;
-        border-bottom-left-radius: 8px;
-        border-left: 1px solid #e8e8e8;
-        border-top: 1px solid #e8e8e8;
-        border-bottom: 1px solid #e8e8e8;
-     }
-     .comment-block  .comment {
-         display: grid;
-         gap: 14px;
-     }
-     .comment-block .comment .user-banner {
-         display: flex;
-         justify-content: space-between;
-         align-items: center;
-     }
-     .comment-block .comment .user-banner .user {
-         gap: 8px;
-         align-items: center;
-         display: flex;
-     }
-     .comment-block .comment .user-banner .user .avatar {
-         height: 45px;
-         width: 45px;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         border: 1px solid transparent;
-         position: relative;
-         border-radius: 100px;
-         font-weight: 500;
-         font-size: 13px;
-         line-height: 20px;
-     }
-     .comment-block  .comment .user-banner .user .avatar img {
-         max-width: 100%;
-         border-radius: 50%;
-     }
-     .comment-block  .comment .user-banner .user .avatar .stat {
-         display: flex;
-         position: absolute;
-         right: -2px;
-         bottom: -2px;
-         display: block;
-         width: 12px;
-         height: 12px;
-         z-index: 9;
-         border: 2px solid #ffffff;
-         border-radius: 100px;
-     }
-     .comment-block  .comment .user-banner .user .avatar .stat.green {
-         background: #00ba34;
-     }
-     .comment-block .comment .user-banner .user .avatar .stat.grey {
-         background: #969696;
-     }
-     .comment-block  .comment .footer {
-         gap: 12px;
-         display: flex;
-         align-items: center;
-     }
-     .comment-block  .comment .footer .reactions {
-         display: flex;
-         align-items: center;
-         gap: 8px;
-     }
-     .comment-block  .comment .footer .divider {
-         height: 12px;
-         width: 1px;
-         background: #e8e8e8;
-     }
-     .comment-block  .comment {
-         padding-bottom: 12px;
-         margin-bottom: 12px;
-         border-bottom: 1px solid #e8e8e8;
-     }
-     .comment-block  .comment:last-child {
-         border-bottom: none;
-     }
-     .comment-block  .comment + .comment {
-         padding-top: 12px;
-     }
-     .comment.reply .user-banner,
-     .comment.reply .content,
-     .comment.reply .footer {
-         margin-left: 32px;
-     }
-     .comment-block .replybutton {
-         font-size: 14px;
-         display: inline-block;
-         background-color: transparent;
-         line-height: 28px;
-         transition: all .3s ease;
-         border: none;
-         padding: 0px;
-     }
-     .comment-block .btn.react {
-         padding: 4px 8px 4px 4px;
-         background: #f7f7f7;
-         border: 1px solid #e8e8e8;
-         border-radius: 8px;
-         gap: 4px;
-     }
-
-     .comment-block .content p{
-         font-size: 18px;
-     }
 
     </style>
 @endsection
@@ -206,6 +63,8 @@
                                         {{($singleBlog->authors !== null ) ? ucwords(@$singleBlog->authors) : "सन्देश टूडे"}}
                                     </li>
                                     <li><i class="fa fa-clock-o"></i>{{$singleBlog->publishedDateNepali()}}</li>
+
+                                    <div class="sharethis-inline-share-buttons float-end"></div>
 
 {{--                                    <li><a href="#"><i class="fa fa-comments-o"></i><span>0</span></a></li>--}}
 {{--                                    <li><i class="fa fa-eye"></i>872</li>--}}
@@ -283,18 +142,11 @@
                                     @foreach($singleBlog->categories as $cat)
                                         <li><a href="#">{{$cat->name}}</a></li>
                                     @endforeach
+                                    <li class="float-end""><div class="sharethis-inline-share-buttons"></div>
+                                    </li>
 
                                 </ul>
-                            </div>
 
-                            <div class="share-post-box">
-                                <ul class="share-box">
-                                    <li><i class="fa fa-share-alt"></i><span>Share Post</span></li>
-                                    <li><a class="facebook" href="#"><i class="fa fa-facebook"></i>Share on Facebook</a></li>
-                                    <li><a class="twitter" href="#"><i class="fa fa-twitter"></i>Share on Twitter</a></li>
-                                    <li><a class="google" href="#"><i class="fa fa-google-plus"></i><span></span></a></li>
-                                    <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i><span></span></a></li>
-                                </ul>
                             </div>
 
                             <div class="prev-next-posts">
@@ -434,7 +286,6 @@
                                                                 </div>
                                                                 <h5>{{ @$reply->user->name }}</h5>
                                                             </div>
-                                                            <button class="btn dropdown"><i class="ri-more-line"></i></button>
                                                         </div>
                                                         <div class="content">
                                                             <p><a class="tagged-user">@ {{ $comment->user->name }}</a>
@@ -442,7 +293,6 @@
                                                             </p>
                                                         </div>
                                                         <div class="footer">
-                                                            <button class="btn"><i class="ri-emotion-line"></i></button>
                                                             <div class="reactions">
                                                                 <button class="btn btn-like react" data-comment="{{ $reply->id}}">
                                                                     <i class="fa fa-thumbs-up" aria-hidden="true"></i>
@@ -477,7 +327,6 @@
                     <!-- End block content -->
 
                 </div>
-                <div class="sharethis-sticky-share-buttons"></div>
                 <div class="col-sm-3">
 
                     <!-- sidebar -->
