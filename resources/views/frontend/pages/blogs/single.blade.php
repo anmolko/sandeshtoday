@@ -64,7 +64,108 @@
         border-top: 1px solid #e8e8e8;
         border-bottom: 1px solid #e8e8e8;
      }
-</style>
+     .comment-block  .comment {
+         display: grid;
+         gap: 14px;
+     }
+     .comment-block .comment .user-banner {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+     }
+     .comment-block .comment .user-banner .user {
+         gap: 8px;
+         align-items: center;
+         display: flex;
+     }
+     .comment-block .comment .user-banner .user .avatar {
+         height: 45px;
+         width: 45px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         border: 1px solid transparent;
+         position: relative;
+         border-radius: 100px;
+         font-weight: 500;
+         font-size: 13px;
+         line-height: 20px;
+     }
+     .comment-block  .comment .user-banner .user .avatar img {
+         max-width: 100%;
+         border-radius: 50%;
+     }
+     .comment-block  .comment .user-banner .user .avatar .stat {
+         display: flex;
+         position: absolute;
+         right: -2px;
+         bottom: -2px;
+         display: block;
+         width: 12px;
+         height: 12px;
+         z-index: 9;
+         border: 2px solid #ffffff;
+         border-radius: 100px;
+     }
+     .comment-block  .comment .user-banner .user .avatar .stat.green {
+         background: #00ba34;
+     }
+     .comment-block .comment .user-banner .user .avatar .stat.grey {
+         background: #969696;
+     }
+     .comment-block  .comment .footer {
+         gap: 12px;
+         display: flex;
+         align-items: center;
+     }
+     .comment-block  .comment .footer .reactions {
+         display: flex;
+         align-items: center;
+         gap: 8px;
+     }
+     .comment-block  .comment .footer .divider {
+         height: 12px;
+         width: 1px;
+         background: #e8e8e8;
+     }
+     .comment-block  .comment {
+         padding-bottom: 12px;
+         margin-bottom: 12px;
+         border-bottom: 1px solid #e8e8e8;
+     }
+     .comment-block  .comment:last-child {
+         border-bottom: none;
+     }
+     .comment-block  .comment + .comment {
+         padding-top: 12px;
+     }
+     .comment.reply .user-banner,
+     .comment.reply .content,
+     .comment.reply .footer {
+         margin-left: 32px;
+     }
+     .comment-block .replybutton {
+         font-size: 14px;
+         display: inline-block;
+         background-color: transparent;
+         line-height: 28px;
+         transition: all .3s ease;
+         border: none;
+         padding: 0px;
+     }
+     .comment-block .btn.react {
+         padding: 4px 8px 4px 4px;
+         background: #f7f7f7;
+         border: 1px solid #e8e8e8;
+         border-radius: 8px;
+         gap: 4px;
+     }
+
+     .comment-block .content p{
+         font-size: 18px;
+     }
+
+    </style>
 @endsection
 @section('seo')
     <title>{{ucfirst(@$singleBlog->title)}} | @if(!empty(@$setting_data->website_name)) {{ucwords(@$setting_data->website_name)}} @else सन्देश टूडे @endif</title>
@@ -253,55 +354,119 @@
                             <!-- contact form box -->
                             <div class="contact-form-box comment-block">
                                 <div class="title-section">
-                                    <h1><span>प्रतिक्रिया गर्नुहोस्</span> <span class="email-not-published">Your email address will not be published.</span></h1>
+                                    <h1><span>प्रतिक्रिया गर्नुहोस्</span>
+                                        @if(!empty(Auth::user()) && Auth::user()->user_type == 'viewer')
+                                            <span class="email-not-published">Posting as: <a href="{{route('front-user.dashboard')}}">{{ ucwords(@Auth::user()->name) }} </a></span>
+                                        @endif
+                                    </h1>
                                 </div>
-                                <div class="writing">
-                                    {!! Form::open(['route' => 'comments.store','method'=>'post','class'=>'needs-validation','id'=>'slider-list-form','novalidate'=>'','enctype'=>'multipart/form-data']) !!}
-
-{{--                                    <input type="hidden" class="form-control" name="user_id" id="user_id" value="{{ ( Auth::user()->user_type == 'viewer') ? Auth::user()->id :1}}" readonly required>--}}
-                                    <input type="hidden" class="form-control" name="user_id" id="user_id" value="1" readonly required>
-                                    <input type="hidden" class="form-control" name="blog_id" id="blog_id" value="{{@$singleBlog->id}}" readonly required>
-                                    <textarea name="comment" class="textarea" rows="8" required></textarea><br/>
-                                    <div class="footer">
-                                        <div class="group-button">
-                                            <button type="submit" class="btn primary" id="send-comment"> <i class="fa fa-comment"></i> प्रतिक्रिया दिनुहोस्</button>
-                                        </div>
+                                @if(!empty(Auth::user()) && Auth::user()->user_type == 'viewer')
+                                    @include('frontend.pages.blogs.comments')
+                                @else
+                                    <div class="share-post-box">
+                                        <ul class="share-box">
+                                            <li><span>प्रतिक्रिया गर्न लग इन गर्नु होस्:</span></li>
+                                            <li><a class="google" href="{{route('google.redirect')}}"><i class="fa fa-google"></i> Login via Google</a></li>
+{{--                                            <li><a class="facebook" href="#"><i class="fa fa-facebook"></i>Share on Twitter</a></li>--}}
+                                        </ul>
                                     </div>
-                                    {!! Form::close() !!}
-                                </div>
+                                    <div class="comment-block">
+                                        @foreach($singleBlog->comments as $comment)
+                                            <div class="comment">
+                                                <div class="user-banner">
+                                                    <div class="user">
+                                                        @if(@$comment->user->image && str_contains(@$comment->user->image, 'https'))
+                                                            <img class="avatar rounded-circle default"
+                                                                 src="{{@$comment->user->image}}"/>
+                                                        @elseif(@$comment->user->image)
+                                                            <img class="avatar rounded-circle social"
+                                                                 src="{{asset('/images/user/'.@$comment->user->image)}}"/>
+                                                        @else
+                                                            <div class="avatar" style="background-color:#fff5e9;border-color:#ffe0bd; color:#F98600">
+                                                                {{getFirstLetters($comment->user->name)}}
+                                                                {{--                        <span class="stat green"></span>--}}
+                                                            </div>
+                                                        @endif
 
-                                <div class="forum-box">
-                                    <div class="forum-table single-topic">
-                                        <p class="posted-in-category">Posted In: <a href="#">Getting Started</a></p>
-                                        <div class="table-row">
-                                            <div class="forum-post comment-post">
-                                                <img src="{{asset('assets/frontend/upload/users/avatar7.jpg')}}" alt="">
-                                                <div class="post-autor-date">
-                                                    <p><a href="#">John</a></p>
-                                                    <div class="content-post-area">
-                                                        <p>Suspendisse mauris. Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula. Integer adipiscing risus a sem. Nullam quis massa sit amet nibh viverra malesuada. </p>
+                                                        <h5>{{ $comment->user->name }}</h5>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
+                                                <div class="content">
+                                                    <p>
+                                                        {{@$comment->comment}}
+                                                    </p>
+                                                </div>
 
-                                        <div class="table-row">
-                                            <div class="forum-post comment-post">
-                                                <img src="{{asset('assets/frontend/upload/users/avatar1.jpg')}}" alt="">
-                                                <div class="post-autor-date">
-                                                    <p><a href="#">Jane</a></p>
-                                                    <div class="content-post-area">
-                                                        <p>Nunc sem lacus, accumsan quis, faucibus non, congue vel, arcu. Ut scelerisque hendrerit tellus. Integer sagittis. Vivamus a mauris eget arcu gravida tristique.  Nunc iaculis mi in ante. Vivamus imperdiet nibh feugiat est.</p>
+                                                <div class="footer">
+                                                    <div class="reactions">
+                                                        <button class="btn btn-like react " data-comment="{{ $comment->id}}">
+                                                            <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                                                            <span class="like-count-{{ $comment->id}}">{{ ($comment->likes()>0) ? $comment->likes():""}}</span>
+                                                        </button>
+                                                        <button class="btn btn-dislike react" data-comment="{{ $comment->id}}">
+                                                            <i class="fa fa-thumbs-down" aria-hidden="true"></i>
+                                                            <span class="dislike-count-{{ $comment->id}}">{{  ($comment->dislikes()>0) ? $comment->dislikes():"" }}</span>
+                                                        </button>
                                                     </div>
+                                                    <div class="divider"></div>
+                                                    <span class="is-mute">{{@$comment->getCommentedAgoinNepali()}}</span>
                                                 </div>
                                             </div>
-                                        </div>
-
+                                            @if(count($comment->replies)>0)
+                                                @foreach($comment->replies as $reply)
+                                                    <div class="reply comment">
+                                                        <div class="user-banner">
+                                                            <div class="user">
+                                                                <div class="avatar">
+                                                                    @if(@$reply->user->image && str_contains(@$reply->user->image, 'https'))
+                                                                        <img class="avatar rounded-circle"
+                                                                             src="{{@$reply->user->image}}"/>
+                                                                    @elseif(@$reply->user->image)
+                                                                        <img class="avatar rounded-circle"
+                                                                             src="{{asset('/images/user/'.@$reply->user->image)}}"/>
+                                                                    @else
+                                                                        <div class="avatar" style="background-color:#fff5e9;border-color:#ffe0bd; color:#F98600">
+                                                                            {{getFirstLetters($reply->user->name)}}
+                                                                            {{--                        <span class="stat green"></span>--}}
+                                                                        </div>
+                                                                    @endif
+                                                                    {{--                                <span class="stat green"></span>--}}
+                                                                </div>
+                                                                <h5>{{ @$reply->user->name }}</h5>
+                                                            </div>
+                                                            <button class="btn dropdown"><i class="ri-more-line"></i></button>
+                                                        </div>
+                                                        <div class="content">
+                                                            <p><a class="tagged-user">@ {{ $comment->user->name }}</a>
+                                                                {{@$reply->comment}}
+                                                            </p>
+                                                        </div>
+                                                        <div class="footer">
+                                                            <button class="btn"><i class="ri-emotion-line"></i></button>
+                                                            <div class="reactions">
+                                                                <button class="btn btn-like react" data-comment="{{ $reply->id}}">
+                                                                    <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                                                                    <span class="like-count-{{ $reply->id}}">{{  ($reply->likes()>0) ? $reply->likes():"" }}</span>
+                                                                </button>
+                                                                <button class="btn btn-dislike react" data-comment="{{ $reply->id}}">
+                                                                    <i class="fa fa-thumbs-down" aria-hidden="true"></i>
+                                                                    <span class="dislike-count-{{$reply->id}}">{{  ($reply->dislikes()>0) ? $reply->dislikes():"" }}</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="divider"></div>
+                                                            <span class="is-mute">{{@$reply->getCommentedAgoinNepali()}}</span>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            @endif
+                                        @endforeach
                                     </div>
 
-                                    <p class="line-for-loggin">You must be logged in to create new topics.</p>
 
-                                </div>
+                                @endif
+
+
+
                             </div>
                             <!-- End contact form box -->
 

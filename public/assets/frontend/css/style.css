@@ -529,16 +529,16 @@ header.active .nav-list-container {
 .navbar-nav .megadropdown .inner-megadropdown .posts-filtered-block > .owl-wrapper {
   padding: 20px;
 }
-.navbar-nav .megadropdown .inner-megadropdown ul.horizontal-filter-posts {
+.navbar-nav .megadropdown .inner-megadropdown ul.horizontal-filter-posts, ul.horizontal-filter-posts {
   margin: 0;
   padding: 0;
   margin-bottom: 17px;
 }
-.navbar-nav .megadropdown .inner-megadropdown ul.horizontal-filter-posts li {
+.navbar-nav .megadropdown .inner-megadropdown ul.horizontal-filter-posts li, ul.horizontal-filter-posts li {
   display: inline-block;
   margin-right: 2px;
 }
-.navbar-nav .megadropdown .inner-megadropdown ul.horizontal-filter-posts li a {
+.navbar-nav .megadropdown .inner-megadropdown ul.horizontal-filter-posts li a, ul.horizontal-filter-posts li a  {
   display: inline-block;
   text-decoration: none;
   transition: all 0.2s ease-in-out;
@@ -559,7 +559,7 @@ header.active .nav-list-container {
   border-radius: 3px;
   position: relative;
 }
-.navbar-nav .megadropdown .inner-megadropdown ul.horizontal-filter-posts li a:after {
+.navbar-nav .megadropdown .inner-megadropdown ul.horizontal-filter-posts li a:after, ul.horizontal-filter-posts li a:after {
   content: '';
   position: absolute;
   top: 100%;
@@ -574,7 +574,10 @@ header.active .nav-list-container {
   -o-transition: all 0.2s ease-in-out;
 }
 .navbar-nav .megadropdown .inner-megadropdown ul.horizontal-filter-posts li a:hover,
-.navbar-nav .megadropdown .inner-megadropdown ul.horizontal-filter-posts li a.active {
+ul.horizontal-filter-posts li a:hover,
+.navbar-nav .megadropdown .inner-megadropdown ul.horizontal-filter-posts li a.active,
+ul.horizontal-filter-posts li a.active
+{
   color: #ffffff;
   background: #e94033a1;
   border: 1px solid #e9403300;
@@ -845,6 +848,9 @@ p {
 .title-section {
   border-bottom: 1px solid #e1e1e1;
   margin-bottom: 30px;
+}
+.category-title {
+  margin-bottom: 20px;
 }
 .title-section h1 {
   color: #2c3593;
@@ -3923,11 +3929,12 @@ div.block-content .share-post-box .banner{
 .single-post-box .share-post-box ul.share-box {
   margin: 0;
   padding: 0;
+    text-align: center;
 }
 .single-post-box .share-post-box ul.share-box li {
   display: inline-block;
   color: #666666;
-  font-size: 13px;
+  font-size: 16px;
   font-family: "Mukta","Glegoo", sans-serif;
   margin-right: 8px;
   margin-bottom: 2px;
@@ -3966,11 +3973,11 @@ div.block-content .share-post-box .banner{
   background: #18a3dd;
 }
 .single-post-box .share-post-box ul.share-box li a.google {
-  background: #f14133;
+  background: #4285f4;
 }
-.single-post-box .share-post-box ul.share-box li a.google i {
-  margin-right: 0;
-}
+/*.single-post-box .share-post-box ul.share-box li a.google i {*/
+/*  margin-right: 0;*/
+/*}*/
 .single-post-box .share-post-box ul.share-box li a.linkedin {
   background: #1879dd;
 }
@@ -3979,6 +3986,10 @@ div.block-content .share-post-box .banner{
 }
 .single-post-box .share-post-box ul.share-box li a:hover {
   opacity: 0.7;
+}
+.single-post-box .share-post-box ul.share-box li a svg{
+    width: 18px;
+    height: 18px;
 }
 .single-post-box .post-gallery {
   text-align: center;
@@ -4757,9 +4768,13 @@ div.block-content .share-post-box .banner{
   padding-right: 0;
   border: none;
   color: #999999;
-  font-size: 13px;
+  font-size: 16px;
   text-transform: initial;
   font-weight: 400;
+    padding-top: 10px;
+}
+.contact-form-box .title-section span.email-not-published a{
+   color: #e94033;
 }
 /*-------------------------------------------------*/
 /* =  404 erro page
@@ -7069,4 +7084,8 @@ ul.demo-list li a i {
 .comment-block .writing:focus-within {
     border: 1px solid #1725d0;
     box-shadow: 0px 0px 2px 2px rgb(99 108 216 / 30%);
+}
+.disabled-reaction{
+    cursor: none;
+    pointer-events: none;
 }

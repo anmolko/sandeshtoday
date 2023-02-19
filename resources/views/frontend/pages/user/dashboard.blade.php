@@ -23,130 +23,107 @@
         .btn-color-white{
             color: white;
         }
+        .tab-content{
+            margin: 50px 0 150px;
+        }
 
 
     </style>
 @endsection
 @section('content')
 
-
-    <div class="blog-section section">
+    <section class="block-wrapper">
         <div class="container">
-
-            <!-- Feature Post Row Start -->
             <div class="row">
-
-                <div class="col-lg-12 col-12 mb-50">
-
-                    <!-- Post Block Wrapper Start -->
-                    <div class="post-block-wrapper">
-
-                        <!-- Post Block Head Start -->
-                        <div class="head feature-head">
-
-                            <!-- Title -->
-                            <h4 class="title">User Dashboard</h4>
-
-                            <!-- Tab List Start -->
-                            <ul class="post-block-tab-list feature-post-tab-list nav d-none d-md-block">
-                                <li class="nav-item"><a class="active" data-bs-toggle="tab" href="#feature-comments">Comments</a></li>
-                                <li class="nav-item"><a data-bs-toggle="tab" href="#feature-profile">Profile</a></li>
-                                <li class="nav-item"> <a  href="#"   onclick="event.preventDefault();
-                                                     document.getElementById('customer-logout-form').submit();" id="v-pills-settings-tab" aria-selected="false">
-                                        <i class="fas fa-sign-out-alt mr-2"></i>
-                                        <form id="customer-logout-form" action="{{ route('logout') }}"  method="POST" class="d-none">
-                                            @csrf
-                                        </form>
-                                        <span class="font-weight-bold small text-uppercase">Logout</span></a></li>
-                            </ul>
+                <div class="col-sm-12">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#firsttab" data-toggle="tab">Comments</a></li>
+                        <li><a href="#secondtab" data-toggle="tab">Profile</a></li>
+                        <li style="float: right"><a href="#" onclick="event.preventDefault();
+                                                                 document.getElementById('customer-logout-form').submit();" id="v-pills-settings-tab" aria-selected="false">
+                                <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                                <form id="customer-logout-form" action="{{ route('logout') }}"  method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                                </a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="firsttab">
+                            <div class="tab-content">
+                                <div class="table-responsive">
+                                    <table id="all-comments" class="table table-striped responsive" role="grid" aria-describedby="basic-col-reorder_info">
+                                        <thead>
+                                        <tr>
+                                            <th>Comment</th>
+                                            <th>Commented on</th>
+                                            <th>Type</th>
+                                            <th>Interaction</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @if(count($user->comments)>0)
+                                            @foreach($user->comments as  $comment)
+                                                <tr>
+                                                    <td>
+                                                        <span class="title">{{@$comment->comment}}</span></td>
+                                                    <td>{{number_format(@$comment->publishedDateNepali())}}</td>
+                                                    <td>{{ (@$comment->parent_id !== null) ? "Replied to comment":"Main Comment"}}</td>
+                                                    <td> Like: {{ @$comment->likes()  }} <br/> Dislike: {{ @$comment->dislikes()  }} <br/> Replies: {{ count(@$comment->replies)  }}</td>
+                                                    <td class="text-right">
+                                                        <a class="btn btn-sm btn-success btn-color-white" href="{{ url($comment->blog->url()) }}" target="_blank">
+                                                            <i class="fa fa-eye"></i> </a>
+                                                        <a class="btn btn-sm btn-warning btn-color-white action-delete" href="#" hrm-delete-per-action="{{route('comments.destroy',$comment->id)}}">
+                                                            <i class="fa fa-trash"></i> </a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        @else
+                                            <tr>
+                                                <td colspan="6" style="text-align: center">You have not made any comments yet. Look through our <a href="{{route('blog.frontend')}}" style="color: #0a90eb">News list</a> to get started.</td>
+                                            </tr>
+                                        @endif
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <form action="#" method="post" id="deleted-form" >
+                                    {{csrf_field()}}
+                                    <input name="_method" type="hidden" value="DELETE">
+                                </form>
+                            </div>
 
                         </div>
-
-
-                        <div class="body pb-0">
+                        <div class="tab-pane" id="secondtab">
                             <div class="tab-content">
-
-                                <div class="tab-pane fade show active" id="feature-comments">
-
-                                    <div class="row">
-
-                                        <div class="table-responsive">
-                                            <table id="all-comments" class="table table-striped table-bordered  responsive comment-table" role="grid" aria-describedby="basic-col-reorder_info">
-                                                <thead>
-                                                <tr>
-                                                    <th>Comment</th>
-                                                    <th>Commented on</th>
-                                                    <th>Type</th>
-                                                    <th>Interaction</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                @if(count($user->comments)>0)
-                                                    @foreach($user->comments as  $comment)
-                                                        <tr>
-                                                            <td>
-                                                                <span class="title">{{@$comment->comment}}</span></td>
-                                                            <td>{{number_format(@$comment->publishedDateNepali())}}</td>
-                                                            <td>{{ (@$comment->parent_id !== null) ? "Replied to comment":"Main Comment"}}</td>
-                                                            <td> Like: {{ @$comment->likes()  }} <br/> Dislike: {{ @$comment->dislikes()  }} <br/> Replies: {{ count(@$comment->replies)  }}</td>
-                                                            <td class="text-right">
-                                                                <a class="btn btn-sm btn-success btn-color-white" href="{{ url($comment->blog->url()) }}" target="_blank">
-                                                                    <i class="fa fa-eye"></i> </a>
-                                                                <a class="btn btn-sm btn-warning btn-color-white action-delete" href="#" hrm-delete-per-action="{{route('comments.destroy',$comment->id)}}">
-                                                                    <i class="fa fa-trash"></i> </a>
-                                                            </td>
-                                                        </tr>
-                                                    @endforeach
-                                                @else
-                                                    <tr>
-                                                        <td colspan="6" style="text-align: center">You have not made any comments yet. Look through our <a href="{{route('blog.frontend')}}" style="color: #0a90eb">News list</a> to get started.</td>
-                                                    </tr>
-                                                @endif
-                                                </tbody>
-                                            </table>
+                                <div class="contact-form-box">
+                                    {!! Form::open(['url'=>route('front-user.update', @$user->id),'class'=>'needs-validation','method'=>'PUT','id'=>'contact-form','novalidate'=>'','enctype'=>'multipart/form-data']) !!}
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label for="name">Display Name <span class="text-warning">*</span></label>
+                                                <input id="name" name="name" value="{{@$user->name}}" type="text" required>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="mail">User Name</label>
+                                                <input id="mail" name="address" value="{{@$user->address}}" type="text">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="submit">Submit</label>
+                                                <button type="submit" id="submit-contact">
+                                                    <i class="fa fa-paper-plane"></i> Update Details
+                                                </button>
+                                            </div>
                                         </div>
-                                        <form action="#" method="post" id="deleted-form" >
-                                            {{csrf_field()}}
-                                            <input name="_method" type="hidden" value="DELETE">
-                                        </form>
-
-                                    </div>
-
+                                    {!! Form::close() !!}
                                 </div>
-
-
-                                <div class="tab-pane fade" id="feature-profile">
-
-                                    <div class="row">
-                                        {!! Form::open(['url'=>route('front-user.update', @$user->id),'class'=>'needs-validation','method'=>'PUT','novalidate'=>'','enctype'=>'multipart/form-data']) !!}
-                                             <div class="contact-form row">
-                                                        <div class="col-md-6 col-12 mb-20">
-                                                            <label for="name">Name <sup>*</sup></label>
-                                                            <input type="text" id="name" name="name" value="{{@$user->name}}" required />
-                                                        </div>
-
-                                                        <div class="col-md-6 col-12 mb-20">
-                                                            <label for="email">User name </label>
-                                                            <input type="text" id="email" name="address" value="{{@$user->address}}" />
-                                                        </div>
-
-                                                        <div class="col-12">
-                                                            <input type="submit" value="Update Profile">
-                                                        </div>
-                                             </div>
-                                        {!! Form::close() !!}
-                                    </div>
-
-                                </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+
+
 
 @endsection
 @section('js')

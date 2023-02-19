@@ -34,6 +34,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/frontend/css/owl.theme.css')}}" media="screen">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/frontend/css/ticker-style.css')}}"/>
     <link rel="stylesheet" type="text/css" href="{{asset('assets/frontend/css/style.css')}}" media="screen" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     @yield('css')
     @stack('styles')
     <script async src="https://www.googletagmanager.com/gtag/js?id={{@$setting_data->google_analytics}}"></script>

@@ -1,41 +1,16 @@
 <div class="comment-block">
-    <div class="block-header">
-        <div class="title">
-{{--            <h2>Comments</h2>--}}
-{{--            <div class="tag">12</div>--}}
-        </div>
-        <div class="group-radio">
-
-{{--            <div class="head comment-head">--}}
-{{--                <ul class="post-block-tab-list feature-post-tab-list nav d-none d-md-block">--}}
-{{--                    <li class="nav-item"><a class="active" data-bs-toggle="tab" href="#feature-cat-1">Fashion</a></li>--}}
-{{--                    <li class="nav-item"><a data-bs-toggle="tab" href="#feature-cat-2" class="">Health</a></li>--}}
-{{--                </ul>--}}
-{{--            </div>--}}
-
-{{--            <span class="button-radio">--}}
-{{--                <input id="latest" name="latest" type="radio" checked>--}}
-{{--                <label for="latest">Latest</label>--}}
-{{--            </span>--}}
-{{--            <span class="button-radio">--}}
-{{--                <input id="popular" name="latest" type="radio">--}}
-{{--                <label for="popular">Popular</label>--}}
-{{--            </span>--}}
-        </div>
-    </div>
-
-
     <div class="writing">
         {!! Form::open(['route' => 'comments.store','method'=>'post','class'=>'needs-validation','id'=>'slider-list-form','novalidate'=>'','enctype'=>'multipart/form-data']) !!}
 
-            <input type="hidden" class="form-control" name="user_id" id="user_id" value="{{ ( Auth::user()->user_type == 'viewer') ? Auth::user()->id :1}}" readonly required>
-            <input type="hidden" class="form-control" name="blog_id" id="blog_id" value="{{@$singleBlog->id}}" readonly required>
-            <textarea name="comment" class="textarea" rows="8" required></textarea><br/>
-            <div class="footer">
-                <div class="group-button">
-                    <button type="submit" class="btn primary" id="send-comment">प्रतिक्रिया दिनुहोस्</button>
-                </div>
+        <input type="hidden" class="form-control" name="user_id" id="user_id" value="{{ ( Auth::user()->user_type == 'viewer') ? Auth::user()->id :1}}" readonly required>
+        <input type="hidden" class="form-control" name="user_id" id="user_id" value="1" readonly required>
+        <input type="hidden" class="form-control" name="blog_id" id="blog_id" value="{{@$singleBlog->id}}" readonly required>
+        <textarea name="comment" class="textarea" rows="8" required></textarea><br/>
+        <div class="footer">
+            <div class="group-button">
+                <button type="submit" class="btn primary" id="send-comment"> <i class="fa fa-comment"></i> प्रतिक्रिया दिनुहोस्</button>
             </div>
+        </div>
         {!! Form::close() !!}
     </div>
 
@@ -59,7 +34,6 @@
 
                     <h5>{{ $comment->user->name }}</h5>
                 </div>
-                <button class="btn dropdown"><i class="ri-more-line"></i></button>
             </div>
             <div class="content">
                 <p>
@@ -86,16 +60,16 @@
 
             <div class="replybox writing" style="display:none" id="panel-{{@$comment->id}}">
                 {!! Form::open(['route' => 'comments.store','method'=>'post','class'=>'needs-validation','id'=>'slider-list-form','novalidate'=>'','enctype'=>'multipart/form-data']) !!}
-                    <input type="hidden" class="form-control" name="user_id" id="user_id" value="{{ ( Auth::user()->user_type == 'viewer') ? Auth::user()->id :1}}" readonly required>
-                    <input type="hidden" class="form-control" name="blog_id" id="blog_id" value="{{@$singleBlog->id}}" readonly required>
-                    <input type="hidden" class="form-control" name="parent_id" id="parent_id_{{@$comment->id}}" value="{{@$comment->id}}" readonly required>
-                    <textarea cols="35" name="comment" class="textarea" rows="8" required></textarea><br/>
-                    <div class="footer">
-                        <div class="group-button">
-                            <button class="btn primary">प्रतिक्रिया दिनुहोस्</button>
-                            <button type="button" class="cancelbutton btn secondary">Cancel</button>
-                        </div>
+                <input type="hidden" class="form-control" name="user_id" id="user_id" value="{{ ( Auth::user()->user_type == 'viewer') ? Auth::user()->id :1}}" readonly required>
+                <input type="hidden" class="form-control" name="blog_id" id="blog_id" value="{{@$singleBlog->id}}" readonly required>
+                <input type="hidden" class="form-control" name="parent_id" id="parent_id_{{@$comment->id}}" value="{{@$comment->id}}" readonly required>
+                <textarea cols="35" name="comment" class="textarea" rows="8" required></textarea><br/>
+                <div class="footer">
+                    <div class="group-button">
+                        <button class="btn primary">प्रतिक्रिया दिनुहोस्</button>
+                        <button type="button" class="cancelbutton btn secondary">Cancel</button>
                     </div>
+                </div>
                 {!! Form::close() !!}
 
             </div>
@@ -122,15 +96,13 @@
                             </div>
                             <h5>{{ @$reply->user->name }}</h5>
                         </div>
-                        <button class="btn dropdown"><i class="ri-more-line"></i></button>
                     </div>
                     <div class="content">
                         <p><a class="tagged-user">@ {{ $comment->user->name }}</a>
-                        {{@$reply->comment}}
+                            {{@$reply->comment}}
                         </p>
                     </div>
                     <div class="footer">
-                        <button class="btn"><i class="ri-emotion-line"></i></button>
                         <div class="reactions {{ ($reply->haslikedordisliked(Auth::user()->id)) ? "disabled-reaction":""}}">
                             <button class="btn btn-like react {{ ($reply->hasliked(Auth::user()->id)) ? "active":""}}" id="saveLikeDislike" data-type="like" data-user="{{Auth::user()->id}}" data-comment="{{ $reply->id}}">
                                 <i class="fa fa-thumbs-up" aria-hidden="true"></i>
@@ -148,25 +120,4 @@
             @endforeach
         @endif
     @endforeach
-
-{{--    <div class="tab-content">--}}
-
-{{--        <!-- Tab Pane Start-->--}}
-{{--        <div class="tab-pane fade active show" id="feature-cat-1">--}}
-
-{{--            <div class="row">--}}
-
-{{--              --}}
-{{--            </div>--}}
-
-{{--        </div><!-- Tab Pane End-->--}}
-
-{{--        <!-- Tab Pane Start-->--}}
-{{--        <div class="tab-pane fade" id="feature-cat-2">--}}
-
-
-
-{{--        </div><!-- Tab Pane End-->--}}
-
-{{--    </div>--}}
 </div>

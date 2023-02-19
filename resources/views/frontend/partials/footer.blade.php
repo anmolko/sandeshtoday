@@ -1,5 +1,6 @@
 
-<section class="heading-news3">
+@if(count($footer_news)>0)
+    <section class="heading-news3">
     <div class="title-section" style="text-align: center">
         <h1><span>छुटाउनुभयो कि ?</span></h1>
     </div>
@@ -36,7 +37,7 @@
     </div>
 
 </section>
-
+@endif
 <!-- footer
         ================================================== -->
 <footer>
@@ -216,6 +217,55 @@
 <script type="text/javascript" src="{{asset('assets/frontend/js/retina-1.1.0.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/frontend/js/plugins-scroll.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/frontend/js/script.js')}}"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $.ajaxSetup({
+            headers:{
+                'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        @if(Session::has('success'))
+            Toastify({
+                text: "{{ Session::get('success')}}",
+                duration: 4000,
+                destination: "https://github.com/apvarun/toastify-js",
+                newWindow: true,
+                close: true,
+                gravity: "top", // `top` or `bottom`
+                positionLeft: false, // `true` or `false`
+                backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+            }).showToast();
+        @endif
+        @if(Session::has('error'))
+            Toastify({
+                text: "{{ Session::get('error')}}",
+                duration: 4000,
+                destination: "https://github.com/apvarun/toastify-js",
+                newWindow: true,
+                close: true,
+                gravity: "top", // `top` or `bottom`
+                positionLeft: false, // `true` or `false`
+                backgroundColor: "linear-gradient(to right, #0AB39C, #405189)",
+            }).showToast();
+        @endif
+        @if(Session::has('warning'))
+            Toastify({
+                text: "{{ Session::get('error')}}",
+                duration: 4000,
+                destination: "https://github.com/apvarun/toastify-js",
+                newWindow: true,
+                close: true,
+                gravity: "top", // `top` or `bottom`
+                positionLeft: false, // `true` or `false`
+                backgroundColor: "linear-gradient(to right, #0AB39C, #405189)",
+            }).showToast();
+        @endif
+    });
+
+</script>
 @yield('js')
 @stack('scripts')
 </body>

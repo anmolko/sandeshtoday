@@ -69,7 +69,7 @@ class FrontController extends Controller
 
 
     public function blogs(){
-        $allPosts       = $this->blog->orderBy('created_at', 'DESC')->where('status','publish')->paginate(10);
+        $allPosts       = $this->blog->orderBy('created_at', 'DESC')->where('status','publish')->paginate(12);
         return view('frontend.pages.blogs.index',compact('allPosts'));
     }
 
@@ -126,15 +126,10 @@ class FrontController extends Controller
 
     public function blogCategories($slug){
         $category       = Category::where('slug', $slug)->first();
-        $id             = Blog::with('categories')->where('status','publish')
-            ->whereHas('categories',function ($query) use ($slug){
-                $query->where('slug', $slug);
-            })->take(3)->pluck('id');
-
         $allPosts       = Blog::with('categories')->where('status','publish')
             ->whereHas('categories',function ($query) use ($slug){
                 $query->where('slug', $slug);
-            })->whereNotIn('id', $id)->paginate(6);
+            })->paginate(9);
 
         return view('frontend.pages.blogs.category',compact('allPosts','category'));
     }

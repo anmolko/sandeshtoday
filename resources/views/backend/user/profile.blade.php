@@ -218,8 +218,8 @@
                                                             </div>
                                                             <div class="flex-grow-1 overflow-hidden">
                                                                 <p class="mb-1">Website :</p>
-                                                                <a href="https://darpandainik.com/" target="_blank"
-                                                                   class="fw-semibold">www.darpandainik.com</a>
+                                                                <a href="https://sandeshtoday.com/" target="_blank"
+                                                                   class="fw-semibold">www.sandeshtoday.com</a>
                                                             </div>
                                                         </div>
                                                     </div>
