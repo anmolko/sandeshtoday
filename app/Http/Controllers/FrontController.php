@@ -135,6 +135,7 @@ class FrontController extends Controller
             ->whereHas('categories',function ($query) use ($slug){
                 $query->where('slug', $slug);
             })->whereNotIn('id', $id)->paginate(6);
+
         return view('frontend.pages.blogs.category',compact('allPosts','category'));
     }
 
@@ -145,13 +146,6 @@ class FrontController extends Controller
         return view('frontend.pages.blogs.search',compact('searchPosts','query'));
     }
 
-    public function redirectOld($one,$two,$three){
-        if(is_numeric($one)){
-            return redirect('https://sub.darpandainik.com/'.$one.'/'.$two.'/'.$three);
-        }else{
-            return redirect()->intended();
-        }
-    }
 
     public function removeFacebookUser(Request $request){
 

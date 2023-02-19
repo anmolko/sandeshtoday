@@ -9,64 +9,54 @@
 @endsection
 @section('content')
 
-    @if(countCategoryChildren(@$category->id))
-        @include('frontend.pages.blogs.category_nav2')
-    @else
-        @include('frontend.pages.blogs.category_nav1')
-    @endif
+{{--    @if(countCategoryChildren(@$category->id))--}}
+{{--        @include('frontend.pages.blogs.category_nav2')--}}
+{{--    @else--}}
+{{--        @include('frontend.pages.blogs.category_nav1')--}}
+{{--    @endif--}}
+@if(count($allPosts)>0)
+    <section class="block-wrapper">
+    <div class="container">
 
-    @if(checkEven(@$category->id))
-        @include('frontend.pages.blogs.featured1')
-    @else
-        @include('frontend.pages.blogs.featured2')
-    @endif
+        <!-- block content -->
+        <div class="block-content non-sidebar">
 
-    @if(count($allPosts)>0)
-        <div class="post-section section mt-50">
-        <div class="container">
+            <!-- grid box -->
+            <div class="grid-box">
+                <div class="masonry-box">
+                    <div class="title-section">
+                        <h1><span>{{ ucfirst( @$category->name )}}</span></h1>
+                    </div>
 
-            <!-- Feature Post Row Start -->
-            <div class="row">
-
-                <div class="col-lg-12 col-12 mb-50">
-                    <div class="post-block-wrapper all-news-block">
-                        <div class="body">
-                            <div class="row">
-                                @sandeshloop(@$allPosts as $key=>$news)
-
-                                    <!-- Post Start -->
-                                    <div class="post sports-post post-separator-border col-md-4 col-12">
-                                        <div class="post-wrap">
-
-                                            <!-- Image -->
-                                            <a class="image" href="{{ url(@$news->url()) }}">
-                                                <img src="{{(@$news->image !== null) ?  asset('/images/blog/'.@$news->image) : asset('assets/backend/images/darpan_dainik.png')}}" alt="post"></a>
-
-                                            <!-- Content -->
-                                            <div class="content">
-
-                                                <!-- Title -->
-                                                <h4 class="title"><a href="{{ url(@$news->url()) }}">{{@$news->title}}</a></h4>
-
-                                            </div>
-
-                                        </div>
-                                    </div><!-- Post End -->
-
-                                @endsandeshloop
-
-
-                                {{ $allPosts->links('vendor.pagination.default') }}
-
-
+                    <div class="latest-articles iso-call">
+                        @sandeshloop(@$allPosts as $key=>$news)
+                            <div class="news-post standard-post2 default-size category-posts">
+                                <div class="post-gallery">
+                                    <a href="{{ url(@$news->url()) }}">
+                                    <img src="{{(@$news->image !== null) ?  asset('/images/blog/'.@$news->image) : asset('assets/backend/images/sandesh_today.png')}}"></a>
+                                </div>
+                                <div class="post-title">
+                                    <h2>
+                                        <a href="{{ url(@$news->url()) }}">{{@$news->title}}</a>                                    </h2>
+                                    <ul class="post-tags">
+                                        <li><i class="fa fa-clock-o"></i>{{@$news->publishedDateNepali()}}</li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
+                        @endsandeshloop
 
                     </div>
+
                 </div>
+                <div class="pagination-box">
+                    {{ $allPosts->links('vendor.pagination.default') }}
+                </div>
+
             </div>
         </div>
     </div>
-    @endif
+</section>
+@endif
+
 
 @endsection

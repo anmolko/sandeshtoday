@@ -221,7 +221,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/{year}/{month}/{slug}','App\Http\Controllers\FrontController@redirectOld')->name('redirectOld');
 Route::get('/request/remove-user-data', 'App\Http\Controllers\FrontController@removeFacebookUser')->name('remove.facebook');
 
 Auth::routes();

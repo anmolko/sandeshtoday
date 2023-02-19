@@ -12,7 +12,7 @@
                 <!-- grid box -->
                 <div class="grid-box">
                     <div class="title-section">
-                        <h1><span class="world">खोज गरिएको : <strong>{{$query}}</strong></span></h1>
+                        <h1><span class="health">खोज गरिएको : <strong>{{$query}}</strong></span></h1>
                     </div>
 
 {{--                    <div class="image-slider">--}}

@@ -1360,11 +1360,15 @@ section.feature-video .owl-theme .owl-controls .owl-buttons div.owl-next:hover:a
   margin: 15px 15px;
 }
 /* pagination style */
-.pagination-box ul.pagination-list {
+.pagination-box {
+    text-align: center;
+}
+.pagination-box ul.pagination-list, .pagination-box ul {
   margin: 0;
   padding: 0;
+
 }
-.pagination-box ul.pagination-list li {
+.pagination-box ul.pagination-list li, .pagination-box ul li {
   display: inline-block;
   margin-right: 3px;
 }
@@ -1385,8 +1389,20 @@ section.feature-video .owl-theme .owl-controls .owl-buttons div.owl-next:hover:a
   -o-border-radius: 3px;
   border-radius: 3px;
 }
+.pagination-box ul li a{
+    color: #333333;
+}
+.pagination-box ul li.active span{
+    border: 1px solid #f44336;
+    background: #f44336;
+    color: #ffffff;
+}
+.pagination-box ul li.disabled{
+   display: none;
+}
 .pagination-box ul.pagination-list li a:hover,
-.pagination-box ul.pagination-list li a.active {
+.pagination-box ul li a:hover,
+.pagination-box ul.pagination-list li a.active{
   border: 1px solid #f44336;
   background: #f44336;
   color: #ffffff;
@@ -3104,7 +3120,7 @@ ul.post-tags li:last-child {
   -webkit-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
 }
-.clip .post-title{
+.clip .post-title, .category-posts .post-title{
     height: 120px;
 }
 .standard-post2 .post-title h2 {
@@ -6973,6 +6989,13 @@ ul.demo-list li a i {
     overflow: hidden;
     font-size: 18px;
     max-height: 4em;
+}
+.category-posts .post-title h2{
+    line-height: 24px;
+    overflow: hidden;
+    font-size: 20px;
+    max-height: 3.6em;
+    margin: 0 0 5px;
 }
 
 .single-post-box .bottom{
