@@ -2,306 +2,184 @@
 @section('title') हाम्रो टीम @endsection
 @section('css')
     <style>
-
-        .team-area {
-            padding: 60px 0;
-        }
-
-        .team-social ul {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
-
-        .team-site-heading h2 {
-            display: block;
-            font-weight: 700;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            font-size: 4em;
-            line-height: 1.3em;
+        .our-team{
+            text-align: center;
             position: relative;
-            padding-bottom: 15px;
-
-
         }
-
-        .team-site-heading h2 span {
-            color: #ff5a6e;
-        }
-
-        .team-site-heading h4 {
-            display: inline-block;
-            padding-bottom: 20px;
-            position: relative;
-            text-transform: capitalize;
-            z-index: 1;
-        }
-
-        .team-site-heading h2::before {
-            background: #0d47a2 none repeat scroll 0 0;
-            bottom: 0;
+        .our-team:before{
             content: "";
-            height: 2px;
-            left: 50%;
-            margin-left: -25px;
             position: absolute;
-            width: 50px;
-        }
-
-
-        .team-site-heading {
-            margin-bottom: 60px;
-            overflow: hidden;
-            margin-top: -5px;
-        }
-
-        .team-area .single-item {
-            margin-bottom: 30px;
-        }
-
-        .team-area .item .thumb {
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .team-area .item .thumb::after {
-            background: #232323 none repeat scroll 0 0;
-            content: "";
-            height: 100%;
-            left: 0;
+            border: 4px solid #e94033;
+            bottom: -7px;
+            top: -7px;
+            left: -7px;
+            right: -7px;
             opacity: 0;
+            transform: scale(1.03);
+            z-index: -1;
+            transition:0.6s ease 0s;
+        }
+        .our-team:hover:before{
+            opacity: 1;
+            transform: scale(1);
+        }
+        .our-team .team-img{
+            position: relative;
+        }
+        .our-team .team-img:before{
+            content: "";
             position: absolute;
             top: 0;
-            transition: all 0.35s ease-in-out;
-            -webkit-transition: all 0.35s ease-in-out;
-            -moz-transition: all 0.35s ease-in-out;
-            -ms-transition: all 0.35s ease-in-out;
-            -o-transition: all 0.35s ease-in-out;
-            width: 100%;
-        }
-
-        .team-area .team-items .item:hover .thumb::after {
-            opacity: 0.7;
-        }
-
-        .team-area .item .thumb .overlay {
-            top: -100%;
             left: 0;
-            padding: 20px;
-            position: absolute;
-            text-align: center;
-            -webkit-transition: all 0.35s ease-in-out;
-            -moz-transition: all 0.35s ease-in-out;
-            -ms-transition: all 0.35s ease-in-out;
-            -o-transition: all 0.35s ease-in-out;
-            transition: all 0.35s ease-in-out;
+            background-color: rgba(0,0,0,0.6);
             width: 100%;
-            z-index: 1;
+            height: 100%;
+            opacity: 0;
+            transition:0.6s ease 0s;
         }
-
-        .team-area .item:hover .thumb .overlay {
-            top: 50%;
-            transform: translate(-50%, -50%);
-            left: 50%;
+        .our-team:hover .team-img:before{
+            opacity: 1;
         }
-
-        .team-area .item .thumb .overlay p {
-            color: #ffffff;
+        .our-team .team-img img{
+            width: 100%;
+            height: auto;
         }
-
-        .team-area .item .thumb .overlay h4 {
-            color: #ffffff;
-            display: inline-block;
+        .our-team .team-content{
+            padding: 10px 0 35px;
             position: relative;
-            text-transform: uppercase;
-        }
-
-        .team-area .item .thumb img {
-            -webkit-transition: all 0.35s ease-in-out;
-            -moz-transition: all 0.35s ease-in-out;
-            -ms-transition: all 0.35s ease-in-out;
-            -o-transition: all 0.35s ease-in-out;
-            transition: all 0.35s ease-in-out;
-        }
-
-        .team-area .item:hover .thumb img {
-            opacity: 0.6;
-        }
-
-        .team-area .item .thumb .social li {
-            display: inline-block;
-        }
-
-        .team-area .item .thumb .social li a {
-            -webkit-border-radius: 50%;
-            -moz-border-radius: 50%;
-            border-radius: 50%;
-            color: #ffffff;
-            display: inline-block;
-            height: 40px;
-            line-height: 40px;
-            margin: 0 2px;
-            text-align: center;
-            width: 40px;
-        }
-
-        .team-area .info {
-            background: #ffffff none repeat scroll 0 0;
-            -moz-box-shadow: 0 0 10px #cccccc;
-            -webkit-box-shadow: 0 0 10px #cccccc;
-            -o-box-shadow: 0 0 10px #cccccc;
-            box-shadow: 0 0 10px #cccccc;
-            padding: 40px 20px 20px;
-            position: relative;
-            text-align: center;
-            z-index: 9;
-        }
-
-        .team-area .info .message {
-            height: 50px;
-            line-height: 40px;
-            margin-left: -25px;
-            margin-top: -25px;
-            position: absolute;
-            text-align: center;
             top: 0;
-            width: 50px;
+            transition:0.6s ease 0s;
+            background: #fafafa;
         }
-
-        .team-area .info .message a {
-            background: #fff none repeat scroll 0 0;
-            -webkit-border-radius: 50%;
-            -moz-border-radius: 50%;
-            border-radius: 50%;
-            -moz-box-shadow: 0 0 10px #cccccc;
-            -webkit-box-shadow: 0 0 10px #cccccc;
-            -o-box-shadow: 0 0 10px #cccccc;
-            box-shadow: 0 0 10px #cccccc;
-            box-sizing: border-box;
-            color: #ff5a6e;
-            display: inline-block;
+        .our-team:hover .team-content{
+            top: -50%;
+        }
+        .our-team .team-content .name{
+            color: #333;
             font-size: 20px;
-            height: 50px;
-            line-height: 50px;
-            width: 50px;
-        }
-
-        .team-area .info .message a i {
-            font-weight: 500;
-        }
-
-        .team-area .info h4 {
-            font-weight: 600;
-            margin-bottom: 10px;
-            text-transform: capitalize;
-            font-size: 1.8em;
-            font-family: "Mukta", "Khand", "Glegoo", sans-serif;
-        }
-
-        .team-area .info span {
-            color: #0d47a2;
-            font-family: "Mukta", "Khand", "Glegoo", sans-serif;
-            font-weight: 600;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 7px;
             text-transform: uppercase;
-            font-size: 1.8em;
+            transition:0.6s ease 0s;
+        }
+        .our-team:hover .team-content .name{
+            color: #2c3593;
+            font-size: 22px;
+        }
+        .our-team .team-content .post{
+            color: #707070;
+            font-size: 17px;
+            font-weight: 500;
+            display: block;
+            text-transform: capitalize;
+            transition:0.6s ease 0s;
+        }
+        .our-team:hover .team-content .post{
+            color:#e94033;
+        }
+        .our-team .social{
+            bottom: 0;
+            font-size: 0;
+            left: 0;
+            margin: 0 0 5px;
+            opacity: 0;
+            padding: 0;
+            position: absolute;
+            right: 0;
+            text-align: center;
+            transform: scale(0);
+            transition:0.6s ease 0s;
+        }
+        .our-team:hover .social{
+            opacity: 1;
+            transform: scale(1);
+        }
+        .our-team .social li{
+            display: inline-block;
+        }
+        .our-team .social li a{
+            display:block;
+            color: #333;
+            font-size: 18px;
+            padding:0 15px;
+            position: relative;
+            transition:0.3s ease 0s;
+        }
+        .our-team .social li a:hover{
+            color:#F6511D;
+        }
+        .our-team .social li a:after{
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: 1px;
+            background-color: #333;
+        }
+        .our-team .social li:last-child a:after{
+            display: none;
         }
 
-        .team-area .social li.twitter a {
-            background-color: #00b6f1;
+        @media screen and (max-width:990px){
+            .our-team{
+                margin-bottom: 30px !important;
+            }
         }
-
-        .team-area .social li.pinterest a {
-            background-color: #bd081c;
+        .mb-80{
+            margin-top: 80px;
+            margin-bottom: 80px;
         }
-
-        .team-area .social li.facebook a {
-            background-color: #3b5998;
-        }
-
-        .team-area .social li.google-plus a {
-            background-color: #df4a32;
-        }
-
-        .team-area .social li.vimeo a {
-            background-color: #1ab7ea;
-        }
-
-        .team-area .social li.instagram a {
-            background-color: #cd486b;
-        }
-
     </style>
 @endsection
 @section('content')
 
-    <div class="blog-section section">
+    <section class="block-wrapper mb-80">
         <div class="container">
-            <section id="team" class="team-area">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="team-site-heading text-center">
-                                <h2>हाम्रो <span>टीम</span></h2>
-{{--                                <h4>Meet our awesome and expert team members</h4>--}}
-                            </div>
-                        </div>
+        <div class="title-section category-title">
+            <h1><span>हाम्रो टीम</span></h1>
+        </div>
+        <div class="row">
+            @foreach(@$teams as $team)
+                <div class="col-md-4 col-sm-6">
+                <div class="our-team">
+                    <div class="team-img">
+                        <img src="{{asset('/images/teams/'.$team->image)}}">
                     </div>
-                    <div class="row team-items">
-                        @foreach(@$teams as $team)
-                            <div class="col-md-4 single-item">
-                            <div class="item">
-                                <div class="thumb">
-
-{{--                                    <img class="img-fluid" src="https://i.ibb.co/JC4skS0/team-animate.jpg" alt="Thumb">--}}
-                                    <img class="img-fluid" src="{{asset('/images/teams/'.$team->image)}}" alt="Thumb">
-                                    <div class="overlay">
-                                        <div class="social">
-                                            <ul>
-                                                @if(!empty(@$team->fb))
-                                                    <li class="facebook">
-                                                        <a href="{{@$team->fb}}" target="_blank"><i class="fab fa-facebook"></i></a>
-                                                    </li>
-                                                @endif
-                                                @if(!empty(@$team->twitter))
-                                                    <li class="twitter">
-                                                        <a href="{{@$team->twitter}}" target="_blank"><i class="fab fa-twitter"></i></a>
-                                                    </li>
-                                                @endif
-                                                @if(!empty(@$team->insta))
-                                                    <li class="instagram">
-                                                        <a href="{{@$team->insta}}" target="_blank"><i class="fab fa-instagram"></i></a>
-                                                    </li>
-                                                @endif
-                                                @if(!empty(@$team->linkedin))
-                                                    <li class="linkedin">
-                                                        <a href="{{@$team->linkedin}}" target="_blank"><i class="fab fa-linkedin"></i></a>
-                                                    </li>
-                                                @endif
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="info">
-                                    <span class="message">
-                                      <a>
-                                        <i class="fa fa-user-circle-o"></i>
-                                      </a>
-                                    </span>
-                                    <h4>{{@$team->name}}</h4>
-                                    <span>{{@$team->post}}</span>
-                                </div>
-                            </div>
-                        </div>
-                        @endforeach
+                    <div class="team-content">
+                        <h3 class="name">{{@$team->name}}</h3>
+                        <span class="post">{{@$team->post}}</span>
                     </div>
+                    <ul class="social">
+                        @if(!empty(@$team->fb))
+                            <li>
+                                <a href="{{@$team->fb}}" target="_blank"><i class="fa fa-facebook"></i></a>
+                            </li>
+                        @endif
+                        @if(!empty(@$team->twitter))
+                            <li>
+                                <a href="{{@$team->twitter}}" target="_blank"><i class="fa fa-twitter"></i></a>
+                            </li>
+                        @endif
+                        @if(!empty(@$team->insta))
+                            <li>
+                                <a href="{{@$team->insta}}" target="_blank"><i class="fa fa-instagram"></i></a>
+                            </li>
+                        @endif
+                        @if(!empty(@$team->linkedin))
+                            <li>
+                                <a href="{{@$team->linkedin}}" target="_blank"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        @endif
+                    </ul>
                 </div>
-            </section>
+            </div>
+            @endforeach
         </div>
     </div>
-
-
+    </section>
 
 @endsection
 @section('js')

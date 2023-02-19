@@ -143,16 +143,16 @@
 
         .about-section .content-column .inner-column{
             position: relative;
-            padding-left: 30px;
         }
 
         .about-section .text{
             margin-bottom: 20px;
-            font-size: 18px;
-            line-height: 1.6;
-            color: #848484;
             font-weight: 400;
             text-align: justify;
+        }
+        .about-section .text p{
+            font-size: 18px;
+            line-height: 1.6;
         }
 
         .about-section .list-style-one{
@@ -216,8 +216,8 @@
             content: '';
             position: absolute;
             width: calc(50% + 150px);
-            height: calc(100% + 160px);
-            top: -80px;
+            height: calc(100% + 125px);
+            top: -60px;
             left: -3px;
             background: transparent;
             z-index: 0;
@@ -264,52 +264,43 @@
             -o-transition: all 300ms ease;
             transition: all 300ms ease;
         }
+        .mb-80{
+            margin-top: 80px;
+            margin-bottom: 80px;
+        }
     </style>
 @endsection
 @section('content')
 
-    <div class="blog-section section">
+    <section class="block-wrapper about-section mb-80">
         <div class="container">
-            <section class="about-section">
-                <div class="container">
+            <div class="container">
                     <div class="row">
-                        <div class="content-column  {{(@$homesettings->welcome_image !== null) ? "col-lg-7":"col-lg-12" }} col-md-12 col-sm-12 order-2">
-                            <div class="inner-column">
-                                <div class="sec-title">
-{{--                                    <span class="title">About Css3transition</span>--}}
-                                    <h2>{{ @$homesettings->welcome_heading }}</h2>
+                    @if(@$homesettings->welcome_image !== null)
+                        <!-- Image Column -->
+                            <div class="image-column col-lg-5 col-md-12 col-sm-12">
+                                <div class="inner-column wow fadeInLeft">
+                                    <figure class="image-1">
+                                        <img src="{{(@$homesettings->welcome_image !== null) ?  asset('/images/home/welcome/'.@$homesettings->welcome_image) : asset('assets/backend/images/darpan_dainik.png')}}" alt="{{@$homesettings->welcome_heading}}" loading="lazy">
+                                    </figure>
+
                                 </div>
+                            </div>
+                        @endif
+                        <div class="content-column  {{(@$homesettings->welcome_image !== null) ? "col-lg-7":"col-lg-12" }} col-md-12 col-sm-12 order-2">
+                            <div class="title-section category-title">
+                                <h1><span>{{ @$homesettings->welcome_heading }}</span></h1>
+                            </div>
+                            <div class="inner-column">
                                 <div class="text">
                                     {!! @$homesettings->welcome_description !!}
                                 </div>
-
-
                             </div>
                         </div>
-
-                        @if(@$homesettings->welcome_image !== null)
-                        <!-- Image Column -->
-                        <div class="image-column col-lg-5 col-md-12 col-sm-12">
-                            <div class="inner-column wow fadeInLeft">
-{{--                                <div class="author-desc">--}}
-{{--                                    <h2>hello</h2>--}}
-{{--                                    <span>Web Developer</span>--}}
-{{--                                </div>--}}
-                                <figure class="image-1">
-                                    <img src="{{(@$homesettings->welcome_image !== null) ?  asset('/images/home/welcome/'.@$homesettings->welcome_image) : asset('assets/backend/images/darpan_dainik.png')}}" alt="{{@$homesettings->welcome_heading}}" loading="lazy">
-                                </figure>
-
-                            </div>
-                        </div>
-                        @endif
-
                     </div>
-
-                </div>
-            </section>
-
+            </div>
         </div>
-    </div>
+    </section>
 
 @endsection
 @section('js')

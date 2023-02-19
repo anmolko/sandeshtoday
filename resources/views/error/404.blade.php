@@ -22,7 +22,7 @@
         font-weight: 900;
         font-size: 15rem;
         line-height: 1;
-        color :#0d47a2;
+        color :#27308c;
     }
 
     .illustration {
@@ -38,7 +38,7 @@
         width: 12.2rem;
         height: 11.4rem;
         border-radius: 50%;
-        background-color: #ec6335;
+        background-color: #e94033;
     }
 
     .clip {
@@ -59,7 +59,7 @@
         transform: translateX(-50%);
         width: 9.2rem;
         height: 12.4rem;
-        border: 0.3rem solid #ec6335;
+        border: 0.3rem solid #e94033;
         background-color: white;
         border-radius: 0.8rem;
     }
@@ -72,7 +72,7 @@
         width: 1.4rem;
         height: 1rem;
         background-color: white;
-        border-bottom: 0.3rem solid #0c47a3;
+        border-bottom: 0.3rem solid #27308c;
         transform: rotate(45deg);
     }
 
@@ -161,28 +161,29 @@
         font-weight: 600;
         font-size: 60px;
         font-family: "Khand", sans-serif;
-        color: #0d47a2;
+        color: #27308c;
 
     }
     .button {
         margin-top: 2em;
-        background-color: #ec6335;
+        background-color: #e94033;
         padding: 0.5em 3em;
         font-size: 24px;
         color: #fff;
     }
 
     .button:hover {
-        background-color: #0d47a2;
+        background-color: #27308c;
         color: #fff;
-
-
     }
-
+    .mb-80{
+        margin-top: 80px;
+        margin-bottom: 80px;
+    }
 </style>
 @endsection
 @section('content')
-    <div class="post-section section mt-50 mb-80">
+    <section class="block-wrapper mb-80">
         <div class="container">
             <div class="center">
                 <div class="error">
@@ -210,7 +211,7 @@
             </div>
 
         </div>
-    </div>
+    </section>
 
 
 @endsection
