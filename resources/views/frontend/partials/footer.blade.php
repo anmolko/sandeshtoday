@@ -1,4 +1,22 @@
 
+{{--<nav class="footer-drawer">--}}
+{{--    <a class="nav-item-drawer" href="#">--}}
+{{--        <i data-feather="activity"></i><span>Home</span>--}}
+{{--    </a>--}}
+
+{{--    <a class="nav-item-drawer" href="#">--}}
+{{--        <i data-feather="trending-up"></i><span>Popular</span>--}}
+{{--    </a>--}}
+
+{{--    <a class="nav-item-drawer" href="#">--}}
+{{--        <i data-feather="message-square"></i><span>Comments</span>--}}
+{{--    </a>--}}
+
+{{--    <a class="nav-item-drawer" href="#">--}}
+{{--        <i data-feather="settings"></i><span>Search</span>--}}
+{{--    </a>--}}
+
+{{--</nav>--}}
 @if(count($footer_news)>0)
     <section class="heading-news3">
     <div class="title-section" style="text-align: center">
@@ -214,14 +232,16 @@
 <script type="text/javascript" src="{{asset('assets/frontend/js/jquery.imagesloaded.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/frontend/js/jquery.isotope.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/frontend/js/owl.carousel.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('assets/frontend/js/retina-1.1.0.min.js')}}"></script>
+{{--<script type="text/javascript" src="{{asset('assets/frontend/js/retina-1.1.0.min.js')}}"></script>--}}
 <script type="text/javascript" src="{{asset('assets/frontend/js/plugins-scroll.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/frontend/js/script.js')}}"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script type="text/javascript" src="{{asset('assets/frontend/js/feather.min.js')}}"></script>
+
 
 <script type="text/javascript">
     $(document).ready(function () {
-
+        feather.replace();
         $.ajaxSetup({
             headers:{
                 'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
