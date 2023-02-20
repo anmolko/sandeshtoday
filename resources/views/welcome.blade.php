@@ -218,18 +218,21 @@
                         <div class="widget tab-posts-widget">
 
                             <ul class="nav nav-tabs two-nav-tabs" id="myTab">
-                                <li class="active">
-                                    <a href="#popular1" data-toggle="tab">लोकप्रिय</a>
-                                </li>
+                                @if(count($topnews_week)>0)
+                                    <li class="active">
+                                        <a href="#popular1" data-toggle="tab">लोकप्रिय</a>
+                                    </li>
+                                @endif
                                 @if(count($popular_comments)>0)
-                                    <li>
+                                    <li class="{{ (count($topnews_week)>0) ? "":"active"}}">
                                         <a href="#commented1" data-toggle="tab">धेरै कमेन्ट रहेको</a>
                                     </li>
                                 @endif
                             </ul>
 
                             <div class="tab-content">
-                                <div class="tab-pane active sidebar-content" id="popular1">
+                                @if(count($topnews_week)>0)
+                                    <div class="tab-pane active sidebar-content" id="popular1">
                                     <ul class="list-posts">
                                         @sandeshloop(@$topnews_week as $popular)
                                         <li>
@@ -251,8 +254,9 @@
 
                                     </ul>
                                 </div>
+                                @endif
                                 @if(count($popular_comments)>0)
-                                    <div class="tab-pane sidebar-content" id="commented1">
+                                    <div class="tab-pane {{ (count($topnews_week)>0) ? "":"active"}} sidebar-content" id="commented1">
                                         <ul class="list-posts">
 
                                             @sandeshloop(@$popular_comments as $popular)
@@ -324,7 +328,7 @@
         <div class="container">
 
             <div class="title-section">
-                <h1><span>समाचार</span></h1>
+                <h1><a href="{{route('blog.category','समाचार')}}">समाचार</a></h1>
             </div>
 
             <div class="features-today-box owl-wrapper">
@@ -369,7 +373,7 @@
                         <div class="carousel-box owl-wrapper">
 
                             <div class="title-section">
-                                <h1><span class="world">अर्थ</span></h1>
+                                <h1><a href="{{route('blog.category','अर्थ')}}">अर्थ</a></h1>
                             </div>
 
                             <div class="owl-carousel artha-section" data-num="2">
@@ -486,11 +490,11 @@
                                     </a>
                                 </div>
                                 <div class="mobile-banner">
-                                <span>Advertisement</span>
-                                <a href="{{@$banner->url}}" target="_blank">
-                                    <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
-                                </a>
-                            </div>
+                                    <span>Advertisement</span>
+                                    <a href="{{@$banner->url}}" target="_blank">
+                                        <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
+                                    </a>
+                                </div>
                             @endsandeshloop
 
                         </div>
@@ -545,7 +549,7 @@
         <div class="container">
 
             <div class="title-section white pt-15">
-                <h1><span>राजनीति</span></h1>
+                <h1><a href="{{route('blog.category','राजनीति')}}">राजनीति</a></h1>
             </div>
             <div class="iso-call heading-news-box">
                 <div class="image-slider snd-size">
@@ -615,7 +619,7 @@
                         <div class="carousel-box owl-wrapper">
 
                             <div class="title-section">
-                                <h1><span>देश/प्रदेश</span></h1>
+                                <h1><a href="{{route('blog.category','देश/प्रदेश')}}">देश/प्रदेश</a></h1>
                             </div>
 
                             <div class="owl-carousel desh" data-num="2">
@@ -685,7 +689,7 @@
 
                         <div class="widget features-slide-widget">
                             <div class="title-section">
-                                <h1><span>विचार</span></h1>
+                                <h1><a href="{{route('blog.category','विचार')}}">विचार</a></h1>
                             </div>
                             <div class="image-post-slider mb-30">
                                 <ul class="bxslider">
@@ -787,7 +791,7 @@
                         <div class="masonry-box">
 
                             <div class="title-section">
-                                <h1><span>समाज</span></h1>
+                                <h1><a href="{{route('blog.category','समाज')}}">समाज</a></h1>
                             </div>
 
                             <div class="latest-articles iso-call">
@@ -857,39 +861,32 @@
                         <div class="grid-box">
 
                             <div class="title-section">
-                                <h1><span>कला</span></h1>
+                                <h1><a href="{{route('blog.category','कला')}}">कला</a></h1>
                             </div>
 
-                            <div class="image-post-slider">
-                                <ul class="bxslider">
-                                    @sandeshloop(getCategoryRelatedPost('कला',0,2) as $news)
-
-                                        <li>
-                                            <div class="news-post image-post2">
-                                                <div class="post-gallery">
-                                                    <div class="veil">
-                                                        <img src="{{(@$news->image !== null) ?  asset('/images/blog/'.@$news->image) : asset('assets/backend/images/sandesh_today.png')}}" alt="post">
-
-                                                    </div>
-                                                    <div class="hover-box">
-                                                        <div class="inner-hover">
-                                                            <h2>
-                                                                <a href="{{ url(@$news->url()) }}">{{@$news->title}}</a>
-                                                            </h2>
-                                                            <ul class="post-tags">
-                                                                <li><i class="fa fa-clock-o"></i>{{@$news->publishedDateNepali()}}</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    @endsandeshloop
-                                </ul>
+                            @sandeshloop(getCategoryRelatedPost('कला',0,1) as $news)
+                            <div class="news-post-custom international-news">
+                                <div class="post-title-description">
+                                    <h4>
+                                        <a href="{{ url(@$news->url()) }}">
+                                            {{@$news->title}}
+                                        </a>
+                                    </h4>
+                                    <p>
+                                        {!! (@$news->excerpt !== null) ? $news->excerpt: $news->shortContent() !!}
+                                    </p>
+                                </div>
+                                <div class="post-img-wrap">
+                                    <a href="{{ url(@$news->url()) }}">
+                                        <img src="{{(@$news->image !== null) ?  asset('/images/blog/'.@$news->image) : asset('assets/backend/images/sandesh_today.png')}}"
+                                             class="ok-post-thumb">
+                                    </a>
+                                </div>
                             </div>
+                            @endsandeshloop
 
                             <div class="row">
-                                @foreach(getCategoryRelatedPost('देश/प्रदेश',0,4)->chunk(2) as $chunked)
+                                @foreach(getCategoryRelatedPost('कला',1,4)->chunk(2) as $chunked)
                                     <div class="col-md-6">
                                         <ul class="list-posts">
                                             @foreach($chunked as $news)
@@ -911,7 +908,7 @@
                             </div>
                         </div>
                         <div class="banner">
-                            @sandeshloop(getHomepageBanner('home-banner',3,1) as $banner)
+                            @sandeshloop(getHomepageBanner('home-banner',4,1) as $banner)
                             <div class="desktop-banner">
                                 <span>Advertisement</span>
                                 <a href="{{@$banner->url}}" target="_blank">
@@ -966,7 +963,7 @@
             <div class="block-content pb-0">
                 <!-- grid box -->
                 <div class="title-section pt-15">
-                    <h1><span>खेल</span></h1>
+                    <h1><a href="{{route('blog.category','खेल')}}">खेल</a></h1>
                 </div>
                 <div class="row">
                     <div class="col-md-6 col-sm-6">
@@ -1018,7 +1015,7 @@
                     </div>
                 </div>
                 <div class="banner">
-                    @sandeshloop(getHomepageBanner('home-banner',3,1) as $banner)
+                    @sandeshloop(getHomepageBanner('home-banner',5,1) as $banner)
                     <div class="desktop-banner">
                         <span>Advertisement</span>
                         <a href="{{@$banner->url}}" target="_blank">
@@ -1043,5 +1040,119 @@
         </div>
     </section>
 
+    <section class="block-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-sm-8">
+
+                    <div class="block-content">
+                        <div class="grid-box">
+
+                            <div class="title-section">
+                                <h1><a href="{{route('blog.category','अमेरिका')}}">अमेरिका</a></h1>
+                            </div>
+
+
+                            <div class="image-post-slider">
+                                <ul class="bxslider">
+                                    @sandeshloop(getCategoryRelatedPost('अमेरिका',0,2) as $news)
+                                    <li>
+                                        <div class="news-post image-post2">
+                                            <div class="post-gallery">
+                                                <div class="veil">
+                                                    <img src="{{(@$news->image !== null) ?  asset('/images/blog/'.@$news->image) : asset('assets/backend/images/sandesh_today.png')}}" alt="post">
+
+                                                </div>
+                                                <div class="hover-box">
+                                                    <div class="inner-hover">
+                                                        <h2>
+                                                            <a href="{{ url(@$news->url()) }}">{{@$news->title}}</a>
+                                                        </h2>
+                                                        <ul class="post-tags">
+                                                            <li><i class="fa fa-clock-o"></i>{{@$news->publishedDateNepali()}}</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    @endsandeshloop
+                                </ul>
+                            </div>
+
+
+
+                            <div class="row">
+                                @foreach(getCategoryRelatedPost('अमेरिका',2,4)->chunk(2) as $chunked)
+                                    <div class="col-md-6">
+                                        <ul class="list-posts">
+                                            @foreach($chunked as $news)
+                                                <li>
+                                                    <img src="{{(@$news->image !== null) ?  asset('/images/blog/'.@$news->image) : asset('assets/backend/images/sandesh_today.png')}}" alt="post">
+                                                    <div class="post-content">
+                                                        <h2>
+                                                            <a href="{{ url(@$news->url()) }}">{{@$news->title}}</a>
+                                                        </h2>
+                                                        <ul class="post-tags">
+                                                            <li><i class="fa fa-clock-o"></i>{{@$news->publishedDateNepali()}}</li>
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                    <!-- sidebar -->
+                    <div class="sidebar home-sidebar">
+                        <div class="banner side-banner">
+                            @sandeshloop(getHomepageBanner('home-sidebar-banner',8,3) as $banner)
+                            <div class="desktop-banner">
+                                <span>Advertisement</span>
+                                <a href="{{@$banner->url}}" target="_blank">
+                                    <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
+                                </a>
+                            </div>
+                            <div class="tablet-banner">
+                                <span>Advertisement</span>
+                                <a href="{{@$banner->url}}" target="_blank">
+                                    <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
+                                </a>
+                            </div>
+                            @endsandeshloop
+                        </div>
+                    </div>
+                    <!-- End sidebar -->
+                </div>
+            </div>
+            <div class="banner">
+                @sandeshloop(getHomepageBanner('home-banner',6,1) as $banner)
+                <div class="desktop-banner">
+                    <span>Advertisement</span>
+                    <a href="{{@$banner->url}}" target="_blank">
+                        <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
+                    </a>
+                </div>
+                <div class="tablet-banner">
+                    <span>Advertisement</span>
+                    <a href="{{@$banner->url}}" target="_blank">
+                        <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
+                    </a>
+                </div>
+                <div class="mobile-banner">
+                    <span>Advertisement</span>
+                    <a href="{{@$banner->url}}" target="_blank">
+                        <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
+                    </a>
+                </div>
+                @endsandeshloop
+            </div>
+
+        </div>
+    </section>
 
 @endsection
