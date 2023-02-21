@@ -112,6 +112,17 @@ header {
   position: relative;
   z-index: 99999 !important;
 }
+.sticky-logo-nav {
+    display: none;
+}
+.sticky-logo-nav a>img {
+    max-width: 320px;
+    height: 50px;
+    padding: 5px;
+}
+.sticky-logo-nav {
+    float: left;
+}
 .nav-list-container {
   width: 100%;
   border-bottom: 1px solid #f0f0f0;
@@ -126,6 +137,12 @@ header.active .nav-list-container {
   top: 0;
   left: 0;
   background: #fafafa;
+}
+header.active .nav-list-container .sticky-logo-nav{
+    display:block;
+    overflow:hidden;
+    margin-right: 5px;
+    transition: margin-right 0.6s ease-in-out;
 }
 .navbar-default {
   background: #fafafa;
@@ -686,6 +703,9 @@ ul.horizontal-filter-posts li a.active
   outline: none;
   width: 200px;
   margin: 0 !important;
+}
+header.active .nav-list-container .navbar-form input[type="text"]{
+    width: 180px;
 }
 .navbar-form button {
   background: transparent;
@@ -6217,6 +6237,15 @@ footer .footer-last-line nav.footer-nav ul li:first-child:before {
         width: 50em;
         top: 70px;
     }
+    header.active .nav-list-container .navbar-form input[type="text"]{
+        width: 130px;
+    }
+    header.active .nav-list-container .navbar-nav > li > a {
+        font-size: 17px;
+    }
+    header.active .sticky-logo-nav a>img {
+       height: 45px;
+    }
 }
 @media (max-width: 991px) {
   .top-line ul.social-icons {
@@ -6382,9 +6411,19 @@ footer .footer-last-line nav.footer-nav ul li:first-child:before {
   }
 }
 @media only screen and (min-width: 500px) and (max-width: 768px) {
+    header.active .nav-list-container .sticky-logo-nav{
+        display:block;
+    }
+    header.active .nav-list-container .navbar-nav > li > a{
+        font-size: 16px;
+    }
+    .navbar-left {
+        float: none!important;
+    }
     .single-post-box .sticky-header {
         width: 38.5em;
         top: 60px;
+        padding: 15px 0px 5px 15px;
     }
     .single-post-box .sticky-header h1 {
         font-size: 30px;
@@ -6457,6 +6496,18 @@ footer .footer-last-line nav.footer-nav ul li:first-child:before {
 }
 
 @media (max-width: 767px) {
+    header.active .nav-list-container .sticky-logo-nav{
+        display:none;
+    }
+    header.active .logo-banner{
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: #fafafa;
+    }
+    header.active .nav-list-container{
+        top: 100px!important;
+    }
     .prev-next-posts{
         display: none;
     }
@@ -6658,9 +6709,14 @@ footer .footer-last-line nav.footer-nav ul li:first-child:before {
   ul.autor-list > li .autor-box .autor-content {
     margin-left: 0;
   }
+    .single-post-box .sticky-header{
+        display: none;
+    }
 }
 @media (max-width: 500px) {
-
+    header.active .logo-banner{
+        width: 500px;
+    }
     .single-post-box .title-post h1{
         font-size: 40px;
         line-height: 45px;
@@ -6669,15 +6725,15 @@ footer .footer-last-line nav.footer-nav ul li:first-child:before {
     font-size: 16px;
     line-height: 20px;
   }
-    .single-post-box .sticky-header {
-        width: 28.5em;
-        top: 10px;
-        padding: 8px 0px 5px 5px;
-    }
-    .single-post-box .sticky-header h1{
-        font-size: 24px;
-        line-height: 30px;
-    }
+    /*.single-post-box .sticky-header {*/
+    /*    width: 28.5em;*/
+    /*    top: 10px;*/
+    /*    padding: 8px 0px 5px 5px;*/
+    /*}*/
+    /*.single-post-box .sticky-header h1{*/
+    /*    font-size: 24px;*/
+    /*    line-height: 30px;*/
+    /*}*/
 
     .sticky-header ul.featured-post-details li{
         font-size: 14px;
@@ -6788,14 +6844,25 @@ footer .footer-last-line nav.footer-nav ul li:first-child:before {
     clear: both;
   }
 }
+@media (max-width: 425px) {
+    header.active .logo-banner {
+        width: 425px;
+    }
+}
 @media (max-width: 376px){
-    .single-post-box .sticky-header {
-        width: 25em;
+    /*.single-post-box .sticky-header {*/
+    /*    width: 25em;*/
+    /*}*/
+    header.active .logo-banner {
+        width: 375px;
     }
 }
 @media (max-width: 321px){
-    .single-post-box .sticky-header {
-        width: 21.5em;
+    /*.single-post-box .sticky-header {*/
+    /*    width: 21.5em;*/
+    /*}*/
+    header.active .logo-banner {
+        width: 320px;
     }
 }
 
@@ -7382,4 +7449,10 @@ ul.demo-list li a i {
     width: 100%;
     object-fit: cover;
     margin-bottom: 20px;
+}
+.pb-60{
+    padding-bottom: 60px;
+}
+.edit-post{
+    font-size: 15px;
 }

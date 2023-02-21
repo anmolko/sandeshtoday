@@ -873,7 +873,7 @@
                                         </a>
                                     </h4>
                                     <p>
-                                        {!! (@$news->excerpt !== null) ? $news->excerpt: $news->shortContent() !!}
+                                        {!! (@$news->excerpt !== null) ? $news->excerpt: $news->shortContent(50) !!}
                                     </p>
                                 </div>
                                 <div class="post-img-wrap">
@@ -1040,12 +1040,12 @@
         </div>
     </section>
 
-    <section class="block-wrapper">
+    <section class="block-wrapper pb-60">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-sm-8">
 
-                    <div class="block-content">
+                    <div class="block-content pb-0कला">
                         <div class="grid-box">
 
                             <div class="title-section">

@@ -133,6 +133,11 @@
             <!-- navbar list container -->
             <div class="nav-list-container">
                 <div class="container">
+                    <div class="sticky-logo-nav">
+                        <a href="/" class="logo">
+                            <img src="<?php if(@$setting_data->logo_white){?>{{asset('/images/settings/'.@$setting_data->logo_white)}}<?php }?>"  alt=" दर्पण दैनिक | Darpan Dainik  l" title=" दर्पण दैनिक | Darpan Dainik  ">
+                        </a>
+                    </div>
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-left">

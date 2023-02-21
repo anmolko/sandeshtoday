@@ -63,6 +63,10 @@
                                         {{($singleBlog->authors !== null ) ? ucwords(@$singleBlog->authors) : "सन्देश टूडे"}}
                                     </li>
                                     <li><i class="fa fa-clock-o"></i>{{$singleBlog->publishedDateNepali()}}</li>
+                                    @if(!empty(Auth::user()) && Auth::user()->user_type !== 'viewer')
+                                        <li><i class="fa fa-eye"></i>{{@$singleBlog->totalCount()}}</li>
+                                        <li><i class="fa fa-edit"></i><a class="edit-post" href="{{route('blog.edit',$singleBlog->id)}}">Edit</a></li>
+                                    @endif
 
                                     <div class="sharethis-inline-share-buttons float-end"></div>
 
