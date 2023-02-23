@@ -117,8 +117,7 @@ header {
 }
 .sticky-logo-nav a>img {
     max-width: 320px;
-    height: 50px;
-    padding: 5px;
+    height: 55px;
 }
 .sticky-logo-nav {
     float: left;

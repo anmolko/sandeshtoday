@@ -25,7 +25,7 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <label for="name">Name *</label>
-                                <input id="name" name="name" type="text" required>
+                                <input id="fullname" name="fullname" type="text" required>
                             </div>
                             <div class="col-md-4">
                                 <label for="mail">E-mail *</label>

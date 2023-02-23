@@ -50,7 +50,7 @@
             <table style="font-weight: normal;border-collapse: collapse;border: 0;margin: 0;padding: 0;font-family: Arial, sans-serif;">
                 <tr>
                     <td colspan="4" valign="top" class="image-section" style="border-collapse: collapse;border: 0;margin: 0;padding: 0;-webkit-text-size-adjust: none;color: #555559;font-family: Arial, sans-serif;font-size: 16px;line-height: 26px;background-color: #fff;border-bottom: 4px solid #2f358b">
-                        <a href="https://winrecruitnepal.com/"><img class="top-image" src="{{asset('/images/uploads/settings/'.@$data['logo'])}}" style="line-height: 1;max-width: 100%;height: auto;padding-bottom: 10px;" alt="Win Recruit Nepal"></a>
+                        <a href="https://sandeshtoday.com/"><img class="top-image" src="{{asset('/images/uploads/settings/'.@$data['logo'])}}" style="line-height: 1;max-width: 100%;height: auto;padding-bottom: 10px;" alt="Sandesh Today News"></a>
                     </td>
                 </tr>
                 <tr>
@@ -100,7 +100,7 @@
                                     &nbsp;<br>
                                 </td>
                             </tr>
-                          
+
 
                         </table>
                     </td>
