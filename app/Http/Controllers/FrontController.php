@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use CountryState;
 use Bsdate;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 
 
 class FrontController extends Controller
@@ -104,25 +105,21 @@ class FrontController extends Controller
     {
         $theme_data = Setting::first();
         $data = array(
-            'fullname' => $request->input('name'),
-            'message' => $request->input('message'),
-            'email' => $request->input('email'),
-            'subject' => $request->input('subject'),
-            'address' => ucwords($theme_data->address),
+            'fullname'   => $request->input('name'),
+            'message'    => $request->input('message'),
+            'email'      => $request->input('email'),
+            'subject'    => $request->input('subject'),
+            'address'    => ucwords($theme_data->address),
             'site_email' => ucwords($theme_data->email),
-            'site_name' => ucwords($theme_data->website_name),
-            'phone' => ucwords($theme_data->phone),
-            'logo' => ucwords($theme_data->logo),
+            'site_name'  => ucwords($theme_data->website_name),
+            'phone'      => ucwords($theme_data->phone),
+            'logo'       => ucwords($theme_data->logo),
         );
 
 //        Mail::to($theme_data->email)->send(new ContactDetail($data));
 
-        // Session::flash('success','Thank you for contacting us!');
-        $status = 'success';
-        return response()->json($status);
-
-
-        // return redirect()->back();
+         Session::flash('success','Thank you for contacting us. We will get back to you shortly.');
+         return redirect()->back();
     }
 
     public function blogCategories($slug)

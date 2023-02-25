@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PropertyAdvertisementController;
 use Illuminate\Support\Facades\Route;
 use UniSharp\LaravelFilemanager\Lfm;
 
@@ -105,11 +106,6 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth','AdminMiddleware']], f
 
     Route::put('/homepage-setting/grievance/{settings}', 'App\Http\Controllers\HomePageController@grievance')->name('homepage.grievance');
 
-
-    Route::get('/contact', 'App\Http\Controllers\ContactController@index')->name('contact.index');
-    Route::delete('/contact/{id}', 'App\Http\Controllers\ContactController@destroy')->name('contact.destroy');
-    Route::get('/contact/edit/{slug}', 'App\Http\Controllers\ContactController@edit')->name('contact.edit');
-
     //Blog categories
     Route::get('/category', 'App\Http\Controllers\BlogCategoryController@index')->name('blogcategory.index');
     Route::get('/category/create', 'App\Http\Controllers\BlogCategoryController@create')->name('blogcategory.create');
@@ -142,6 +138,10 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth','AdminMiddleware']], f
     Route::patch('/advertisements/{id}/update', 'App\Http\Controllers\AdsController@updateStatus')->name('ads-status.update');
 
     //End of Ads categories
+    Route::patch('/property-advertisement/{id}/update', 'App\Http\Controllers\PropertyAdvertisementController@updateStatus')->name('property-advertisement.status-update');
+    Route::resource('property-advertisement', PropertyAdvertisementController::class);
+
+
 
 
     //Blog

@@ -49,8 +49,8 @@
                         <div class="col-md-9">
                             <ul class="top-line-list">
                                 <li><span class="time-now">{{ getNepaliTodayDate() }}</span></li>
-                                <li><a href="#">Log In</a></li>
-                                <li><a href="#">Contact</a></li>
+                                <li><a href="{{route('contact')}}">Contact</a></li>
+                                <li><a href="{{route('aboutus')}}">About us</a></li>
                             </ul>
                         </div>
                         <div class="col-md-3">

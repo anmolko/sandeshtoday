@@ -65,7 +65,7 @@
                         <div class="col-md-9">
                             <ul class="top-line-list">
                                 <li><span class="time-now">{{ getNepaliTodayDate() }}</span></li>
-                                <li><a href="{{route('blog.frontend')}}">News</a></li>
+                                <li><a href="{{route('contact')}}">Contact</a></li>
                                 <li><a href="{{route('aboutus')}}">About us</a></li>
                             </ul>
                         </div>
