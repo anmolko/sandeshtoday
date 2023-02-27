@@ -156,7 +156,7 @@
                                                         @if(!empty($settings->logo))
                                                             <img src="{{asset('images/settings/'.@$settings->logo)}}" class="img-thumbnail" width="300" alt="One Slide">
                                                         @endif
-                                                        <p class="text-muted">Add the logo (883 * 269 px) for frontend and backend display.</p>
+                                                        <p class="text-muted">Add the logo for frontend and backend display.</p>
                                                         <input class="form-control" name="logo" id="main-logo-input" type="file" accept="image/png, image/jpeg">
                                                     </div>
                                                     <div class="mb-4">
@@ -164,7 +164,7 @@
                                                         @if(!empty($settings->logo_white))
                                                             <img src="{{asset('images/settings/'.@$settings->logo_white)}}" class="img-thumbnail" width="300" alt="Two Slide">
                                                         @endif
-                                                        <p class="text-muted">Add the white logo (883 * 269 px) for frontend display.</p>
+                                                        <p class="text-muted">Add the white logo for frontend display.</p>
 
                                                         <input class="form-control" name="logo_white" id="white-logo-input" type="file" accept="image/png, image/jpeg">
                                                     </div>
@@ -176,6 +176,15 @@
                                                         <p class="text-muted">Add the favicon(32 * 32px).</p>
 
                                                         <input class="form-control" name="favicon" id="favicon-logo-input" type="file" accept="image/png, image/jpeg">
+                                                    </div>
+                                                    <div class="mb-4">
+                                                        <h5 class="fs-14 mb-1">Property Advertisement Logo</h5>
+                                                        @if(!empty($settings->property_ad_logo))
+                                                            <img src="{{asset('images/settings/'.@$settings->property_ad_logo)}}" class="img-thumbnail" width="300" alt="Three Slide">
+                                                        @endif
+                                                        <p class="text-muted">Add the Property Advertisement.</p>
+
+                                                        <input class="form-control" name="property_ad_logo" id="favicon-logo-input" type="file" accept="image/png, image/jpeg">
                                                     </div>
                                                 </div>
                                             </div>

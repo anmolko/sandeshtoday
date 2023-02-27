@@ -110,6 +110,14 @@ class SettingController extends Controller
                 $data['favicon']= $name1;
             }
         }
+        if (!empty($request->file('property_ad_logo'))){
+            $path  = base_path().'/public/images/settings/';
+            $image = $request->file('property_ad_logo');
+            $name1 = uniqid().'_property_logo_'.$image->getClientOriginalName();
+            if ($image->move($path,$name1)){
+                $data['property_ad_logo']= $name1;
+            }
+        }
 
         $theme = Setting::create($data);
         if($theme){
@@ -184,6 +192,7 @@ class SettingController extends Controller
         $oldimage_logo                              = $update_theme->logo;
         $oldimage_logo_white                        = $update_theme->logo_white;
         $oldimage_favicon                           = $update_theme->favicon;
+        $oldimage_prop                              = $update_theme->property_ad_logo;
 
         if (!empty($request->file('logo'))){
             $path  = base_path().'/public/images/settings/';
@@ -219,6 +228,18 @@ class SettingController extends Controller
                 $update_theme->favicon= $name1;
                 if (!empty($oldimage_favicon) && file_exists(public_path().'/images/settings/'.$oldimage_favicon)){
                     @unlink(public_path().'/images/settings/'.$oldimage_favicon);
+                }
+            }
+
+        }
+        if (!empty($request->file('property_ad_logo'))){
+            $path = base_path().'/public/images/settings/';
+            $image =$request->file('property_ad_logo');
+            $name1 = uniqid().'_property_logo_'.$image->getClientOriginalName();
+            if ($image->move($path,$name1)){
+                $update_theme->property_ad_logo= $name1;
+                if (!empty($oldimage_prop) && file_exists(public_path().'/images/settings/'.$oldimage_prop)){
+                    @unlink(public_path().'/images/settings/'.$oldimage_prop);
                 }
             }
 

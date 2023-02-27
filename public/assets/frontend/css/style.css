@@ -482,7 +482,7 @@ header.active .nav-list-container .sticky-logo-nav{
   left: 0;
   width: 100%;
   opacity: 0;
-  visibility: hidden;
+  display: none;
   transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   -webkit-transition: all 0.2s ease-in-out;
@@ -679,7 +679,7 @@ ul.horizontal-filter-posts li a.active
   color: #ab632e;
 }
 .navbar-nav li:hover .megadropdown {
-  visibility: visible;
+  display: block;
   opacity: 1;
 }
 .navbar-form {
@@ -889,6 +889,10 @@ p {
 }
 .title-section h1 a:hover, .title-section.white h1 a:hover{
     color:#c43329e0;
+}
+
+.property-title h1 {
+    font-size: 20px;
 }
 
 .title-section h1 span, .title-section h1 a {
@@ -3090,6 +3094,18 @@ ul.post-tags li {
   -webkit-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
 }
+ul.property-tags li {
+    display: inline-block;
+    margin-right: 7px;
+    color: #27308d;
+    font-size: 18px;
+    font-family: "Mukta","Glegoo", sans-serif;
+    font-style: normal;
+}
+ul.property-tags li .property-amt{
+    font-size: 14px;
+    color: #0000007a;
+}
 ul.featured-post-details li{
     font-size: 16px;
 }
@@ -3159,6 +3175,10 @@ ul.post-tags li:last-child {
 .clip .post-title, .category-posts .post-title{
     height: 120px;
 }
+.property-post .post-title{
+    height: 95px;
+    padding: 10px 18px;
+}
 .standard-post2 .post-title h2 {
   color: #333333;
   font-size: 13px;
@@ -3167,6 +3187,10 @@ ul.post-tags li:last-child {
   line-height: 20px;
   margin: 0 0 10px;
   font-size: 16px;
+}
+.property-post .post-title h2 {
+  margin: 0 0 5px;
+  font-size: 18px;
 }
 .all-post .post-title h2 {
     font-size: 1.8em;
@@ -7454,4 +7478,7 @@ ul.demo-list li a i {
 }
 .edit-post{
     font-size: 15px;
+}
+.mt-40{
+    margin-top: 40px;
 }

@@ -154,58 +154,30 @@
                             </div>
 
                             <div class="prev-next-posts">
-                                <div class="prev-post">
-                                    <img src="{{($previous->image !== null) ?  asset('/images/blog/'.@$previous->image) : asset('assets/backend/images/sandesh_today.png')}}" alt="">
-                                    <div class="post-content">
-                                        <h2>
-                                            <a href="{{ url(@$previous->url()) }}">
-                                                {{@$previous->title}}</a>
-                                        </h2>
+                                @if(@$previous !== null)
+                                    <div class="prev-post">
+                                        <img src="{{(@$previous->image !== null) ?  asset('/images/blog/'.@$previous->image) : asset('assets/backend/images/sandesh_today.png')}}" alt="">
+                                        <div class="post-content">
+                                            <h2>
+                                                <a href="{{ url(@$previous->url()) }}">
+                                                    {{@$previous->title}}</a>
+                                            </h2>
 
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="next-post">
-                                    <img src="{{($next->image !== null) ?  asset('/images/blog/'.@$next->image) : asset('assets/backend/images/sandesh_today.png')}}" alt="">
-                                    <div class="post-content">
-                                        <h2>
-                                            <a href="{{ url(@$next->url()) }}">
-                                                {{@$next->title}}</a>
-                                        </h2>
+                                @endif
+                                @if(@$next !== null)
+                                    <div class="next-post">
+                                        <img src="{{(@$next->image !== null) ?  asset('/images/blog/'.@$next->image) : asset('assets/backend/images/sandesh_today.png')}}" alt="">
+                                        <div class="post-content">
+                                            <h2>
+                                                <a href="{{ url(@$next->url()) }}">
+                                                    {{@$next->title}}</a>
+                                            </h2>
+                                        </div>
                                     </div>
-                                </div>
+                                @endif
                             </div>
-
-                            <!-- carousel box -->
-                            <div class="masonry-box carousel-box owl-wrapper">
-                                <div class="title-section">
-                                    <h1><span>सम्बन्धित खबर</span></h1>
-                                </div>
-
-                                <div class="features-today-box owl-wrapper">
-                                    <div class="owl-carousel" data-num="3">
-                                        @sandeshloop(@$singleBlog->relatedPostsByCategory() as $news)
-                                            <div class="item news-post standard-post">
-                                                <div class="post-gallery">
-                                                    <a href="{{ url(@$news->url()) }}">
-                                                        <img src="{{($news->image !== null) ?  asset('/images/blog/'.@$news->image) : asset('assets/backend/images/sandesh_today.png')}}" alt="post">
-                                                    </a>
-                                                </div>
-                                                <div class="post-content">
-                                                    <h2>
-                                                        <a href="{{ url(@$news->url()) }}">
-                                                            {{@$news->title}}
-                                                        </a>
-                                                    </h2>
-                                                    <ul class="post-tags">
-                                                        <li><i class="fa fa-clock-o"></i>{{@$news->publishedDateNepali()}}</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        @endsandeshloop
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End carousel box -->
 
                             <!-- contact form box -->
                             <div class="contact-form-box comment-block">
@@ -223,7 +195,7 @@
                                         <ul class="share-box">
                                             <li><span>प्रतिक्रिया गर्न लग इन गर्नु होस्:</span></li>
                                             <li><a class="google" href="{{route('google.redirect')}}"><i class="fa fa-google"></i> Login via Google</a></li>
-{{--                                            <li><a class="facebook" href="#"><i class="fa fa-facebook"></i>Share on Twitter</a></li>--}}
+                                            {{--                                            <li><a class="facebook" href="#"><i class="fa fa-facebook"></i>Share on Twitter</a></li>--}}
                                         </ul>
                                     </div>
                                     <div class="comment-block">
@@ -323,6 +295,76 @@
 
                             </div>
                             <!-- End contact form box -->
+
+                            <!-- carousel box -->
+                            <div class="masonry-box carousel-box owl-wrapper mt-40">
+                                <div class="title-section property-title">
+                                    <h1>
+                                        <span>
+                                            @if(@$setting_data->property_ad_logo !== null)
+                                            <img src="{{asset('/images/settings/'.@$setting_data->property_ad_logo)}}" alt="">
+                                            @else
+                                                Property Advertisement
+                                            @endif
+                                        </span>
+                                    </h1>
+                                </div>
+
+                                <div class="features-today-box owl-wrapper">
+                                    <div class="owl-carousel" data-num="3">
+                                        @sandeshloop(@$property_ads as $ads)
+                                        <div class="item news-post standard-post2 default-size property-post">
+                                            <div class="post-gallery">
+                                                <a href="{{ @$ads->url}}">
+                                                    <img src="{{($ads->image !== null) ?  asset('/images/banners/'.@$ads->image) : asset('assets/backend/images/sandesh_today.png')}}" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="post-title">
+                                                <h2><a href="{{ @$ads->url}}"> {{@$ads->name}} </a></h2>
+                                                <ul class="post-tags property-tags">
+                                                    <li>{{@$ads->amount}} <span class="property-amt">Total Amount</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        @endsandeshloop
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End carousel box -->
+
+                            <!-- carousel box -->
+                            <div class="masonry-box carousel-box owl-wrapper">
+                                <div class="title-section">
+                                    <h1><span>सम्बन्धित खबर</span></h1>
+                                </div>
+
+                                <div class="features-today-box owl-wrapper">
+                                    <div class="owl-carousel" data-num="3">
+                                        @sandeshloop(@$singleBlog->relatedPostsByCategory() as $news)
+                                            <div class="item news-post standard-post">
+                                                <div class="post-gallery">
+                                                    <a href="{{ url(@$news->url()) }}">
+                                                        <img src="{{($news->image !== null) ?  asset('/images/blog/'.@$news->image) : asset('assets/backend/images/sandesh_today.png')}}" alt="post">
+                                                    </a>
+                                                </div>
+                                                <div class="post-content">
+                                                    <h2>
+                                                        <a href="{{ url(@$news->url()) }}">
+                                                            {{@$news->title}}
+                                                        </a>
+                                                    </h2>
+                                                    <ul class="post-tags">
+                                                        <li><i class="fa fa-clock-o"></i>{{@$news->publishedDateNepali()}}</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        @endsandeshloop
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End carousel box -->
+
+
 
                         </div>
                         <!-- End single-post box -->
