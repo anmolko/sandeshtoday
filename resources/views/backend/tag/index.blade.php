@@ -108,7 +108,13 @@
                                                         <span class="tag-descp">{{ (@$tag->description !== null) ? @$tag->description:"—" }}</span>
                                                     </td>
                                                     <td id="tag-td-slug-{{@$tag->id}}">{{ @$tag->slug }}</td>
-                                                    <td id="tag-td-count-{{@$tag->id}}"><a href="{{route('tag.blog',@$tag->id)}}">{{ $tag->BlogsCount() }}</a></td>
+                                                    <td id="tag-td-count-{{@$tag->id}}">
+                                                        @if(auth()->user()->user_type!== 'general')
+                                                            <a href="{{route('tag.blog',@$tag->id)}}">{{ $tag->BlogsCount() }}</a>
+                                                        @else
+                                                            {{ $tag->BlogsCount() }}
+                                                        @endif
+                                                    </td>
                                                     <td >
                                                         <div class="row">
 
@@ -118,8 +124,9 @@
                                                                 </a>
                                                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink2">
                                                                     <li><a class="dropdown-item cs-tag-edit" id="cs-role-tag-edit-{{$tag->id}}" cs-update-route="{{route('tag.update',$tag->id)}}" cs-edit-route="{{route('tag.edit',$tag->id)}}"><i class="ri-pencil-fill me-2 align-middle"></i>Edit</a></li>
-                                                                    <li><a class="dropdown-item cs-tag-remove" cs-delete-route="{{route('tag.destroy',$tag->id)}}"><i class="ri-delete-bin-6-line me-2 align-middle"></i>Delete</a></li>
-
+                                                                    @if(auth()->user()->user_type!== 'general')
+                                                                        <li><a class="dropdown-item cs-tag-remove" cs-delete-route="{{route('tag.destroy',$tag->id)}}"><i class="ri-delete-bin-6-line me-2 align-middle"></i>Delete</a></li>
+                                                                    @endif
                                                                 </ul>
                                                             </div>
                                                         </div>

@@ -117,7 +117,13 @@
                                                 <td id="category-td-descp-{{@$category->id}}">
                                                     <span class="cat-descp"> {{ (@$category->description !== null) ? @$category->description:"—" }}</span></td>
                                                 <td id="category-td-slug-{{@$category->id}}">{{ @$category->slug }}</td>
-                                                <td id="category-td-count-{{@$category->id}}"><a href="{{route('blogcategory.blog',@$category->id)}}">{{ $category->BlogsCount() }}</a></td>
+                                                <td id="category-td-count-{{@$category->id}}">
+                                                    @if(auth()->user()->user_type!== 'general')
+                                                      <a href="{{route('blogcategory.blog',@$category->id)}}">{{ $category->BlogsCount() }}</a>
+                                                    @else
+                                                        {{ $category->BlogsCount() }}
+                                                    @endif
+                                                </td>
                                                 <td >
                                                     <div class="row">
 

@@ -25,7 +25,9 @@
                                     <li><i class="fa fa-clock-o"></i>
                                         {{  @$news->getMinsAgoinNepali() }}
                                     </li>
-                                    <li><a href="#"><i class="fa fa-comments-o"></i><span>23</span></a></li>
+                                    @if(count($news->comments)>0)
+                                        <li><a href="#"><i class="fa fa-comments-o"></i><span>{{count($news->comments)}}</span></a></li>
+                                    @endif
                                 </ul>
                             </div>
                             @if($loop->first || $news->show_featured_image !== null )

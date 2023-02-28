@@ -72,12 +72,14 @@
                         <i class="ri-stack-line"></i> <span data-key="t-forms">Menu</span>
                         </a>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link menu-link  @if(\Request::route()->getName() == 'blogcategory.index') active @endif" href="{{route('blogcategory.index')}}">
+                            <i class="ri-creative-commons-nd-line"></i> <span data-key="t-forms">Category</span>
+                        </a>
+                    </li>
                 @endif
-                <li class="nav-item">
-                    <a class="nav-link menu-link  @if(\Request::route()->getName() == 'blogcategory.index') active @endif" href="{{route('blogcategory.index')}}">
-                    <i class="ri-creative-commons-nd-line"></i> <span data-key="t-forms">Category</span>
-                    </a>
-                </li>
+
 
                 <li class="nav-item">
                     <a class="nav-link menu-link  @if(\Request::route()->getName() == 'tag.index') active @endif" href="{{route('tag.index')}}">

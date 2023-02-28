@@ -86,6 +86,7 @@
                                         <th>Title</th>
                                         <th>Category</th>
                                         <th>Tags</th>
+                                        <th>Author</th>
                                         <th>Status</th>
                                         <th class="text-right">Action</th>
                                     </tr>
@@ -119,6 +120,9 @@
                                                                 <br>
                                                             @endif
                                                         @endforeach
+                                                    </td>
+                                                    <td>
+                                                        <span class="title"> {{ ucwords(@$blog->author->name) }} </span>
                                                     </td>
                                                     <td>
                                                         <p class="page-views"> Views:  {{$blog->totalCount()}} </p>
