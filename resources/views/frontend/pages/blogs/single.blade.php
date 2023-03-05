@@ -79,19 +79,16 @@
                                 <div class="banner">
                                     @if(@$above !== null)
                                         <div class="desktop-banner">
-                                            <span>Advertisement</span>
                                             <a href="{{@$above->url}}" target="_blank">
                                                 <img src="{{asset('/images/banners/'.@$above->image)}}" alt="">
                                             </a>
                                         </div>
                                         <div class="tablet-banner">
-                                            <span>Advertisement</span>
                                             <a href="{{@$above->url}}" target="_blank">
                                                 <img src="{{asset('/images/banners/'.@$above->image)}}" alt="">
                                             </a>
                                         </div>
                                         <div class="mobile-banner">
-                                            <span>Advertisement</span>
                                             <a href="{{@$above->url}}" target="_blank">
                                                 <img src="{{asset('/images/banners/'.@$above->image)}}" alt="">
                                             </a>
@@ -115,19 +112,16 @@
                                 <div class="banner">
                                     @if(@$below !== null)
                                         <div class="desktop-banner">
-                                            <span>Advertisement</span>
                                             <a href="{{@$below->url}}" target="_blank">
                                                 <img src="{{asset('/images/banners/'.@$below->image)}}" alt="">
                                             </a>
                                         </div>
                                         <div class="tablet-banner">
-                                            <span>Advertisement</span>
                                             <a href="{{@$above->url}}" target="_blank">
                                                 <img src="{{asset('/images/banners/'.@$below->image)}}" alt="">
                                             </a>
                                         </div>
                                         <div class="mobile-banner">
-                                            <span>Advertisement</span>
                                             <a href="{{@$above->url}}" target="_blank">
                                                 <img src="{{asset('/images/banners/'.@$below->image)}}" alt="">
                                             </a>
@@ -381,19 +375,16 @@
                             @sandeshloop(@$singleBlog->singleSidebarAds(0,1) as $banner)
                                 <div class="banner">
                                     <div class="desktop-banner">
-                                        <span>Advertisement</span>
                                         <a href="{{@$banner->url}}" target="_blank">
                                             <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
                                         </a>
                                     </div>
                                     <div class="tablet-banner">
-                                        <span>Advertisement</span>
                                         <a href="{{@$banner->url}}" target="_blank">
                                             <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
                                         </a>
                                     </div>
                                     <div class="mobile-banner">
-                                        <span>Advertisement</span>
                                         <a href="{{@$banner->url}}" target="_blank">
                                             <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
                                         </a>
@@ -428,19 +419,16 @@
                             @sandeshloop(@$singleBlog->singleSidebarAds(1,3) as $banner)
                             <div class="banner">
                                 <div class="desktop-banner">
-                                    <span>Advertisement</span>
                                     <a href="{{@$banner->url}}" target="_blank">
                                         <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
                                     </a>
                                 </div>
                                 <div class="tablet-banner">
-                                    <span>Advertisement</span>
                                     <a href="{{@$banner->url}}" target="_blank">
                                         <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
                                     </a>
                                 </div>
                                 <div class="mobile-banner">
-                                    <span>Advertisement</span>
                                     <a href="{{@$banner->url}}" target="_blank">
                                         <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
                                     </a>
@@ -475,19 +463,16 @@
                                 @sandeshloop(@$singleBlog->singleSidebarAds(4,3) as $banner)
                                 <div class="banner">
                                     <div class="desktop-banner">
-                                        <span>Advertisement</span>
                                         <a href="{{@$banner->url}}" target="_blank">
                                             <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
                                         </a>
                                     </div>
                                     <div class="tablet-banner">
-                                        <span>Advertisement</span>
                                         <a href="{{@$banner->url}}" target="_blank">
                                             <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
                                         </a>
                                     </div>
                                     <div class="mobile-banner">
-                                        <span>Advertisement</span>
                                         <a href="{{@$banner->url}}" target="_blank">
                                             <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
                                         </a>
@@ -546,22 +531,23 @@
         });
         $(document).ready(function () {
 
-            var number = $('.editor-content').find('p').size();
+            var numb = $('.editor-content').find('p').size();
 
-            if(number => 2){
+            let between1 = '{{$between1 ?? 'n/a'}}';
+            let between2 = '{{$between2[0] ?? 'n/a'}}';
+            console.log(between2);
+
+            if(between1 !=='n/a' && numb > 2){
                 var banner1 ='<div class="banner"> ' +
                     '<div class="desktop-banner"> ' +
-                    '<span>Advertisement</span> ' +
                     '<a href="{{(@$between1->url !== null) ? @$between1->url:"#"}}" target="_blank">' +
                     '<img src="{{asset('/images/banners/'.@$between1->image)}}" alt=""></a> ' +
                     '</div>' +
                     '<div class="tablet-banner">' +
-                    '<span>Advertisement</span>' +
                     '<a href="{{(@$between1->url !== null) ? @$between1->url:"#"}}" target="_blank">' +
                     '<img src="{{asset('/images/banners/'.@$between1->image)}}" alt=""></a> ' +
                     '</div> ' +
                     '<div class="mobile-banner"> ' +
-                    '<span>Advertisement</span> ' +
                     '<a href="{{(@$between1->url !== null) ? @$between1->url:"#"}}" target="_blank">' +
                     '<img src="{{asset('/images/banners/'.@$between1->image)}}" alt=""></a> ' +
                     '</div> ' +
@@ -569,21 +555,18 @@
                 $( ".editor-content p:nth-child(2)" ).after().append(banner1);
             }
 
-            if(number => 4){
+            if(between2 !=='n/a' && numb > 4){
 
                 var banner2 ='<div class="banner"> ' +
                     '<div class="desktop-banner"> ' +
-                    '<span>Advertisement</span> ' +
                     '<a href="{{(@$between2[0]->url !== null) ? @$between2[0]->url:"#"}}" target="_blank">' +
                     '<img src="{{asset('/images/banners/'.@$between2[0]->image)}}" alt=""></a> ' +
                     '</div>' +
                     '<div class="tablet-banner">' +
-                    '<span>Advertisement</span>' +
                     '<a href="{{(@$between2[0]->url !== null) ? @$between2[0]->url:"#"}}" target="_blank">' +
                     '<img src="{{asset('/images/banners/'.@$between2[0]->image)}}" alt=""></a> ' +
                     '</div> ' +
                     '<div class="mobile-banner"> ' +
-                    '<span>Advertisement</span> ' +
                     '<a href="{{(@$between2[0]->url !== null) ? @$between2[0]->url:"#"}}" target="_blank">' +
                     '<img src="{{asset('/images/banners/'.@$between2[0]->image)}}" alt=""></a> ' +
                     '</div> ' +

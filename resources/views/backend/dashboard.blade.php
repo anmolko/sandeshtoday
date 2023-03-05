@@ -343,7 +343,7 @@
                                                 @else
                                                     <li class="list-group-item align-items-center">
                                                         <div class="ms-3">
-                                                            <h6 class="fs-14 mb-1">There are no new services created yet !</h6>
+                                                            <h6 class="fs-14 mb-1">There are no new Advertisement created yet !</h6>
                                                             <p class="text-muted mb-0"> <a href="{{route('ads.index')}}"> click here </a> to create one.</p>
                                                         </div>
                                                     </li>

@@ -47,19 +47,16 @@
             <div class="banner home-banner">
                 <div class="container">
                     <div class="desktop-banner ">
-                        <span>Advertisement</span>
                         <a href="{{@$below_featured->url}}" target="_blank">
                             <img src="{{asset('/images/banners/'.@$below_featured->image)}}" alt="">
                         </a>
                     </div>
                     <div class="tablet-banner">
-                        <span>Advertisement</span>
                         <a href="{{@$below_featured->url}}" target="_blank">
                             <img src="{{asset('/images/banners/'.@$below_featured->image)}}" alt="">
                         </a>
                     </div>
                     <div class="mobile-banner">
-                        <span>Advertisement</span>
                         <a href="{{@$below_featured->url}}" target="_blank">
                             <img src="{{asset('/images/banners/'.@$below_featured->image)}}" alt="">
                         </a>
@@ -185,19 +182,17 @@
                         <div class="banner">
                             @sandeshloop(getHomepageBanner('home-banner',0,1) as $banner)
                                 <div class="desktop-banner">
-                                    <span>Advertisement</span>
+
                                     <a href="{{@$banner->url}}" target="_blank">
                                         <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
                                     </a>
                                 </div>
                                 <div class="tablet-banner">
-                                    <span>Advertisement</span>
                                     <a href="{{@$banner->url}}" target="_blank">
                                         <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
                                     </a>
                                 </div>
                                 <div class="mobile-banner">
-                                    <span>Advertisement</span>
                                     <a href="{{@$banner->url}}" target="_blank">
                                         <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
                                     </a>
@@ -288,19 +283,19 @@
                         <div class="banner side-banner">
                             @sandeshloop(getHomepageBanner('home-sidebar-banner',0,1) as $banner)
                                 <div class="desktop-banner">
-                                    <span>Advertisement</span>
+
                                     <a href="{{@$banner->url}}" target="_blank">
                                         <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
                                     </a>
                                 </div>
                                 <div class="tablet-banner">
-                                    <span>Advertisement</span>
+
                                     <a href="{{@$banner->url}}" target="_blank">
                                         <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
                                     </a>
                                 </div>
                                 <div class="mobile-banner">
-                                <span>Advertisement</span>
+
                                 <a href="{{@$banner->url}}" target="_blank">
                                     <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
                                 </a>
@@ -308,7 +303,7 @@
                             @endsandeshloop
                             @sandeshloop(getHomepageBanner('home-sidebar-banner',1,2) as $banner)
                                 <div class="tablet-banner">
-                                <span>Advertisement</span>
+
                                 <a href="{{@$banner->url}}" target="_blank">
                                     <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
                                 </a>
@@ -480,19 +475,16 @@
                         <div class="banner">
                             @sandeshloop(getHomepageBanner('home-banner',1,1) as $banner)
                                 <div class="desktop-banner">
-                                    <span>Advertisement</span>
                                     <a href="{{@$banner->url}}" target="_blank">
                                         <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
                                     </a>
                                 </div>
                                 <div class="tablet-banner">
-                                    <span>Advertisement</span>
                                     <a href="{{@$banner->url}}" target="_blank">
                                         <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
                                     </a>
                                 </div>
                                 <div class="mobile-banner">
-                                    <span>Advertisement</span>
                                     <a href="{{@$banner->url}}" target="_blank">
                                         <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
                                     </a>
@@ -514,19 +506,16 @@
                         @sandeshloop(getHomepageBanner('home-sidebar-banner',1,3) as $banner)
                             <div class="banner home-banner">
                                 <div class="desktop-banner">
-                                    <span>Advertisement</span>
                                     <a href="{{@$banner->url}}" target="_blank">
                                         <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
                                     </a>
                                 </div>
                                 <div class="tablet-banner">
-                                    <span>Advertisement</span>
                                     <a href="{{@$banner->url}}" target="_blank">
                                         <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
                                     </a>
                                 </div>
                                 <div class="mobile-banner">
-                                    <span>Advertisement</span>
                                     <a href="{{@$banner->url}}" target="_blank">
                                         <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
                                     </a>
@@ -660,19 +649,16 @@
                         <div class="banner">
                             @sandeshloop(getHomepageBanner('home-banner',2,1) as $banner)
                                 <div class="desktop-banner">
-                                    <span>Advertisement</span>
                                     <a href="{{@$banner->url}}" target="_blank">
                                         <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
                                     </a>
                                 </div>
                                 <div class="tablet-banner">
-                                    <span>Advertisement</span>
                                     <a href="{{@$banner->url}}" target="_blank">
                                         <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
                                     </a>
                                 </div>
                                 <div class="mobile-banner">
-                                    <span>Advertisement</span>
                                     <a href="{{@$banner->url}}" target="_blank">
                                         <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
                                     </a>
@@ -823,19 +809,16 @@
                         <div class="banner">
                             @sandeshloop(getHomepageBanner('home-banner',3,1) as $banner)
                             <div class="desktop-banner">
-                                <span>Advertisement</span>
                                 <a href="{{@$banner->url}}" target="_blank">
                                     <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
                                 </a>
                             </div>
                             <div class="tablet-banner">
-                                <span>Advertisement</span>
                                 <a href="{{@$banner->url}}" target="_blank">
                                     <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
                                 </a>
                             </div>
                             <div class="mobile-banner">
-                                <span>Advertisement</span>
                                 <a href="{{@$banner->url}}" target="_blank">
                                     <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
                                 </a>
@@ -912,19 +895,19 @@
                         <div class="banner">
                             @sandeshloop(getHomepageBanner('home-banner',4,1) as $banner)
                             <div class="desktop-banner">
-                                <span>Advertisement</span>
+
                                 <a href="{{@$banner->url}}" target="_blank">
                                     <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
                                 </a>
                             </div>
                             <div class="tablet-banner">
-                                <span>Advertisement</span>
+
                                 <a href="{{@$banner->url}}" target="_blank">
                                     <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
                                 </a>
                             </div>
                             <div class="mobile-banner">
-                                <span>Advertisement</span>
+
                                 <a href="{{@$banner->url}}" target="_blank">
                                     <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
                                 </a>
@@ -939,13 +922,13 @@
                         <div class="banner side-banner">
                             @sandeshloop(getHomepageBanner('home-sidebar-banner',4,4) as $banner)
                             <div class="desktop-banner">
-                                <span>Advertisement</span>
+
                                 <a href="{{@$banner->url}}" target="_blank">
                                     <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
                                 </a>
                             </div>
                             <div class="tablet-banner">
-                                <span>Advertisement</span>
+
                                 <a href="{{@$banner->url}}" target="_blank">
                                     <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
                                 </a>
@@ -1019,19 +1002,19 @@
                 <div class="banner">
                     @sandeshloop(getHomepageBanner('home-banner',5,1) as $banner)
                     <div class="desktop-banner">
-                        <span>Advertisement</span>
+
                         <a href="{{@$banner->url}}" target="_blank">
                             <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
                         </a>
                     </div>
                     <div class="tablet-banner">
-                        <span>Advertisement</span>
+
                         <a href="{{@$banner->url}}" target="_blank">
                             <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
                         </a>
                     </div>
                     <div class="mobile-banner">
-                        <span>Advertisement</span>
+
                         <a href="{{@$banner->url}}" target="_blank">
                             <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
                         </a>
@@ -1114,13 +1097,13 @@
                         <div class="banner side-banner">
                             @sandeshloop(getHomepageBanner('home-sidebar-banner',8,3) as $banner)
                             <div class="desktop-banner">
-                                <span>Advertisement</span>
+
                                 <a href="{{@$banner->url}}" target="_blank">
                                     <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
                                 </a>
                             </div>
                             <div class="tablet-banner">
-                                <span>Advertisement</span>
+
                                 <a href="{{@$banner->url}}" target="_blank">
                                     <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
                                 </a>
@@ -1134,19 +1117,19 @@
             <div class="banner">
                 @sandeshloop(getHomepageBanner('home-banner',6,1) as $banner)
                 <div class="desktop-banner">
-                    <span>Advertisement</span>
+
                     <a href="{{@$banner->url}}" target="_blank">
                         <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
                     </a>
                 </div>
                 <div class="tablet-banner">
-                    <span>Advertisement</span>
+
                     <a href="{{@$banner->url}}" target="_blank">
                         <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
                     </a>
                 </div>
                 <div class="mobile-banner">
-                    <span>Advertisement</span>
+
                     <a href="{{@$banner->url}}" target="_blank">
                         <img src="{{asset('/images/banners/'.@$banner->image)}}" alt="">
                     </a>

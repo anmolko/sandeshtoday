@@ -97,13 +97,11 @@
                     @if($logo_banner !== null)
                         <div class="banner">
                             <div class="desktop-banner">
-                                <span>Advertisement</span>
                                 <a href="{{@$logo_banner->url}}" target="_blank">
                                     <img src="{{asset('/images/banners/'.@$logo_banner->image)}}" alt="{{$logo_banner->name}}"  />
                                 </a>
                             </div>
                             <div class="tablet-banner">
-                                <span>Advertisement</span>
                                 <a href="{{@$logo_banner->url}}" target="_blank">
                                     <img src="{{asset('/images/banners/'.@$logo_banner->image)}}" alt="{{$logo_banner->name}}"  />
                                 </a>
@@ -299,19 +297,16 @@
         <div class="banner">
             <div class="container">
                 <div class="desktop-banner">
-                    <span>Advertisement</span>
                     <a href="{{@$above_featured->url}}" target="_blank">
                         <img src="{{asset('/images/banners/'.@$above_featured->image)}}" alt="">
                     </a>
                 </div>
                 <div class="tablet-banner">
-                    <span>Advertisement</span>
                     <a href="{{@$above_featured->url}}" target="_blank">
                         <img src="{{asset('/images/banners/'.@$above_featured->image)}}" alt="">
                     </a>
                 </div>
                 <div class="mobile-banner">
-                    <span>Advertisement</span>
                     <a href="{{@$above_featured->url}}" target="_blank">
                         <img src="{{asset('/images/banners/'.@$above_featured->image)}}" alt="">
                     </a>
